@@ -1,0 +1,185 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "tongxuehuang/moonbit-iec104"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn cause(Int) -> Cause
+
+pub fn decode_asdu(Bytes) -> Result[(AsduHeader, Array[InformationObject]), String]
+
+pub fn decode_frame(Bytes) -> Result[Frame, String]
+
+pub fn encode_asdu(AsduHeader, Array[InformationObject]) -> Bytes
+
+pub fn encode_frame(Frame) -> Bytes
+
+pub fn information_frame(Int, Int, Bytes) -> Frame
+
+pub fn normalized_value_asdu(Int, Int, Int, Int) -> Bytes
+
+pub fn protocol_event_examples() -> Array[ProtocolEvent]
+
+pub fn single_point_asdu(Int, Int, Int, Bool, Int) -> Bytes
+
+pub fn supervisory_frame(Int) -> Frame
+
+pub fn type_id(Int) -> TypeId
+
+pub fn u_command(UInt16) -> UCommand
+
+pub fn unnumbered_frame(UInt16) -> Frame
+
+pub fn validate_frame(Frame) -> Result[Unit, String]
+
+// Errors
+
+// Types and methods
+pub struct AsduHeader {
+  type_id : TypeId
+  variable_count : Int
+  sequence : Bool
+  cause : Int
+  common_address : Int
+} derive(Eq, @debug.Debug)
+
+pub enum Cause {
+  Periodic
+  Background
+  Spontaneous
+  Initialised
+  Request
+  Activation
+  ActivationConfirmation
+  ActivationTermination
+  Unknown(Int)
+} derive(Eq, @debug.Debug)
+pub fn Cause::number(Self) -> Int
+
+pub struct EventLog {
+  events : Array[ProtocolEvent]
+}
+pub fn EventLog::all(Self) -> Array[ProtocolEvent]
+pub fn EventLog::len(Self) -> Int
+pub fn EventLog::new() -> Self
+pub fn EventLog::push(Self, ProtocolEvent) -> Unit
+
+pub struct Frame {
+  kind : FrameKind
+  send_sequence : Int
+  receive_sequence : Int
+  control : UInt16
+  payload : Bytes
+} derive(Eq, @debug.Debug)
+
+pub enum FrameKind {
+  Information
+  Supervisory
+  Unnumbered
+} derive(Eq, @debug.Debug)
+
+pub enum InformationObject {
+  Single(Bool, Int)
+  Double(Int, Int)
+  Normalized(Int, Int)
+  ShortFloat(Float, Int)
+  BitString(UInt, Int)
+} derive(Eq, @debug.Debug)
+
+pub struct Interrogation {
+  request : InterrogationRequest
+  mut phase : InterrogationPhase
+  mut objects_sent : Int
+}
+pub fn Interrogation::activate(Self) -> Int
+pub fn Interrogation::finish(Self) -> Int
+pub fn Interrogation::new(InterrogationRequest) -> Self
+pub fn Interrogation::record(Self, Int) -> Result[Unit, String]
+
+pub enum InterrogationPhase {
+  Idle
+  Activated
+  Sending
+  Terminated
+} derive(Eq, @debug.Debug)
+
+pub struct InterrogationRequest {
+  common_address : Int
+  qualifier : Int
+} derive(Eq, @debug.Debug)
+pub fn InterrogationRequest::new(Int, qualifier? : Int) -> Self
+
+pub enum LinkState {
+  Disconnected
+  Connecting
+  Started
+  Stopped
+  TestPending
+} derive(Eq, @debug.Debug)
+
+pub struct Outstation {
+  common_address : Int
+  single_points : Map[Int, Bool]
+  normalized_values : Map[Int, Int]
+}
+pub fn Outstation::new(Int) -> Self
+pub fn Outstation::normalized(Self, Int) -> Int?
+pub fn Outstation::set_normalized(Self, Int, Int) -> Unit
+pub fn Outstation::set_single(Self, Int, Bool) -> Unit
+pub fn Outstation::single(Self, Int) -> Bool?
+pub fn Outstation::snapshot_normalized(Self) -> Array[PointSnapshot]
+pub fn Outstation::snapshot_single(Self) -> Array[PointSnapshot]
+
+pub struct PointSnapshot {
+  ioa : Int
+  value : InformationObject
+}
+
+pub enum ProtocolEvent {
+  Connected
+  Started
+  Stopped
+  Sent(Int)
+  Received(Int)
+  Acknowledged(Int)
+  Fault(String)
+} derive(Eq, @debug.Debug)
+
+pub struct Session {
+  mut state : LinkState
+  mut send_sequence : Int
+  mut receive_sequence : Int
+  window_size : Int
+  mut pending : Int
+} derive(@debug.Debug)
+pub fn Session::new(window_size? : Int) -> Self
+pub fn Session::receive(Self, Frame) -> Result[Unit, String]
+pub fn Session::send(Self, Bytes) -> Result[Frame, String]
+pub fn Session::start(Self) -> Frame
+pub fn Session::stop(Self) -> Frame
+pub fn Session::test_link(Self) -> Frame
+
+pub enum TypeId {
+  SinglePoint
+  DoublePoint
+  NormalizedValue
+  ShortFloat
+  BitString32
+  Unknown(Int)
+} derive(Eq, @debug.Debug)
+pub fn TypeId::number(Self) -> Int
+
+pub enum UCommand {
+  StartDataTransfer
+  StopDataTransfer
+  TestFrame
+  Unknown(UInt16)
+} derive(Eq, @debug.Debug)
+pub fn UCommand::control(Self) -> UInt16
+
+// Type aliases
+
+// Traits
+
