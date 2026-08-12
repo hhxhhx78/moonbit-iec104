@@ -9,13 +9,13 @@
 //   "moonbitlang/x@0.4.6",
 // }
 
-name = "tongxuehuang/moonbit-iec104"
+name = "hhxhhx78/moonbit-iec104"
 
 version = "0.1.0"
 
 readme = "README.mbt.md"
 
-repository = ""
+repository = "https://github.com/hhxhhx78/moonbit-iec104"
 
 license = "Apache-2.0"
 

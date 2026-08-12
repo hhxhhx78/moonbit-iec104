@@ -1,5 +1,5 @@
 // Generated using `moon info`, DON'T EDIT IT
-package "tongxuehuang/moonbit-iec104"
+package "hhxhhx78/moonbit-iec104"
 
 import {
   "moonbitlang/core/debug",

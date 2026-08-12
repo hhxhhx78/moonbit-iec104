@@ -1,9 +1,9 @@
 // import {
-//   "tongxuehuang/moonbit-iec104" @lib,
+//   "hhxhhx78/moonbit-iec104" @lib,
 // }
 
 import {
-  "tongxuehuang/moonbit-iec104" @iec104,
+  "hhxhhx78/moonbit-iec104" @iec104,
 }
 
 options(

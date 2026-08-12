@@ -24,5 +24,5 @@ moon run cmd/main
 
 ## 仓库
 
-- GitHub: https://github.com/qlc676788/moonbit-iec104
+- GitHub: https://github.com/hhxhhx78/moonbit-iec104
 - Gitlink: https://gitlink.org.cn/qlcddjb/moonbit-iec104

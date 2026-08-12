@@ -2,7 +2,7 @@
 
 项目名称：MoonBit IEC 104
 项目标识：moonbit-iec104
-GitHub：https://github.com/qlc676788/moonbit-iec104
+GitHub：https://github.com/hhxhhx78/moonbit-iec104
 Gitlink：https://gitlink.org.cn/qlcddjb/moonbit-iec104
 
 ## 项目简介

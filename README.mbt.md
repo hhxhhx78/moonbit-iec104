@@ -28,11 +28,11 @@ moon run cmd/main
 
 ```moonbit nocheck
 ///|
-let payload = @tongxuehuang/moonbit-iec104.normalized_value_asdu(3, 1, 2300, 0)
+let payload = @hhxhhx78/moonbit-iec104.normalized_value_asdu(3, 1, 2300, 0)
 
 ///|
-let apdu = @tongxuehuang/moonbit-iec104.encode_frame(
-  @tongxuehuang/moonbit-iec104.information_frame(0, 0, payload),
+let apdu = @hhxhhx78/moonbit-iec104.encode_frame(
+  @hhxhhx78/moonbit-iec104.information_frame(0, 0, payload),
 )
 ```
 
