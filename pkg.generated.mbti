@@ -182,4 +182,3 @@ pub fn UCommand::control(Self) -> UInt16
 // Type aliases
 
 // Traits
-

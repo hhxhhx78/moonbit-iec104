@@ -6,6 +6,4 @@ import {
   "hhxhhx78/moonbit-iec104" @iec104,
 }
 
-options(
-  "is-main": true,
-)
+pkgtype(kind: "executable")
