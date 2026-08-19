@@ -11,7 +11,7 @@
 
 name = "hhxhhx78/moonbit-iec104"
 
-version = "0.1.0"
+version = "0.2.0"
 
 readme = "README.mbt.md"
 
@@ -19,8 +19,8 @@ repository = "https://github.com/hhxhhx78/moonbit-iec104"
 
 license = "Apache-2.0"
 
-keywords = [ ]
+keywords = [ "iec104", "scada", "telecontrol", "protocol" ]
 
 preferred_target = "wasm-gc"
 
-description = ""
+description = "Portable IEC 60870-5-104 protocol core for SCADA, gateways, and deterministic simulation."

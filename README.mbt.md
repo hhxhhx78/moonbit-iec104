@@ -1,30 +1,42 @@
 # moonbit-iec104
 
-MoonBit 电力远动 IEC 60870-5-104 协议库。项目面向变电站、配电自动化和实验室仿真，提供不依赖具体网络框架的协议核心：APCI 帧编解码、I/S/U 帧、STARTDT/STOPDT/TESTFR、发送接收序号、ASDU 基础模型、遥信遥测值和可测试的主站/子站链路状态机。
+一个面向 SCADA、变电站自动化、配电网关和协议仿真的 IEC 60870-5-104 协议核心。项目使用 MoonBit 编写，库层不绑定 TCP 实现或操作系统 I/O，便于嵌入网关、测试工具和确定性仿真器。
 
-## 为什么做这个项目
+## 项目定位
 
-MoonBit 生态已有通用 TCP、异步 IO 和二进制数据能力，但截至 2026-08-10，在 Mooncakes 以 `IEC 104`、`IEC60870`、`IEC104` 和 `telecontrol` 检索没有发现成熟的 IEC 104 实现。本项目不重复通用 socket 封装，而是提供面向电力协议的类型安全核心，并让传输层可替换，方便接入 `moonbitlang/async`、串口网关或仿真器。
+本项目覆盖 IEC 104 链路层与常用应用层数据模型，重点放在可验证的二进制编解码、链路状态、序号窗口、信息对象和边界行为。网络传输由调用方接入，协议核心因此可以在 native、wasm-gc 等目标上复用。
 
-## 当前范围
+## 核心能力
 
-- APCI：I 帧、S 帧、U 帧，15-bit 发送/接收序号与窗口控制。
-- 链路：STARTDT、STOPDT、TESTFR 和状态转换。
-- ASDU：单点、双点、归一化值、短浮点值、32-bit 位串的基础编码模型。
-- 应用：总召唤/周期/突发传送可在上层基于 `AsduHeader.cause` 组合；内置 `Outstation` 便于测试数据源。
-- 规划：补充带 IOA 的完整信息对象、时标 CP56Time2a、总召唤事务、TCP 适配器、TLS 边界和 IEC 61850 映射。
+- APCI I/S/U 帧编解码、15 位发送/接收序号和序号窗口。
+- STARTDT、STOPDT、TESTFR 链路状态机、定时器和流式 APDU 解析。
+- IEC 104 常用 Type ID、VSQ、传送原因、公共地址和信息体地址模型。
+- 单点、双点、步位、归一化值、标度值、短浮点值、累计量及命令对象。
+- CP24Time2a、CP56Time2a、质量描述符、地址序列和带时标 ASDU 编解码。
+- 点表、历史变更、总召唤/计数量召唤、读命令、时钟同步和命令策略。
+- 资源限制、重放保护、CRC、帧统计、健康报告和确定性仿真工作负载。
 
 ## 快速开始
 
-需要 MoonBit 0.10.3 或更新版本。
+需要 MoonBit stable 工具链。首次使用时执行：
 
 ```bash
-moon check --deny-warn
-moon test --deny-warn
-moon run cmd/main
+moon update
+moon fmt
+moon check --deny-warn --target all
+moon build --target wasm-gc
+moon test --deny-warn --target wasm-gc
 ```
 
-在代码中组合一个 I 帧：
+运行示例 CLI：
+
+```bash
+moon run cmd/main
+moon run cmd/main -- --help
+moon run cmd/main -- --benchmark
+```
+
+在库代码中构造并编码一个 I 帧：
 
 ```moonbit nocheck
 ///|
@@ -36,31 +48,45 @@ let apdu = @hhxhhx78/moonbit-iec104.encode_frame(
 )
 ```
 
-## 目录
+## CLI
 
-| 文件 | 用途 |
-| --- | --- |
-| `frame_types.mbt` | 帧、ASDU 和信息对象公共类型 |
-| `codec.mbt` | APCI/ASDU 编解码 |
-| `state_machine.mbt` | 可注入传输的链路状态机 |
-| `model.mbt` | 遥信遥测构造器与内存型 outstation |
-| `cmd/main` | 最小可运行示例 |
+`cmd/main` 提供一个不依赖外部服务的可重复示例：默认编码一个归一化测量值 I 帧；`--benchmark` 执行固定的 10,000 帧编解码工作负载并输出帧数、字节数和校验和；`--help` 显示用法。宿主机耗时由基准命令外部测量，避免把平台时钟引入协议核心。
 
-## 开源与来源
+## 架构
 
-本项目为原创 MoonBit 实现，使用 Apache-2.0 License。没有复制第三方源码、测试数据或商业协议栈实现。协议字段依据 IEC 60870-5-104 公共标准术语设计；IEC 标准正文不是本仓库的再发布内容。MoonBit 的 TCP/异步适配计划使用 `moonbitlang/async` 的公开 API，并将在引入依赖时记录版本与许可证。
+| 层次 | 主要文件 | 职责 |
+| --- | --- | --- |
+| 链路与帧 | `frame_types.mbt`, `codec.mbt`, `validation.mbt`, `state_machine.mbt` | APCI、ASDU 基础模型、校验和链路状态 |
+| 应用数据 | `protocol_domain.mbt`, `quality.mbt`, `time_tags.mbt`, `application_objects.mbt`, `extended_asdu.mbt` | Type ID、地址、质量、时标和信息对象 |
+| 服务与状态 | `transport_layer.mbt`, `application_services.mbt`, `point_store.mbt` | 序号窗口、定时器、召唤事务、点表和历史 |
+| 工具与可靠性 | `wire_tools.mbt`, `security_limits.mbt`, `diagnostics_metrics.mbt`, `health_report.mbt` | 字节工具、资源保护、指标和诊断 |
+| 仿真与契约 | `simulation.mbt`, `conformance_catalog.mbt`, `protocol_profiles.mbt`, `benchmark_api.mbt` | 确定性仿真、类型目录、能力协商和基准接口 |
+| 示例 | `cmd/main` | 可运行的最小 CLI |
 
-## CI 与质量门禁
+## 基准
 
-`.github/workflows/check.yml` 运行格式检查、所有后端检查、信息文件一致性、双目标测试和覆盖率分析。提交前建议执行：
+基准工作负载由 `run_benchmark_workload` 定义，输入、输出字节数和 CRC 校验和均是确定的；宿主机实测结果记录在 [BENCHMARKS.md](BENCHMARKS.md)，包含执行环境、命令、重复次数和原始输出。重新测量：
+
+```powershell
+1..5 | ForEach-Object { Measure-Command { moon run cmd/main -- --benchmark } }
+```
+
+该数据用于比较同一环境下的回归趋势，不代表所有设备或网络部署的吞吐承诺。
+
+## 测试
+
+测试覆盖帧编解码、链路状态、Type ID 和地址边界、CP24/CP56 闰年与无效日期、质量位、签名测量值、ASDU 截断/尾随字节、序号回绕、流式输入、点表历史、服务事务、资源限制、CRC 和确定性基准。推荐在本地分别运行：
 
 ```bash
-moon fmt --check
 moon check --deny-warn --target all
-moon info
-git diff --exit-code
-moon test --deny-warn
+moon test --deny-warn --target wasm-gc
 moon test --deny-warn --target native
 ```
 
-项目仍处于协议核心开发阶段，API 会在补齐完整信息对象地址与时标后进入 0.2.x 稳定化。
+## CI
+
+`.github/workflows/check.yml` 在 Ubuntu、macOS 和 Windows 上安装 MoonBit stable，执行版本检查、依赖更新、格式检查、接口文件一致性、所有目标检查、wasm-gc 构建和测试。CI 使用最小只读仓库权限；本地若缺少某个后端运行时，应以对应平台 CI 结果和明确的本地环境提示为准。
+
+## 许可证
+
+本项目采用 [Apache License 2.0](LICENSE)。

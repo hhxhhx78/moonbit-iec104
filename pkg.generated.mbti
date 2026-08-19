@@ -6,37 +6,438 @@ import {
 }
 
 // Values
+pub fn admit_envelope(AsduEnvelope, ResourceLimits) -> AdmissionDecision
+
+pub fn admit_frame(Frame, ResourceLimits) -> AdmissionDecision
+
+pub fn admit_inbound(Bytes, ResourceLimits, ReplayGuard, Int) -> Result[Frame, Diagnostic]
+
+pub fn append_u24(Array[Byte], Int) -> Result[Unit, String]
+
+pub fn application_service_examples() -> Array[ServiceStatus]
+
+pub fn application_type(Int) -> ApplicationType
+
+pub fn application_type_catalog() -> Array[TypeDescriptor]
+
+pub fn application_value_examples() -> Array[ApplicationValue]
+
+pub fn application_value_is_command(ApplicationValue) -> Bool
+
+pub fn application_value_is_measurement(ApplicationValue) -> Bool
+
+pub fn application_value_type(ApplicationValue) -> ApplicationType
+
+pub fn application_value_width(ApplicationValue) -> Int
+
+pub fn assess_metrics(MetricsSnapshot) -> HealthReport
+
+pub fn assess_session(SessionSnapshot) -> HealthReport
+
+pub fn assess_store(PointStore) -> HealthReport
+
+pub fn benchmark_fixture_checksums() -> Array[UInt]
+
+pub fn benchmark_result_table(Array[BenchmarkResult]) -> String
+
+pub fn binary_counter_object(InformationAddress, UInt, sequence? : Int, time_tag? : TimeTag) -> Result[ApplicationObject, String]
+
+pub fn bit_is_set(Int, Int) -> Bool
+
+pub fn bit_string_object(InformationAddress, UInt, time_tag? : TimeTag) -> Result[ApplicationObject, String]
+
+pub fn byte_statistics(Bytes) -> ByteStatistics
+
+pub fn bytes_equal_left(Bytes, Bytes) -> Bool
+
+pub fn calendar_weekday(Int, Int, Int) -> Result[Int, String]
+
 pub fn cause(Int) -> Cause
+
+pub fn cause_category(Int) -> CauseCategory
+
+pub fn clock_sync_object(InformationAddress, Cp56Time) -> Result[ApplicationObject, String]
+
+pub fn compatibility_examples() -> Array[String]
+
+pub fn conformance_examples() -> Array[TypeDescriptor]
+
+pub fn control_type_catalog() -> Array[TypeDescriptor]
+
+pub fn counter_interrogation_object(InformationAddress, Int) -> Result[ApplicationObject, String]
+
+pub fn crc16_ibm(Bytes) -> UInt
+
+pub fn crc32_ieee(Bytes) -> UInt
+
+pub fn create_interrogation_plan(PointStore, InterrogationRequest, PointFilter, batch_size? : Int) -> Result[InterrogationPlan, String]
+
+pub fn days_in_month(Int, Int) -> Int?
+
+pub fn days_in_year(Int) -> Int
 
 pub fn decode_asdu(Bytes) -> Result[(AsduHeader, Array[InformationObject]), String]
 
+pub fn decode_extended_asdu(Bytes) -> Result[AsduEnvelope, Diagnostic]
+
 pub fn decode_frame(Bytes) -> Result[Frame, String]
+
+pub fn decode_signed16(Int, Int) -> Result[Int, String]
+
+pub fn decode_time_tag(TimeTagKind, Bytes, offset? : Int) -> Result[TimeTag, String]
+
+pub fn default_benchmark_suite() -> BenchmarkSuite
+
+pub fn diagnostic_kind_examples() -> Array[DiagnosticKind]
+
+pub fn diagnostic_kind_name(DiagnosticKind) -> String
+
+pub fn diagnostics_examples() -> Array[DiagnosticKind]
+
+pub fn double_command_object(InformationAddress, Int, Int) -> Result[ApplicationObject, String]
+
+pub fn double_point_object(InformationAddress, Int, quality? : StatusQuality, time_tag? : TimeTag) -> Result[ApplicationObject, String]
+
+pub fn encode_application_object(ApplicationObject) -> Bytes
 
 pub fn encode_asdu(AsduHeader, Array[InformationObject]) -> Bytes
 
+pub fn encode_extended_asdu(AsduEnvelope) -> Result[Bytes, Diagnostic]
+
 pub fn encode_frame(Frame) -> Bytes
+
+pub fn encode_signed16(Int) -> Result[Array[Byte], String]
+
+pub fn encode_time_tag(TimeTag) -> Bytes
+
+pub fn encoded_frame_size(Frame) -> Int
+
+pub fn end_of_initialization_object(InformationAddress, Int) -> Result[ApplicationObject, String]
+
+pub fn evaluate_command(CommandPolicy, ApplicationObject) -> CommandOutcome
+
+pub fn extended_asdu_examples() -> Array[AsduEnvelope]
+
+pub fn frame_fits_apdu(Frame, Int) -> Bool
+
+pub fn frame_kind_name(FrameKind) -> String
+
+pub fn health_state_examples() -> Array[HealthState]
+
+pub fn health_state_name(HealthState) -> String
+
+pub fn hex_decode(String) -> Result[Bytes, String]
+
+pub fn hex_digit(Int) -> Char
+
+pub fn hex_encode(Bytes) -> String
+
+pub fn hex_value(Char) -> Int?
+
+pub fn implementation_version() -> String
 
 pub fn information_frame(Int, Int, Bytes) -> Frame
 
+pub fn interrogation_object(InformationAddress, Int) -> Result[ApplicationObject, String]
+
+pub fn is_leap_year(Int) -> Bool
+
+pub fn mask_bits(Int, Int) -> Int
+
+pub fn measurement_state(QualityDescriptor) -> MeasurementState
+
+pub fn measurement_state_examples() -> Array[MeasurementState]
+
+pub fn milliseconds_since_midnight(Int, Int, Int, Int) -> Result[Int, String]
+
+pub fn monitoring_type_catalog() -> Array[TypeDescriptor]
+
+pub fn negotiate_profiles(StationProfile, StationProfile) -> NegotiationDecision
+
+pub fn normalize_quality(Int) -> Int
+
+pub fn normalized_object(InformationAddress, Int, quality? : QualityDescriptor, time_tag? : TimeTag) -> Result[ApplicationObject, String]
+
+pub fn normalized_set_point_object(InformationAddress, Int, Int) -> Result[ApplicationObject, String]
+
 pub fn normalized_value_asdu(Int, Int, Int, Int) -> Bytes
+
+pub fn observe_frame_length(LengthHistogram, Frame) -> Unit
+
+pub fn ordinal_day(Int, Int, Int) -> Result[Int, String]
+
+pub fn pad_bytes(Bytes, Int, Byte) -> Result[Bytes, String]
+
+pub fn parse_apdu_prefix(Bytes) -> ApduParseResult
+
+pub fn parse_vsq(Int) -> Result[(Int, Bool), String]
+
+pub fn point_change_kind_examples() -> Array[PointChangeKind]
+
+pub fn point_direction(ApplicationType) -> PointDirection
+
+pub fn point_store_examples() -> Array[PointDirection]
+
+pub fn profile_examples() -> Array[StationProfile]
 
 pub fn protocol_event_examples() -> Array[ProtocolEvent]
 
+pub fn protocol_name() -> String
+
+pub fn quality_for_state(MeasurementState) -> QualityDescriptor
+
+pub fn read_object(InformationAddress) -> Result[ApplicationObject, String]
+
+pub fn read_u24(Bytes, Int) -> Result[Int, String]
+
+pub fn regulating_step_command_object(InformationAddress, Int, Int) -> Result[ApplicationObject, String]
+
+pub fn reset_command_object(InformationAddress, Int) -> Result[ApplicationObject, String]
+
+pub fn run_benchmark_workload(Int, Int) -> Result[BenchmarkWorkload, String]
+
+pub fn safe_apdu_payload(Bytes) -> Result[Bytes, Diagnostic]
+
+pub fn scaled_object(InformationAddress, Int, quality? : QualityDescriptor, time_tag? : TimeTag) -> Result[ApplicationObject, String]
+
+pub fn scaled_set_point_object(InformationAddress, Int, Int) -> Result[ApplicationObject, String]
+
+pub fn security_examples() -> Array[AdmissionDecision]
+
+pub fn sequence_acknowledges(Int, Int) -> Bool
+
+pub fn sequence_before(Int, Int, Int) -> Bool
+
+pub fn sequence_distance(Int, Int) -> Int
+
+pub fn sequence_next(Int) -> Int
+
+pub fn sequence_normalize(Int) -> Int
+
+pub fn sequence_previous(Int) -> Int
+
+pub fn service_kind_examples() -> Array[ServiceKind]
+
+pub fn service_status_examples() -> Array[ServiceStatus]
+
+pub fn service_status_name(ServiceStatus) -> String
+
+pub fn session_action_examples() -> Array[SessionAction]
+
+pub fn set_bit(Int, Int, Bool) -> Int
+
+pub fn short_float_object(InformationAddress, Float, quality? : QualityDescriptor, time_tag? : TimeTag) -> Result[ApplicationObject, String]
+
+pub fn short_float_set_point_object(InformationAddress, Float, Int) -> Result[ApplicationObject, String]
+
+pub fn simulation_action_examples() -> Array[SimulationAction]
+
+pub fn simulation_event_examples() -> Array[SimulationEvent]
+
+pub fn single_command_object(InformationAddress, Bool, Int) -> Result[ApplicationObject, String]
+
+pub fn single_object_asdu(ApplicationObject, CauseOfTransmission, CommonAddress) -> Result[AsduEnvelope, Diagnostic]
+
 pub fn single_point_asdu(Int, Int, Int, Bool, Int) -> Bytes
+
+pub fn single_point_object(InformationAddress, Bool, quality? : StatusQuality, time_tag? : TimeTag) -> Result[ApplicationObject, String]
+
+pub fn split_apdus(Bytes) -> Result[(Array[Frame], Bytes), Diagnostic]
+
+pub fn split_milliseconds_since_midnight(Int) -> Result[(Int, Int, Int, Int), String]
+
+pub fn step_position_object(InformationAddress, Int, transient? : Bool, quality? : StatusQuality, time_tag? : TimeTag) -> Result[ApplicationObject, String]
 
 pub fn supervisory_frame(Int) -> Frame
 
+pub fn supported_type_catalog() -> Array[TypeDescriptor]
+
+pub fn test_command_object(InformationAddress, Int) -> Result[ApplicationObject, String]
+
+pub fn time_tag_examples() -> Array[TimeTag]
+
+pub fn time_tag_kind_for_type(ApplicationType) -> TimeTagKind
+
+pub fn timer_state_examples() -> Array[TimerState]
+
+pub fn trace_kind_examples() -> Array[TraceKind]
+
+pub fn transport_examples() -> Array[ApduParseResult]
+
+pub fn transport_mode_examples() -> Array[TransportMode]
+
+pub fn transport_mode_name(TransportMode) -> String
+
+pub fn trim_trailing_bytes(Bytes, Byte) -> Bytes
+
+pub fn type_descriptor(ApplicationType) -> TypeDescriptor
+
 pub fn type_id(Int) -> TypeId
+
+pub fn type_id_examples() -> Array[TypeId]
+
+pub fn type_is_supported(ApplicationType) -> Bool
+
+pub fn type_name(ApplicationType) -> String
+
+pub fn type_wire_width(ApplicationType) -> Int
 
 pub fn u_command(UInt16) -> UCommand
 
 pub fn unnumbered_frame(UInt16) -> Frame
 
+pub fn validate_common_address(Int) -> Result[CommonAddress, Diagnostic]
+
+pub fn validate_envelope(AsduEnvelope) -> ConformanceReport
+
 pub fn validate_frame(Frame) -> Result[Unit, String]
+
+pub fn validate_information_address(Int) -> Result[InformationAddress, Diagnostic]
+
+pub fn validate_transport_frame(Frame) -> Result[Unit, Diagnostic]
+
+pub fn wire_tool_examples() -> Array[Bytes]
+
+pub fn xor_checksum(Bytes) -> Byte
 
 // Errors
 
 // Types and methods
+pub enum AdmissionDecision {
+  AcceptedAdmission
+  RejectedAdmission(Diagnostic)
+} derive(@debug.Debug)
+
+pub enum ApduParseResult {
+  NeedMore(Int)
+  Complete(Frame, Int)
+  Invalid(Diagnostic)
+} derive(@debug.Debug)
+
+pub struct ApduStreamDecoder {
+  mut buffer : Array[Byte]
+  max_apdu : Int
+} derive(@debug.Debug)
+pub fn ApduStreamDecoder::available_frames(Self) -> Int
+pub fn ApduStreamDecoder::buffered(Self) -> Int
+pub fn ApduStreamDecoder::clear(Self) -> Unit
+pub fn ApduStreamDecoder::new(max_apdu? : Int) -> Result[Self, String]
+pub fn ApduStreamDecoder::next(Self) -> ApduParseResult
+pub fn ApduStreamDecoder::push(Self, Bytes) -> Result[Int, Diagnostic]
+
+pub struct ApplicationObject {
+  address : InformationAddress
+  type_id : ApplicationType
+  value : ApplicationValue
+  time_tag : TimeTag?
+} derive(Eq, @debug.Debug)
+pub fn ApplicationObject::address(Self) -> InformationAddress
+pub fn ApplicationObject::is_command(Self) -> Bool
+pub fn ApplicationObject::is_measurement(Self) -> Bool
+pub fn ApplicationObject::new(InformationAddress, ApplicationValue, time_tag? : TimeTag) -> Result[Self, String]
+pub fn ApplicationObject::summary(Self) -> (Int, Int, Int, Bool)
+pub fn ApplicationObject::time_tag(Self) -> TimeTag?
+pub fn ApplicationObject::type_id(Self) -> ApplicationType
+pub fn ApplicationObject::validate(Self) -> Result[Unit, Diagnostic]
+pub fn ApplicationObject::value(Self) -> ApplicationValue
+
+pub enum ApplicationType {
+  MSpNa
+  MSpTa
+  MDpNa
+  MDpTa
+  MStNa
+  MStTa
+  MBoNa
+  MBoTa
+  MMeNa
+  MMeTa
+  MMeNb
+  MMeTb
+  MMeNc
+  MMeTc
+  MItNa
+  MItTa
+  MEpTa
+  MEpTb
+  MEpTc
+  MPsNa
+  MMeNd
+  MSpTb
+  MDpTb
+  MStTb
+  MBoTb
+  MMeTd
+  MMeTe
+  MMeTf
+  MItTb
+  MEpTd
+  MEpTe
+  MEpTf
+  MEiNa
+  CScNa
+  CDcNa
+  CRcNa
+  CSeNa
+  CSeNb
+  CSeNc
+  CBoNa
+  CIcNa
+  CCiNa
+  CRdNa
+  CCsNa
+  CTsNa
+  CRpNa
+  UnknownType(Int)
+} derive(Eq, @debug.Debug)
+pub fn ApplicationType::has_time_tag(Self) -> Bool
+pub fn ApplicationType::is_control(Self) -> Bool
+pub fn ApplicationType::is_monitoring(Self) -> Bool
+pub fn ApplicationType::number(Self) -> Int
+pub fn ApplicationType::value_width(Self) -> Int?
+
+pub enum ApplicationValue {
+  SinglePointValue(SinglePointValue)
+  DoublePointValue(DoublePointValue)
+  StepPositionValue(StepPositionValue)
+  BitStringValue(UInt)
+  NormalizedMeasurement(NormalizedValue)
+  ScaledMeasurement(ScaledValue)
+  ShortFloatMeasurement(ShortFloatValue)
+  BinaryCounterMeasurement(BinaryCounterValue)
+  SingleCommand(Bool, Int)
+  DoubleCommand(Int, Int)
+  RegulatingStepCommand(Int, Int)
+  NormalizedSetPoint(Int, Int)
+  ScaledSetPoint(Int, Int)
+  ShortFloatSetPoint(Float, Int)
+  BitStringCommand(UInt)
+  InterrogationCommand(Int)
+  CounterInterrogationCommand(Int)
+  ReadCommand
+  ClockSyncCommand(Cp56Time)
+  TestCommand(Int)
+  ResetCommand(Int)
+  DelayCommand(Int)
+  EndOfInitialization(Int)
+  RawValue(Bytes)
+} derive(Eq, @debug.Debug)
+
+pub struct AsduEnvelope {
+  type_id : ApplicationType
+  sequence : Bool
+  cause : CauseOfTransmission
+  common_address : CommonAddress
+  objects : Array[ApplicationObject]
+} derive(Eq, @debug.Debug)
+pub fn AsduEnvelope::cause(Self) -> CauseOfTransmission
+pub fn AsduEnvelope::common_address(Self) -> CommonAddress
+pub fn AsduEnvelope::count(Self) -> Int
+pub fn AsduEnvelope::new(ApplicationType, Bool, CauseOfTransmission, CommonAddress, Array[ApplicationObject]) -> Result[Self, Diagnostic]
+pub fn AsduEnvelope::objects(Self) -> Array[ApplicationObject]
+pub fn AsduEnvelope::sequence(Self) -> Bool
+pub fn AsduEnvelope::type_id(Self) -> ApplicationType
+
 pub struct AsduHeader {
   type_id : TypeId
   variable_count : Int
@@ -44,6 +445,116 @@ pub struct AsduHeader {
   cause : Int
   common_address : Int
 } derive(Eq, @debug.Debug)
+pub fn AsduHeader::cause(Self) -> Int
+pub fn AsduHeader::common_address(Self) -> Int
+pub fn AsduHeader::count(Self) -> Int
+pub fn AsduHeader::is_sequence(Self) -> Bool
+pub fn AsduHeader::type_id(Self) -> TypeId
+
+pub struct BenchmarkCase {
+  name : String
+  rounds : Int
+  payload_size : Int
+  target : String
+} derive(Eq, @debug.Debug)
+pub fn BenchmarkCase::name(Self) -> String
+pub fn BenchmarkCase::new(String, Int, Int, String) -> Result[Self, String]
+pub fn BenchmarkCase::payload_size(Self) -> Int
+pub fn BenchmarkCase::rounds(Self) -> Int
+pub fn BenchmarkCase::target(Self) -> String
+
+pub struct BenchmarkResult {
+  case : BenchmarkCase
+  encoded_frames : Int
+  encoded_bytes : Int
+  checksum : UInt
+  elapsed_micros : Int
+} derive(Eq, @debug.Debug)
+pub fn BenchmarkResult::case(Self) -> BenchmarkCase
+pub fn BenchmarkResult::checksum(Self) -> UInt
+pub fn BenchmarkResult::elapsed_micros(Self) -> Int
+pub fn BenchmarkResult::encoded_bytes(Self) -> Int
+pub fn BenchmarkResult::encoded_frames(Self) -> Int
+pub fn BenchmarkResult::frames_per_second(Self) -> Float
+pub fn BenchmarkResult::megabytes_per_second(Self) -> Float
+pub fn BenchmarkResult::new(BenchmarkCase, BenchmarkWorkload, Int) -> Result[Self, String]
+
+pub struct BenchmarkSuite {
+  cases : Array[BenchmarkCase]
+} derive(@debug.Debug)
+pub fn BenchmarkSuite::add(Self, BenchmarkCase) -> Result[Unit, String]
+pub fn BenchmarkSuite::cases(Self) -> Array[BenchmarkCase]
+pub fn BenchmarkSuite::len(Self) -> Int
+pub fn BenchmarkSuite::new() -> Self
+pub fn BenchmarkSuite::run(Self, Array[Int]) -> Result[Array[BenchmarkResult], String]
+
+pub struct BenchmarkWorkload {
+  rounds : Int
+  payload_size : Int
+  encoded_frames : Int
+  encoded_bytes : Int
+  checksum : UInt
+} derive(Eq, @debug.Debug)
+pub fn BenchmarkWorkload::checksum(Self) -> UInt
+pub fn BenchmarkWorkload::encoded_bytes(Self) -> Int
+pub fn BenchmarkWorkload::encoded_frames(Self) -> Int
+pub fn BenchmarkWorkload::payload_size(Self) -> Int
+pub fn BenchmarkWorkload::rounds(Self) -> Int
+
+pub struct BinaryCounterValue {
+  value : UInt
+  sequence : Int
+  carry : Bool
+  adjusted : Bool
+  invalid : Bool
+} derive(Eq, @debug.Debug)
+pub fn BinaryCounterValue::flags(Self) -> Int
+pub fn BinaryCounterValue::new(UInt, sequence? : Int, carry? : Bool, adjusted? : Bool, invalid? : Bool) -> Result[Self, String]
+pub fn BinaryCounterValue::sequence(Self) -> Int
+pub fn BinaryCounterValue::value(Self) -> UInt
+
+pub struct ByteCursor {
+  data : Bytes
+  mut offset : Int
+} derive(@debug.Debug)
+pub fn ByteCursor::done(Self) -> Bool
+pub fn ByteCursor::new(Bytes) -> Self
+pub fn ByteCursor::offset(Self) -> Int
+pub fn ByteCursor::read_byte(Self) -> Result[Byte, Diagnostic]
+pub fn ByteCursor::read_bytes(Self, Int) -> Result[Bytes, Diagnostic]
+pub fn ByteCursor::read_u16(Self) -> Result[Int, Diagnostic]
+pub fn ByteCursor::read_u24(Self) -> Result[Int, Diagnostic]
+pub fn ByteCursor::read_u32(Self) -> Result[UInt, Diagnostic]
+pub fn ByteCursor::remaining(Self) -> Int
+pub fn ByteCursor::seek(Self, Int) -> Result[Unit, Diagnostic]
+pub fn ByteCursor::skip(Self, Int) -> Result[Unit, Diagnostic]
+
+pub struct ByteStatistics {
+  length : Int
+  mut zeroes : Int
+  mut high_bit : Int
+  mut checksum : UInt
+  mut minimum : Int
+  mut maximum : Int
+} derive(Eq, @debug.Debug)
+pub fn ByteStatistics::checksum(Self) -> UInt
+pub fn ByteStatistics::high_bit(Self) -> Int
+pub fn ByteStatistics::length(Self) -> Int
+pub fn ByteStatistics::maximum(Self) -> Int
+pub fn ByteStatistics::minimum(Self) -> Int
+pub fn ByteStatistics::zeroes(Self) -> Int
+
+pub struct ByteWriter {
+  bytes : Array[Byte]
+} derive(@debug.Debug)
+pub fn ByteWriter::len(Self) -> Int
+pub fn ByteWriter::new() -> Self
+pub fn ByteWriter::push(Self, Byte) -> Unit
+pub fn ByteWriter::push_bytes(Self, Bytes) -> Unit
+pub fn ByteWriter::push_u16(Self, Int) -> Result[Unit, String]
+pub fn ByteWriter::push_u24(Self, Int) -> Result[Unit, String]
+pub fn ByteWriter::push_u32(Self, UInt) -> Unit
+pub fn ByteWriter::to_bytes(Self) -> Bytes
 
 pub enum Cause {
   Periodic
@@ -56,7 +567,208 @@ pub enum Cause {
   ActivationTermination
   Unknown(Int)
 } derive(Eq, @debug.Debug)
+pub fn Cause::is_activation(Self) -> Bool
+pub fn Cause::is_spontaneous(Self) -> Bool
+pub fn Cause::is_termination(Self) -> Bool
 pub fn Cause::number(Self) -> Int
+
+pub enum CauseCategory {
+  Periodic
+  Background
+  Spontaneous
+  Initialised
+  Request
+  Activation
+  ActivationConfirmation
+  ActivationTermination
+  ReturnInformationRemote
+  ReturnInformationLocal
+  UnknownCause
+} derive(Eq, @debug.Debug)
+pub fn CauseCategory::number(Self) -> Int
+
+pub struct CauseOfTransmission {
+  category : CauseCategory
+  number : Int
+  positive : Bool
+  test_flag : Bool
+  originator : Int
+  qualifier : Int
+} derive(Eq, @debug.Debug)
+pub fn CauseOfTransmission::flags(Self) -> Int
+pub fn CauseOfTransmission::from_number(Int, positive? : Bool, test_flag? : Bool, originator? : Int, qualifier? : Int) -> Result[Self, String]
+pub fn CauseOfTransmission::new(CauseCategory, positive? : Bool, test_flag? : Bool, originator? : Int, qualifier? : Int) -> Result[Self, String]
+pub fn CauseOfTransmission::originator(Self) -> Int
+pub fn CauseOfTransmission::qualifier(Self) -> Int
+pub fn CauseOfTransmission::raw(Self) -> Int
+
+pub struct ClockSyncTransaction {
+  request : ServiceRequest
+  mut status : ServiceStatus
+  mut received : Cp56Time?
+  mut applied_at : Int?
+} derive(@debug.Debug)
+pub fn ClockSyncTransaction::activate(Self) -> Result[Unit, String]
+pub fn ClockSyncTransaction::apply(Self, Cp56Time, Int) -> Result[Int, String]
+pub fn ClockSyncTransaction::new(ServiceRequest) -> Result[Self, String]
+pub fn ClockSyncTransaction::received(Self) -> Cp56Time?
+pub fn ClockSyncTransaction::status(Self) -> ServiceStatus
+
+pub struct CommandOutcome {
+  accepted : Bool
+  status : ServiceStatus
+  object : ApplicationObject?
+  message : String
+} derive(@debug.Debug)
+pub fn CommandOutcome::accepted(Self) -> Bool
+pub fn CommandOutcome::message(Self) -> String
+pub fn CommandOutcome::object(Self) -> ApplicationObject?
+pub fn CommandOutcome::status(Self) -> ServiceStatus
+
+pub struct CommandPolicy {
+  allowed : Map[Int, Bool]
+  allow_all : Bool
+  mut max_qualifier : Int
+} derive(@debug.Debug)
+pub fn CommandPolicy::allow(Self, InformationAddress) -> Unit
+pub fn CommandPolicy::allow_all() -> Self
+pub fn CommandPolicy::deny(Self, InformationAddress) -> Unit
+pub fn CommandPolicy::deny_all() -> Self
+pub fn CommandPolicy::permits(Self, ApplicationObject) -> Bool
+pub fn CommandPolicy::set_max_qualifier(Self, Int) -> Result[Unit, String]
+
+pub struct CommandQueue {
+  pending : Array[ApplicationObject]
+  completed : Array[CommandOutcome]
+  limit : Int
+} derive(@debug.Debug)
+pub fn CommandQueue::completed_count(Self) -> Int
+pub fn CommandQueue::enqueue(Self, ApplicationObject) -> Result[Unit, String]
+pub fn CommandQueue::new(limit? : Int) -> Result[Self, String]
+pub fn CommandQueue::outcomes(Self) -> Array[CommandOutcome]
+pub fn CommandQueue::pending_count(Self) -> Int
+pub fn CommandQueue::process_one(Self, CommandPolicy) -> CommandOutcome?
+
+pub struct CommonAddress {
+  value : Int
+} derive(Eq, @debug.Debug)
+pub fn CommonAddress::is_global(Self) -> Bool
+pub fn CommonAddress::new(Int) -> Result[Self, String]
+pub fn CommonAddress::number(Self) -> Int
+
+pub struct ConformanceReport {
+  mut valid : Bool
+  type_id : ApplicationType
+  mut object_count : Int
+  expected_width : Int
+  mut actual_width : Int
+  issues : Array[String]
+} derive(Eq, @debug.Debug)
+pub fn ConformanceReport::actual_width(Self) -> Int
+pub fn ConformanceReport::add_issue(Self, String) -> Unit
+pub fn ConformanceReport::expected_width(Self) -> Int
+pub fn ConformanceReport::issues(Self) -> Array[String]
+pub fn ConformanceReport::new(ApplicationType) -> Self
+pub fn ConformanceReport::object_count(Self) -> Int
+pub fn ConformanceReport::type_id(Self) -> ApplicationType
+pub fn ConformanceReport::valid(Self) -> Bool
+
+pub struct ConnectionParameters {
+  k : Int
+  w : Int
+  t0_seconds : Int
+  t1_seconds : Int
+  t2_seconds : Int
+  t3_seconds : Int
+} derive(Eq, @debug.Debug)
+pub fn ConnectionParameters::default() -> Self
+pub fn ConnectionParameters::k(Self) -> Int
+pub fn ConnectionParameters::new(Int, Int, Int, Int, Int, Int) -> Result[Self, String]
+pub fn ConnectionParameters::t0(Self) -> Int
+pub fn ConnectionParameters::t1(Self) -> Int
+pub fn ConnectionParameters::t2(Self) -> Int
+pub fn ConnectionParameters::t3(Self) -> Int
+pub fn ConnectionParameters::w(Self) -> Int
+
+pub struct CounterInterrogationRequest {
+  common_address : CommonAddress
+  qualifier : Int
+  created_at : Int
+} derive(Eq, @debug.Debug)
+pub fn CounterInterrogationRequest::common_address(Self) -> CommonAddress
+pub fn CounterInterrogationRequest::created_at(Self) -> Int
+pub fn CounterInterrogationRequest::new(CommonAddress, Int, Int) -> Result[Self, String]
+pub fn CounterInterrogationRequest::qualifier(Self) -> Int
+
+pub struct Cp24Time {
+  millisecond : Int
+  minute : Int
+} derive(Eq, @debug.Debug)
+pub fn Cp24Time::from_bytes(Bytes, offset? : Int) -> Result[Self, String]
+pub fn Cp24Time::millisecond(Self) -> Int
+pub fn Cp24Time::minute(Self) -> Int
+pub fn Cp24Time::new(Int, Int) -> Result[Self, String]
+pub fn Cp24Time::remainder_millisecond(Self) -> Int
+pub fn Cp24Time::second(Self) -> Int
+pub fn Cp24Time::to_array(Self) -> Array[Byte]
+
+pub struct Cp56Time {
+  year : Int
+  month : Int
+  day : Int
+  weekday : Int
+  hour : Int
+  minute : Int
+  millisecond : Int
+} derive(Eq, @debug.Debug)
+pub fn Cp56Time::calendar_year(Self, century? : Int) -> Int
+pub fn Cp56Time::day(Self) -> Int
+pub fn Cp56Time::from_bytes(Bytes, offset? : Int) -> Result[Self, String]
+pub fn Cp56Time::hour(Self) -> Int
+pub fn Cp56Time::millisecond(Self) -> Int
+pub fn Cp56Time::minute(Self) -> Int
+pub fn Cp56Time::month(Self) -> Int
+pub fn Cp56Time::new(Int, Int, Int, Int, Int, Int, weekday? : Int) -> Result[Self, String]
+pub fn Cp56Time::ordering_key(Self) -> Int
+pub fn Cp56Time::remainder_millisecond(Self) -> Int
+pub fn Cp56Time::second(Self) -> Int
+pub fn Cp56Time::to_array(Self) -> Array[Byte]
+pub fn Cp56Time::weekday(Self) -> Int
+pub fn Cp56Time::year(Self) -> Int
+
+pub struct Diagnostic {
+  kind : DiagnosticKind
+  message : String
+  offset : Int?
+} derive(Eq, @debug.Debug)
+pub fn Diagnostic::kind(Self) -> DiagnosticKind
+pub fn Diagnostic::message(Self) -> String
+pub fn Diagnostic::new(DiagnosticKind, String, offset? : Int) -> Self
+pub fn Diagnostic::offset(Self) -> Int?
+pub fn Diagnostic::to_line(Self) -> String
+
+pub enum DiagnosticKind {
+  MalformedFrame
+  InvalidSequence
+  InvalidAddress
+  InvalidType
+  InvalidQualifier
+  UnsupportedFeature
+  WindowExhausted
+  TimerExpired
+  StateViolation
+  TransportFailure
+} derive(Eq, @debug.Debug)
+
+pub struct DoublePointValue {
+  state : Int
+  quality : StatusQuality
+} derive(Eq, @debug.Debug)
+pub fn DoublePointValue::from_byte(Int) -> Result[Self, String]
+pub fn DoublePointValue::new(Int, quality? : StatusQuality) -> Result[Self, String]
+pub fn DoublePointValue::quality(Self) -> StatusQuality
+pub fn DoublePointValue::state(Self) -> Int
+pub fn DoublePointValue::to_byte(Self) -> Int
 
 pub struct EventLog {
   events : Array[ProtocolEvent]
@@ -73,12 +785,238 @@ pub struct Frame {
   control : UInt16
   payload : Bytes
 } derive(Eq, @debug.Debug)
+pub fn Frame::control(Self) -> UInt16
+pub fn Frame::is_information(Self) -> Bool
+pub fn Frame::is_supervisory(Self) -> Bool
+pub fn Frame::is_unnumbered(Self) -> Bool
+pub fn Frame::kind(Self) -> FrameKind
+pub fn Frame::payload(Self) -> Bytes
+pub fn Frame::receive_sequence(Self) -> Int
+pub fn Frame::send_sequence(Self) -> Int
 
 pub enum FrameKind {
   Information
   Supervisory
   Unnumbered
 } derive(Eq, @debug.Debug)
+
+pub struct FrameMetrics {
+  mut frames_encoded : Int
+  mut frames_decoded : Int
+  mut information_frames : Int
+  mut supervisory_frames : Int
+  mut unnumbered_frames : Int
+  mut bytes_encoded : Int
+  mut bytes_decoded : Int
+  mut malformed_frames : Int
+  mut sequence_errors : Int
+  mut service_failures : Int
+} derive(Eq, @debug.Debug)
+pub fn FrameMetrics::error_count(Self) -> Int
+pub fn FrameMetrics::new() -> Self
+pub fn FrameMetrics::record_decoded(Self, Frame) -> Unit
+pub fn FrameMetrics::record_encoded(Self, Frame) -> Unit
+pub fn FrameMetrics::record_malformed(Self) -> Unit
+pub fn FrameMetrics::record_sequence_error(Self) -> Unit
+pub fn FrameMetrics::record_service_failure(Self) -> Unit
+pub fn FrameMetrics::snapshot(Self) -> MetricsSnapshot
+pub fn FrameMetrics::success_rate(Self) -> Float
+pub fn FrameMetrics::total_bytes(Self) -> Int
+pub fn FrameMetrics::total_frames(Self) -> Int
+
+pub struct GatewayAdmissionPolicy {
+  max_objects : Int
+  allow_monitoring : Bool
+  allow_control : Bool
+  allowed_types : Array[ApplicationType]
+  denied_types : Array[ApplicationType]
+} derive(Eq, @debug.Debug)
+pub fn GatewayAdmissionPolicy::allow_type(Self, ApplicationType) -> Unit
+pub fn GatewayAdmissionPolicy::default() -> Self
+pub fn GatewayAdmissionPolicy::deny_type(Self, ApplicationType) -> Unit
+pub fn GatewayAdmissionPolicy::evaluate(Self, AsduEnvelope) -> Result[Unit, String]
+pub fn GatewayAdmissionPolicy::max_objects(Self) -> Int
+pub fn GatewayAdmissionPolicy::new(Int, allow_monitoring? : Bool, allow_control? : Bool) -> Result[Self, String]
+
+pub struct GatewayCounters {
+  mut accepted : Int
+  mut forwarded : Int
+  mut dropped : Int
+  mut rejected : Int
+  mut stored : Int
+} derive(Eq, @debug.Debug)
+pub fn GatewayCounters::accepted(Self) -> Int
+pub fn GatewayCounters::dropped(Self) -> Int
+pub fn GatewayCounters::empty() -> Self
+pub fn GatewayCounters::forwarded(Self) -> Int
+pub fn GatewayCounters::rejected(Self) -> Int
+pub fn GatewayCounters::stored(Self) -> Int
+pub fn GatewayCounters::total(Self) -> Int
+
+pub enum GatewayDispatch {
+  Forwarded(GatewayEnvelope, GatewayRoute)
+  Dropped(GatewayEnvelope, String)
+} derive(@debug.Debug)
+pub fn GatewayDispatch::envelope(Self) -> GatewayEnvelope
+pub fn GatewayDispatch::is_forwarded(Self) -> Bool
+pub fn GatewayDispatch::message(Self) -> String
+
+pub struct GatewayEnvelope {
+  ingress : Int
+  egress : Int
+  common_address : CommonAddress
+  asdu : AsduEnvelope
+  received_at : Int
+  trace_id : String
+} derive(@debug.Debug)
+pub fn GatewayEnvelope::asdu(Self) -> AsduEnvelope
+pub fn GatewayEnvelope::common_address(Self) -> CommonAddress
+pub fn GatewayEnvelope::egress(Self) -> Int
+pub fn GatewayEnvelope::ingress(Self) -> Int
+pub fn GatewayEnvelope::new(Int, Int, AsduEnvelope, Int, trace_id? : String) -> Result[Self, String]
+pub fn GatewayEnvelope::object_count(Self) -> Int
+pub fn GatewayEnvelope::received_at(Self) -> Int
+pub fn GatewayEnvelope::trace_id(Self) -> String
+
+pub enum GatewayMode {
+  Stopped
+  Starting
+  Running
+  Draining
+  Faulted(String)
+} derive(Eq, @debug.Debug)
+pub fn GatewayMode::is_accepting(Self) -> Bool
+pub fn GatewayMode::is_quiescent(Self) -> Bool
+pub fn GatewayMode::name(Self) -> String
+
+pub struct GatewayRoute {
+  id : Int
+  source : Int
+  destination : Int
+  common_address : CommonAddress?
+  type_ids : Array[ApplicationType]
+  mut enabled : Bool
+  priority : Int
+} derive(Eq, @debug.Debug)
+pub fn GatewayRoute::common_address(Self) -> CommonAddress?
+pub fn GatewayRoute::describe(Self) -> String
+pub fn GatewayRoute::destination(Self) -> Int
+pub fn GatewayRoute::enabled(Self) -> Bool
+pub fn GatewayRoute::id(Self) -> Int
+pub fn GatewayRoute::new(Int, Int, Int, common_address? : CommonAddress, type_ids? : Array[ApplicationType], priority? : Int) -> Result[Self, String]
+pub fn GatewayRoute::priority(Self) -> Int
+pub fn GatewayRoute::set_enabled(Self, Bool) -> Unit
+pub fn GatewayRoute::source(Self) -> Int
+pub fn GatewayRoute::type_ids(Self) -> Array[ApplicationType]
+
+pub struct GatewayRouteTable {
+  routes : Array[GatewayRoute]
+  capacity : Int
+} derive(@debug.Debug)
+pub fn GatewayRouteTable::add(Self, GatewayRoute) -> Result[Unit, String]
+pub fn GatewayRouteTable::capacity(Self) -> Int
+pub fn GatewayRouteTable::len(Self) -> Int
+pub fn GatewayRouteTable::new(capacity? : Int) -> Result[Self, String]
+pub fn GatewayRouteTable::remove(Self, Int) -> Bool
+pub fn GatewayRouteTable::routes(Self) -> Array[GatewayRoute]
+pub fn GatewayRouteTable::select(Self, Int, CommonAddress, ApplicationType) -> GatewayRoute?
+pub fn GatewayRouteTable::set_enabled(Self, Int, Bool) -> Bool
+
+pub struct GatewayRuntime {
+  mut mode : GatewayMode
+  routes : GatewayRouteTable
+  mut policy : GatewayAdmissionPolicy
+  inbound : Array[GatewayEnvelope]
+  outbound : Array[GatewayEnvelope]
+  dead_letters : Array[GatewayEnvelope]
+  stores : Array[GatewayStoreBinding]
+  counters : GatewayCounters
+  max_queue : Int
+  mut last_error : String?
+} derive(@debug.Debug)
+pub fn GatewayRuntime::add_route(Self, GatewayRoute) -> Result[Unit, String]
+pub fn GatewayRuntime::attach_store(Self, GatewayStoreBinding) -> Result[Unit, String]
+pub fn GatewayRuntime::begin_drain(Self) -> Result[Unit, String]
+pub fn GatewayRuntime::counters(Self) -> GatewayCounters
+pub fn GatewayRuntime::dead_letter_len(Self) -> Int
+pub fn GatewayRuntime::diagnostics(Self) -> String
+pub fn GatewayRuntime::drain(Self, max_dispatches? : Int) -> Array[GatewayDispatch]
+pub fn GatewayRuntime::enqueue(Self, GatewayEnvelope) -> Result[Unit, String]
+pub fn GatewayRuntime::fail(Self, String) -> Unit
+pub fn GatewayRuntime::ingest_to_store(Self, GatewayEnvelope) -> Result[Int, String]
+pub fn GatewayRuntime::last_error(Self) -> String?
+pub fn GatewayRuntime::mode(Self) -> GatewayMode
+pub fn GatewayRuntime::new(Int, route_capacity? : Int, policy? : GatewayAdmissionPolicy) -> Result[Self, String]
+pub fn GatewayRuntime::outbound_len(Self) -> Int
+pub fn GatewayRuntime::poll_outbound(Self) -> GatewayEnvelope?
+pub fn GatewayRuntime::queue_len(Self) -> Int
+pub fn GatewayRuntime::remove_route(Self, Int) -> Bool
+pub fn GatewayRuntime::routes(Self) -> GatewayRouteTable
+pub fn GatewayRuntime::set_policy(Self, GatewayAdmissionPolicy) -> Unit
+pub fn GatewayRuntime::snapshot(Self) -> GatewaySnapshot
+pub fn GatewayRuntime::start(Self) -> Result[Unit, String]
+pub fn GatewayRuntime::stop(Self) -> Result[Unit, String]
+pub fn GatewayRuntime::store_count(Self) -> Int
+pub fn GatewayRuntime::take_dead_letter(Self) -> GatewayEnvelope?
+
+pub struct GatewaySnapshot {
+  mode : GatewayMode
+  routes : Int
+  queue : Int
+  outbound : Int
+  dead_letters : Int
+  counters : GatewayCounters
+  last_error : String?
+} derive(Eq, @debug.Debug)
+pub fn GatewaySnapshot::counters(Self) -> GatewayCounters
+pub fn GatewaySnapshot::dead_letters(Self) -> Int
+pub fn GatewaySnapshot::last_error(Self) -> String?
+pub fn GatewaySnapshot::mode(Self) -> GatewayMode
+pub fn GatewaySnapshot::outbound(Self) -> Int
+pub fn GatewaySnapshot::queue(Self) -> Int
+pub fn GatewaySnapshot::routes(Self) -> Int
+
+pub struct GatewayStoreBinding {
+  common_address : CommonAddress
+  store : PointStore
+  mut accepted : Int
+  mut rejected : Int
+} derive(@debug.Debug)
+pub fn GatewayStoreBinding::accepted(Self) -> Int
+pub fn GatewayStoreBinding::common_address(Self) -> CommonAddress
+pub fn GatewayStoreBinding::ingest(Self, GatewayEnvelope) -> Result[Int, String]
+pub fn GatewayStoreBinding::new(CommonAddress, history_limit? : Int) -> Result[Self, String]
+pub fn GatewayStoreBinding::rejected(Self) -> Int
+pub fn GatewayStoreBinding::store(Self) -> PointStore
+
+pub struct HealthReport {
+  state : HealthState
+  score : Int
+  checks : Array[String]
+  warnings : Array[String]
+} derive(Eq, @debug.Debug)
+pub fn HealthReport::checks(Self) -> Array[String]
+pub fn HealthReport::new(HealthState, Int, Array[String], Array[String]) -> Self
+pub fn HealthReport::score(Self) -> Int
+pub fn HealthReport::state(Self) -> HealthState
+pub fn HealthReport::warnings(Self) -> Array[String]
+
+pub enum HealthState {
+  Healthy
+  Degraded
+  Unready
+} derive(Eq, @debug.Debug)
+
+pub struct InformationAddress {
+  value : Int
+} derive(Eq, @debug.Debug)
+pub fn InformationAddress::from_octets(Int, Int, Int) -> Result[Self, String]
+pub fn InformationAddress::high(Self) -> Int
+pub fn InformationAddress::is_broadcast(Self) -> Bool
+pub fn InformationAddress::low(Self) -> Int
+pub fn InformationAddress::middle(Self) -> Int
+pub fn InformationAddress::new(Int) -> Result[Self, String]
+pub fn InformationAddress::number(Self) -> Int
 
 pub enum InformationObject {
   Single(Bool, Int)
@@ -105,11 +1043,36 @@ pub enum InterrogationPhase {
   Terminated
 } derive(Eq, @debug.Debug)
 
+pub struct InterrogationPlan {
+  request : InterrogationRequest
+  objects : Array[ApplicationObject]
+  batch_size : Int
+  mut cursor : Int
+  mut status : ServiceStatus
+} derive(@debug.Debug)
+pub fn InterrogationPlan::activate(Self) -> Result[Int, String]
+pub fn InterrogationPlan::new(InterrogationRequest, Array[ApplicationObject], batch_size? : Int) -> Result[Self, String]
+pub fn InterrogationPlan::next_batch(Self) -> Result[Array[ApplicationObject], String]
+pub fn InterrogationPlan::remaining(Self) -> Int
+pub fn InterrogationPlan::request(Self) -> InterrogationRequest
+pub fn InterrogationPlan::status(Self) -> ServiceStatus
+pub fn InterrogationPlan::terminate(Self) -> Result[Int, String]
+
 pub struct InterrogationRequest {
   common_address : Int
   qualifier : Int
 } derive(Eq, @debug.Debug)
 pub fn InterrogationRequest::new(Int, qualifier? : Int) -> Self
+
+pub struct LengthHistogram {
+  buckets : Map[Int, Int]
+  mut samples : Int
+} derive(@debug.Debug)
+pub fn LengthHistogram::all(Self) -> Array[(Int, Int)]
+pub fn LengthHistogram::bucket(Self, Int) -> Int
+pub fn LengthHistogram::new() -> Self
+pub fn LengthHistogram::observe(Self, Int) -> Unit
+pub fn LengthHistogram::samples(Self) -> Int
 
 pub enum LinkState {
   Disconnected
@@ -118,6 +1081,42 @@ pub enum LinkState {
   Stopped
   TestPending
 } derive(Eq, @debug.Debug)
+pub fn LinkState::is_connected(Self) -> Bool
+pub fn LinkState::is_terminal(Self) -> Bool
+
+pub enum MeasurementState {
+  Good
+  Blocked
+  Substituted
+  NotTopical
+  Invalid
+} derive(Eq, @debug.Debug)
+
+pub struct MetricsSnapshot {
+  frames : Int
+  bytes : Int
+  errors : Int
+  success_rate : Float
+} derive(Eq, @debug.Debug)
+pub fn MetricsSnapshot::bytes(Self) -> Int
+pub fn MetricsSnapshot::errors(Self) -> Int
+pub fn MetricsSnapshot::frames(Self) -> Int
+pub fn MetricsSnapshot::success_rate(Self) -> Float
+
+pub enum NegotiationDecision {
+  CompatibleProfile
+  IncompatibleProfile(Array[String])
+} derive(@debug.Debug)
+
+pub struct NormalizedValue {
+  value : Int
+  quality : QualityDescriptor
+} derive(Eq, @debug.Debug)
+pub fn NormalizedValue::new(Int, quality? : QualityDescriptor) -> Result[Self, String]
+pub fn NormalizedValue::quality(Self) -> QualityDescriptor
+pub fn NormalizedValue::raw_unsigned(Self) -> Int
+pub fn NormalizedValue::to_array(Self) -> Array[Byte]
+pub fn NormalizedValue::value(Self) -> Int
 
 pub struct Outstation {
   common_address : Int
@@ -132,10 +1131,102 @@ pub fn Outstation::single(Self, Int) -> Bool?
 pub fn Outstation::snapshot_normalized(Self) -> Array[PointSnapshot]
 pub fn Outstation::snapshot_single(Self) -> Array[PointSnapshot]
 
+pub struct PointChange {
+  kind : PointChangeKind
+  address : InformationAddress
+  revision : Int
+  timestamp : Int
+  message : String
+} derive(Eq, @debug.Debug)
+pub fn PointChange::address(Self) -> InformationAddress
+pub fn PointChange::kind(Self) -> PointChangeKind
+pub fn PointChange::message(Self) -> String
+pub fn PointChange::new(PointChangeKind, InformationAddress, Int, Int, String) -> Self
+pub fn PointChange::revision(Self) -> Int
+pub fn PointChange::timestamp(Self) -> Int
+
+pub enum PointChangeKind {
+  Inserted
+  Updated
+  Removed
+  Rejected
+} derive(Eq, @debug.Debug)
+
+pub enum PointDirection {
+  MonitorDirection
+  ControlDirection
+} derive(Eq, @debug.Debug)
+
+pub struct PointFilter {
+  direction : PointDirection?
+  type_id : ApplicationType?
+  first_address : InformationAddress?
+  last_address : InformationAddress?
+  only_valid : Bool
+  source : String?
+} derive(Eq, @debug.Debug)
+pub fn PointFilter::all() -> Self
+pub fn PointFilter::control() -> Self
+pub fn PointFilter::from_source(Self, String) -> Self
+pub fn PointFilter::monitoring() -> Self
+pub fn PointFilter::valid_only(Self) -> Self
+pub fn PointFilter::with_range(Self, InformationAddress, InformationAddress) -> Self
+pub fn PointFilter::with_type(Self, ApplicationType) -> Self
+
+pub struct PointRecord {
+  address : InformationAddress
+  type_id : ApplicationType
+  value : ApplicationValue
+  time_tag : TimeTag?
+  revision : Int
+  updated_at : Int
+  source : String
+} derive(Eq, @debug.Debug)
+pub fn PointRecord::address(Self) -> InformationAddress
+pub fn PointRecord::direction(Self) -> PointDirection
+pub fn PointRecord::is_valid(Self) -> Bool
+pub fn PointRecord::new(ApplicationObject, Int, revision? : Int, source? : String) -> Self
+pub fn PointRecord::revision(Self) -> Int
+pub fn PointRecord::source(Self) -> String
+pub fn PointRecord::time_tag(Self) -> TimeTag?
+pub fn PointRecord::type_id(Self) -> ApplicationType
+pub fn PointRecord::updated_at(Self) -> Int
+pub fn PointRecord::value(Self) -> ApplicationValue
+
 pub struct PointSnapshot {
   ioa : Int
   value : InformationObject
 }
+
+pub struct PointStore {
+  common_address : CommonAddress
+  points : Map[Int, PointRecord]
+  history : Array[PointChange]
+  history_limit : Int
+} derive(@debug.Debug)
+pub fn PointStore::addresses(Self) -> Array[InformationAddress]
+pub fn PointStore::common_address(Self) -> CommonAddress
+pub fn PointStore::get(Self, InformationAddress) -> PointRecord?
+pub fn PointStore::history(Self) -> Array[PointChange]
+pub fn PointStore::history_len(Self) -> Int
+pub fn PointStore::len(Self) -> Int
+pub fn PointStore::new(CommonAddress, history_limit? : Int) -> Result[Self, String]
+pub fn PointStore::objects(Self, PointFilter) -> Array[ApplicationObject]
+pub fn PointStore::query(Self, PointFilter) -> Array[PointRecord]
+pub fn PointStore::remove(Self, InformationAddress, Int) -> Result[PointChange, Diagnostic]
+pub fn PointStore::statistics(Self) -> StoreStatistics
+pub fn PointStore::upsert(Self, ApplicationObject, Int, source? : String) -> Result[PointChange, Diagnostic]
+
+pub struct ProfileRegistry {
+  profiles : Map[String, StationProfile]
+} derive(@debug.Debug)
+pub fn ProfileRegistry::get(Self, String) -> StationProfile?
+pub fn ProfileRegistry::len(Self) -> Int
+pub fn ProfileRegistry::names(Self) -> Array[String]
+pub fn ProfileRegistry::new() -> Self
+pub fn ProfileRegistry::put(Self, StationProfile) -> Result[Unit, String]
+pub fn ProfileRegistry::remove(Self, String) -> Bool
+pub fn ProfileRegistry::replace(Self, StationProfile) -> Unit
 
 pub enum ProtocolEvent {
   Connected
@@ -145,6 +1236,175 @@ pub enum ProtocolEvent {
   Received(Int)
   Acknowledged(Int)
   Fault(String)
+} derive(Eq, @debug.Debug)
+
+pub struct ProtocolTimers {
+  mut t0 : TimerState
+  mut t1 : TimerState
+  mut t2 : TimerState
+  mut t3 : TimerState
+} derive(Eq, @debug.Debug)
+pub fn ProtocolTimers::expired(Self, Int) -> Array[String]
+pub fn ProtocolTimers::new() -> Self
+pub fn ProtocolTimers::start_t0(Self, Int) -> Unit
+pub fn ProtocolTimers::start_t1(Self, Int) -> Unit
+pub fn ProtocolTimers::start_t2(Self, Int) -> Unit
+pub fn ProtocolTimers::start_t3(Self, Int) -> Unit
+pub fn ProtocolTimers::stop_t0(Self) -> Unit
+pub fn ProtocolTimers::stop_t1(Self) -> Unit
+pub fn ProtocolTimers::stop_t2(Self) -> Unit
+pub fn ProtocolTimers::stop_t3(Self) -> Unit
+
+pub struct QualityDescriptor {
+  overflow : Bool
+  blocked : Bool
+  substituted : Bool
+  not_topical : Bool
+  invalid : Bool
+} derive(Eq, @debug.Debug)
+pub fn QualityDescriptor::clear() -> Self
+pub fn QualityDescriptor::flags(Self) -> Array[String]
+pub fn QualityDescriptor::from_byte(Int) -> Result[Self, String]
+pub fn QualityDescriptor::has_status_change(Self) -> Bool
+pub fn QualityDescriptor::is_usable(Self) -> Bool
+pub fn QualityDescriptor::to_byte(Self) -> Int
+pub fn QualityDescriptor::with_blocked(Self, Bool) -> Self
+pub fn QualityDescriptor::with_invalid(Self, Bool) -> Self
+pub fn QualityDescriptor::with_not_topical(Self, Bool) -> Self
+pub fn QualityDescriptor::with_overflow(Self, Bool) -> Self
+pub fn QualityDescriptor::with_substituted(Self, Bool) -> Self
+
+pub struct RateLimiter {
+  mut window_start : Int
+  window_size : Int
+  limit : Int
+  mut used : Int
+} derive(Eq, @debug.Debug)
+pub fn RateLimiter::allow(Self, Int) -> Bool
+pub fn RateLimiter::new(Int, Int) -> Result[Self, String]
+pub fn RateLimiter::remaining(Self) -> Int
+pub fn RateLimiter::used(Self) -> Int
+
+pub struct ReadTransaction {
+  request : ServiceRequest
+  mut status : ServiceStatus
+} derive(@debug.Debug)
+pub fn ReadTransaction::activate(Self) -> Result[Unit, String]
+pub fn ReadTransaction::complete(Self, ApplicationObject) -> Result[ServiceResponse, String]
+pub fn ReadTransaction::new(ServiceRequest) -> Result[Self, String]
+pub fn ReadTransaction::reject(Self, String) -> ServiceResponse
+pub fn ReadTransaction::status(Self) -> ServiceStatus
+
+pub struct ReplayGuard {
+  seen : Map[UInt, Int]
+  ttl : Int
+  limit : Int
+} derive(@debug.Debug)
+pub fn ReplayGuard::is_replay(Self, Bytes, Int) -> Bool
+pub fn ReplayGuard::len(Self) -> Int
+pub fn ReplayGuard::new(Int, Int) -> Result[Self, String]
+pub fn ReplayGuard::purge(Self, Int) -> Int
+pub fn ReplayGuard::remember(Self, Bytes, Int) -> Result[Unit, String]
+
+pub struct ResourceLimits {
+  max_apdu : Int
+  max_asdu : Int
+  max_objects : Int
+  max_history : Int
+  max_commands : Int
+  max_trace_events : Int
+} derive(Eq, @debug.Debug)
+pub fn ResourceLimits::default() -> Self
+pub fn ResourceLimits::max_apdu(Self) -> Int
+pub fn ResourceLimits::max_asdu(Self) -> Int
+pub fn ResourceLimits::max_commands(Self) -> Int
+pub fn ResourceLimits::max_history(Self) -> Int
+pub fn ResourceLimits::max_objects(Self) -> Int
+pub fn ResourceLimits::max_trace_events(Self) -> Int
+pub fn ResourceLimits::new(Int, Int, Int, Int, Int, Int) -> Result[Self, String]
+
+pub struct ScaledValue {
+  value : Int
+  quality : QualityDescriptor
+} derive(Eq, @debug.Debug)
+pub fn ScaledValue::new(Int, quality? : QualityDescriptor) -> Result[Self, String]
+pub fn ScaledValue::quality(Self) -> QualityDescriptor
+pub fn ScaledValue::to_array(Self) -> Array[Byte]
+pub fn ScaledValue::value(Self) -> Int
+
+pub struct ScheduledAction {
+  at : Int
+  ordinal : Int
+  action : SimulationAction
+} derive(@debug.Debug)
+pub fn ScheduledAction::action(Self) -> SimulationAction
+pub fn ScheduledAction::at(Self) -> Int
+pub fn ScheduledAction::new(Int, Int, SimulationAction) -> Self
+pub fn ScheduledAction::ordinal(Self) -> Int
+
+pub struct SequenceWindow {
+  mut first_unacknowledged : Int
+  mut next_send : Int
+  mut next_receive : Int
+  capacity : Int
+} derive(Eq, @debug.Debug)
+pub fn SequenceWindow::acknowledge(Self, Int) -> Result[Int, String]
+pub fn SequenceWindow::available(Self) -> Int
+pub fn SequenceWindow::can_send(Self) -> Bool
+pub fn SequenceWindow::new(Int) -> Result[Self, String]
+pub fn SequenceWindow::next_receive(Self) -> Int
+pub fn SequenceWindow::next_send(Self) -> Int
+pub fn SequenceWindow::pending(Self) -> Int
+pub fn SequenceWindow::receive(Self, Int) -> Result[Unit, String]
+pub fn SequenceWindow::reserve_send(Self) -> Result[Int, String]
+
+pub enum ServiceKind {
+  InterrogationService
+  CounterInterrogationService
+  ReadService
+  ClockSyncService
+  CommandService
+  ResetService
+  DelayAcquisitionService
+} derive(Eq, @debug.Debug)
+
+pub struct ServiceRequest {
+  service : ServiceKind
+  address : InformationAddress
+  common_address : CommonAddress
+  qualifier : Int
+  created_at : Int
+  originator : Int
+} derive(Eq, @debug.Debug)
+pub fn ServiceRequest::address(Self) -> InformationAddress
+pub fn ServiceRequest::common_address(Self) -> CommonAddress
+pub fn ServiceRequest::created_at(Self) -> Int
+pub fn ServiceRequest::new(ServiceKind, InformationAddress, CommonAddress, Int, Int, originator? : Int) -> Result[Self, Diagnostic]
+pub fn ServiceRequest::originator(Self) -> Int
+pub fn ServiceRequest::qualifier(Self) -> Int
+pub fn ServiceRequest::service(Self) -> ServiceKind
+
+pub struct ServiceResponse {
+  request : ServiceRequest
+  status : ServiceStatus
+  cause : CauseOfTransmission
+  objects : Array[ApplicationObject]
+  message : String
+} derive(@debug.Debug)
+pub fn ServiceResponse::cause(Self) -> CauseOfTransmission
+pub fn ServiceResponse::message(Self) -> String
+pub fn ServiceResponse::new(ServiceRequest, ServiceStatus, CauseOfTransmission, Array[ApplicationObject], message? : String) -> Self
+pub fn ServiceResponse::objects(Self) -> Array[ApplicationObject]
+pub fn ServiceResponse::request(Self) -> ServiceRequest
+pub fn ServiceResponse::status(Self) -> ServiceStatus
+
+pub enum ServiceStatus {
+  IdleService
+  ActiveService
+  ConfirmedService
+  TerminatedService
+  RejectedService
+  FailedService
 } derive(Eq, @debug.Debug)
 
 pub struct Session {
@@ -157,9 +1417,251 @@ pub struct Session {
 pub fn Session::new(window_size? : Int) -> Self
 pub fn Session::receive(Self, Frame) -> Result[Unit, String]
 pub fn Session::send(Self, Bytes) -> Result[Frame, String]
+pub fn Session::snapshot(Self) -> SessionSnapshot
 pub fn Session::start(Self) -> Frame
 pub fn Session::stop(Self) -> Frame
 pub fn Session::test_link(Self) -> Frame
+
+pub enum SessionAction {
+  SendStart
+  SendStop
+  SendTest
+  SendSupervisory(Int)
+  SendInformation(Int)
+  DeliverInformation(Bytes)
+  Acknowledge(Int)
+  Report(Diagnostic)
+  NoAction
+} derive(@debug.Debug)
+
+pub struct SessionSnapshot {
+  state : LinkState
+  send_sequence : Int
+  receive_sequence : Int
+  pending : Int
+  window_size : Int
+} derive(Eq, @debug.Debug)
+pub fn SessionSnapshot::available(Self) -> Int
+pub fn SessionSnapshot::is_started(Self) -> Bool
+pub fn SessionSnapshot::pending(Self) -> Int
+pub fn SessionSnapshot::receive_sequence(Self) -> Int
+pub fn SessionSnapshot::send_sequence(Self) -> Int
+
+pub struct ShortFloatValue {
+  value : Float
+  quality : QualityDescriptor
+} derive(Eq, @debug.Debug)
+pub fn ShortFloatValue::new(Float, quality? : QualityDescriptor) -> Self
+pub fn ShortFloatValue::quality(Self) -> QualityDescriptor
+pub fn ShortFloatValue::value(Self) -> Float
+
+pub struct Simulation {
+  clock : VirtualClock
+  actions : Array[ScheduledAction]
+  events : Array[SimulationEvent]
+  mut next_ordinal : Int
+  max_events : Int
+} derive(@debug.Debug)
+pub fn Simulation::clear_events(Self) -> Unit
+pub fn Simulation::events(Self) -> Array[SimulationEvent]
+pub fn Simulation::new(start? : Int, max_events? : Int) -> Result[Self, String]
+pub fn Simulation::now(Self) -> Int
+pub fn Simulation::pending(Self) -> Int
+pub fn Simulation::run_until(Self, Int) -> Result[Int, String]
+pub fn Simulation::schedule(Self, Int, SimulationAction) -> Result[Unit, String]
+pub fn Simulation::step(Self) -> Result[Bool, String]
+
+pub enum SimulationAction {
+  Receive(Frame)
+  Publish(ApplicationObject)
+  AdvanceTimer(String)
+  Record(String)
+} derive(@debug.Debug)
+
+pub enum SimulationEvent {
+  FrameProduced(Int, Frame)
+  ObjectPublished(Int, ApplicationObject)
+  TimerAdvanced(Int, String)
+  Note(Int, String)
+  SimulationFault(Int, Diagnostic)
+} derive(@debug.Debug)
+
+pub struct SinglePointValue {
+  state : Bool
+  quality : StatusQuality
+} derive(Eq, @debug.Debug)
+pub fn SinglePointValue::from_byte(Int) -> Result[Self, String]
+pub fn SinglePointValue::new(Bool, quality? : StatusQuality) -> Self
+pub fn SinglePointValue::quality(Self) -> StatusQuality
+pub fn SinglePointValue::state(Self) -> Bool
+pub fn SinglePointValue::to_byte(Self) -> Int
+
+pub struct StationProfile {
+  name : String
+  common_address : CommonAddress
+  parameters : ConnectionParameters
+  supported_types : Array[ApplicationType]
+  max_objects : Int
+  tls_required : Bool
+} derive(@debug.Debug)
+pub fn StationProfile::common_address(Self) -> CommonAddress
+pub fn StationProfile::max_objects(Self) -> Int
+pub fn StationProfile::name(Self) -> String
+pub fn StationProfile::new(String, CommonAddress, ConnectionParameters, Array[ApplicationType], max_objects? : Int, tls_required? : Bool) -> Result[Self, String]
+pub fn StationProfile::parameters(Self) -> ConnectionParameters
+pub fn StationProfile::supported_types(Self) -> Array[ApplicationType]
+pub fn StationProfile::supports(Self, ApplicationType) -> Bool
+pub fn StationProfile::tls_required(Self) -> Bool
+
+pub struct StationSimulation {
+  store : PointStore
+  session : Session
+  simulation : Simulation
+  metrics : FrameMetrics
+  trace : TraceLog
+} derive(@debug.Debug)
+pub fn StationSimulation::events(Self) -> Array[SimulationEvent]
+pub fn StationSimulation::ingest(Self, ApplicationObject, Int) -> Result[PointChange, Diagnostic]
+pub fn StationSimulation::metrics(Self) -> MetricsSnapshot
+pub fn StationSimulation::new(CommonAddress, window_size? : Int) -> Result[Self, String]
+pub fn StationSimulation::receive(Self, Frame) -> Result[Unit, String]
+pub fn StationSimulation::run_until(Self, Int) -> Result[Int, String]
+pub fn StationSimulation::schedule(Self, Int, SimulationAction) -> Result[Unit, String]
+pub fn StationSimulation::send(Self, Bytes) -> Result[Frame, String]
+pub fn StationSimulation::session(Self) -> SessionSnapshot
+pub fn StationSimulation::start(Self) -> Frame
+pub fn StationSimulation::stop(Self) -> Frame
+pub fn StationSimulation::store(Self) -> PointStore
+pub fn StationSimulation::trace(Self) -> Array[TraceEvent]
+
+pub struct StatusQuality {
+  blocked : Bool
+  substituted : Bool
+  not_topical : Bool
+  invalid : Bool
+} derive(Eq, @debug.Debug)
+pub fn StatusQuality::as_measurement(Self) -> QualityDescriptor
+pub fn StatusQuality::clear() -> Self
+pub fn StatusQuality::from_byte(Int) -> Result[Self, String]
+pub fn StatusQuality::is_usable(Self) -> Bool
+pub fn StatusQuality::to_byte(Self) -> Int
+
+pub struct StepPositionValue {
+  position : Int
+  transient : Bool
+  quality : StatusQuality
+} derive(Eq, @debug.Debug)
+pub fn StepPositionValue::new(Int, transient? : Bool, quality? : StatusQuality) -> Result[Self, String]
+pub fn StepPositionValue::position(Self) -> Int
+pub fn StepPositionValue::quality(Self) -> StatusQuality
+pub fn StepPositionValue::to_array(Self) -> Array[Byte]
+
+pub struct StoreStatistics {
+  mut total : Int
+  mut monitoring : Int
+  mut control : Int
+  mut valid : Int
+  mut invalid : Int
+  mut revisions : Int
+  mut changes : Int
+} derive(Eq, @debug.Debug)
+pub fn StoreStatistics::changes(Self) -> Int
+pub fn StoreStatistics::control(Self) -> Int
+pub fn StoreStatistics::empty() -> Self
+pub fn StoreStatistics::invalid(Self) -> Int
+pub fn StoreStatistics::monitoring(Self) -> Int
+pub fn StoreStatistics::revisions(Self) -> Int
+pub fn StoreStatistics::total(Self) -> Int
+pub fn StoreStatistics::valid(Self) -> Int
+
+pub struct StoreTransaction {
+  pending : Array[(ApplicationObject, Int, String)]
+  removed : Array[(InformationAddress, Int)]
+  mut committed : Bool
+} derive(@debug.Debug)
+pub fn StoreTransaction::commit(Self, PointStore) -> Result[Array[PointChange], Diagnostic]
+pub fn StoreTransaction::new() -> Self
+pub fn StoreTransaction::pending_count(Self) -> Int
+pub fn StoreTransaction::rollback(Self) -> Unit
+pub fn StoreTransaction::stage(Self, ApplicationObject, Int, source? : String) -> Result[Unit, Diagnostic]
+pub fn StoreTransaction::stage_remove(Self, InformationAddress, Int) -> Result[Unit, Diagnostic]
+
+pub enum TimeTag {
+  Short(Cp24Time)
+  Long(Cp56Time)
+} derive(Eq, @debug.Debug)
+pub fn TimeTag::kind(Self) -> TimeTagKind
+pub fn TimeTag::to_array(Self) -> Array[Byte]
+pub fn TimeTag::width(Self) -> Int
+
+pub enum TimeTagKind {
+  NoTimeTag
+  Cp24TimeTag
+  Cp56TimeTag
+} derive(Eq, @debug.Debug)
+pub fn TimeTagKind::width(Self) -> Int
+
+pub enum TimerState {
+  Inactive
+  Running(Int)
+  Expired
+} derive(Eq, @debug.Debug)
+
+pub struct TraceEvent {
+  timestamp : Int
+  kind : TraceKind
+  detail : String
+  correlation : Int
+} derive(Eq, @debug.Debug)
+pub fn TraceEvent::correlation(Self) -> Int
+pub fn TraceEvent::detail(Self) -> String
+pub fn TraceEvent::kind(Self) -> TraceKind
+pub fn TraceEvent::new(Int, TraceKind, String, correlation? : Int) -> Self
+pub fn TraceEvent::timestamp(Self) -> Int
+
+pub enum TraceKind {
+  FrameSent
+  FrameReceived
+  StateChanged
+  PointUpdated
+  ServiceStarted
+  ServiceCompleted
+  DiagnosticRaised
+} derive(Eq, @debug.Debug)
+
+pub struct TraceLog {
+  events : Array[TraceEvent]
+  limit : Int
+} derive(@debug.Debug)
+pub fn TraceLog::all(Self) -> Array[TraceEvent]
+pub fn TraceLog::len(Self) -> Int
+pub fn TraceLog::new(limit? : Int) -> Result[Self, String]
+pub fn TraceLog::push(Self, TraceEvent) -> Unit
+pub fn TraceLog::since(Self, Int) -> Array[TraceEvent]
+
+pub enum TransportMode {
+  Tcp
+  SerialGateway
+  ReplayFile
+  InMemory
+} derive(Eq, @debug.Debug)
+
+pub struct TypeDescriptor {
+  type_id : ApplicationType
+  name : String
+  direction : PointDirection
+  time_tag : TimeTagKind
+  value_width : Int
+  supported : Bool
+  command : Bool
+} derive(Eq, @debug.Debug)
+pub fn TypeDescriptor::direction(Self) -> PointDirection
+pub fn TypeDescriptor::is_command(Self) -> Bool
+pub fn TypeDescriptor::name(Self) -> String
+pub fn TypeDescriptor::supported(Self) -> Bool
+pub fn TypeDescriptor::time_tag(Self) -> TimeTagKind
+pub fn TypeDescriptor::type_id(Self) -> ApplicationType
+pub fn TypeDescriptor::value_width(Self) -> Int
 
 pub enum TypeId {
   SinglePoint
@@ -169,6 +1671,8 @@ pub enum TypeId {
   BitString32
   Unknown(Int)
 } derive(Eq, @debug.Debug)
+pub fn TypeId::is_known(Self) -> Bool
+pub fn TypeId::name(Self) -> String
 pub fn TypeId::number(Self) -> Int
 
 pub enum UCommand {
@@ -178,6 +1682,14 @@ pub enum UCommand {
   Unknown(UInt16)
 } derive(Eq, @debug.Debug)
 pub fn UCommand::control(Self) -> UInt16
+
+pub struct VirtualClock {
+  mut now : Int
+} derive(Eq, @debug.Debug)
+pub fn VirtualClock::advance(Self, Int) -> Result[Int, String]
+pub fn VirtualClock::new(start? : Int) -> Result[Self, String]
+pub fn VirtualClock::now(Self) -> Int
+pub fn VirtualClock::set(Self, Int) -> Result[Unit, String]
 
 // Type aliases
 

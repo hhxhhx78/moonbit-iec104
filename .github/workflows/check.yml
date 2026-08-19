@@ -2,7 +2,12 @@ name: MoonBit Check
 
 on:
   push:
+    branches: [master]
   pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   check:
@@ -16,6 +21,8 @@ jobs:
         shell: bash
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - name: Install MoonBit
         if: runner.os != 'Windows'
         run: |
@@ -30,13 +37,37 @@ jobs:
           echo "$HOME/.moon/bin" | Out-File -FilePath $env:GITHUB_PATH -Append
       - name: Version
         run: moon version --all
+      - name: Update dependencies
+        run: moon update
       - name: Format and check
         run: |
           moon fmt --check
+          moon build --target wasm-gc
           moon check --deny-warn --target all
           moon info
           git diff --exit-code
       - name: Test
         run: |
-          moon test --deny-warn
-          moon test --deny-warn --target native
+          moon test --deny-warn --target all
+      - name: Native coverage summary
+        if: runner.os == 'Linux'
+        run: |
+          moon coverage analyze
+          moon coverage report -f summary
+
+  source-size:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Count production MoonBit source
+        shell: bash
+        run: |
+          lines=$(find . -type f -name '*.mbt' \
+            ! -name '*_test.mbt' \
+            ! -name '*_wbtest.mbt' \
+            ! -path './_build/*' -print0 |
+            xargs -0 awk 'END { print NR + 0 }')
+          echo "production MoonBit lines: $lines"
+          test "$lines" -ge 8000

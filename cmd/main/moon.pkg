@@ -4,6 +4,7 @@
 
 import {
   "hhxhhx78/moonbit-iec104" @iec104,
+  "moonbitlang/core/env",
 }
 
 pkgtype(kind: "executable")
