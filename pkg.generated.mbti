@@ -12,6 +12,12 @@ pub fn admit_frame(Frame, ResourceLimits) -> AdmissionDecision
 
 pub fn admit_inbound(Bytes, ResourceLimits, ReplayGuard, Int) -> Result[Frame, Diagnostic]
 
+pub fn alarm_journal_action_examples() -> Array[AlarmJournalAction]
+
+pub fn alarm_lifecycle_examples() -> Array[AlarmLifecycle]
+
+pub fn alarm_severity_examples() -> Array[AlarmSeverity]
+
 pub fn append_u24(Array[Byte], Int) -> Result[Unit, String]
 
 pub fn application_service_examples() -> Array[ServiceStatus]
@@ -30,15 +36,21 @@ pub fn application_value_type(ApplicationValue) -> ApplicationType
 
 pub fn application_value_width(ApplicationValue) -> Int
 
+pub fn archive_policy_examples() -> Array[ArchivePolicy]
+
 pub fn assess_metrics(MetricsSnapshot) -> HealthReport
 
 pub fn assess_session(SessionSnapshot) -> HealthReport
 
 pub fn assess_store(PointStore) -> HealthReport
 
+pub fn audit_action_examples() -> Array[AuditAction]
+
 pub fn benchmark_fixture_checksums() -> Array[UInt]
 
 pub fn benchmark_result_table(Array[BenchmarkResult]) -> String
+
+pub fn benchmark_workload_examples() -> Array[ApplicationBenchmarkWorkload]
 
 pub fn binary_counter_object(InformationAddress, UInt, sequence? : Int, time_tag? : TimeTag) -> Result[ApplicationObject, String]
 
@@ -58,7 +70,15 @@ pub fn cause_category(Int) -> CauseCategory
 
 pub fn clock_sync_object(InformationAddress, Cp56Time) -> Result[ApplicationObject, String]
 
+pub fn command_lifecycle_examples() -> Array[CommandLifecycle]
+
+pub fn command_priority_examples() -> Array[CommandPriority]
+
 pub fn compatibility_examples() -> Array[String]
+
+pub fn config_change_kind_examples() -> Array[ConfigChangeKind]
+
+pub fn config_value_examples() -> Array[ConfigValue]
 
 pub fn conformance_examples() -> Array[TypeDescriptor]
 
@@ -71,6 +91,8 @@ pub fn crc16_ibm(Bytes) -> UInt
 pub fn crc32_ieee(Bytes) -> UInt
 
 pub fn create_interrogation_plan(PointStore, InterrogationRequest, PointFilter, batch_size? : Int) -> Result[InterrogationPlan, String]
+
+pub fn database_event_kind_examples() -> Array[DatabaseEventKind]
 
 pub fn days_in_month(Int, Int) -> Int?
 
@@ -91,6 +113,8 @@ pub fn default_benchmark_suite() -> BenchmarkSuite
 pub fn diagnostic_kind_examples() -> Array[DiagnosticKind]
 
 pub fn diagnostic_kind_name(DiagnosticKind) -> String
+
+pub fn diagnostic_severity_examples() -> Array[DiagnosticSeverity]
 
 pub fn diagnostics_examples() -> Array[DiagnosticKind]
 
@@ -118,6 +142,12 @@ pub fn evaluate_command(CommandPolicy, ApplicationObject) -> CommandOutcome
 
 pub fn extended_asdu_examples() -> Array[AsduEnvelope]
 
+pub fn failover_reason_examples() -> Array[FailoverReason]
+
+pub fn file_transfer_direction_examples() -> Array[FileTransferDirection]
+
+pub fn file_transfer_state_examples() -> Array[FileTransferState]
+
 pub fn frame_fits_apdu(Frame, Int) -> Bool
 
 pub fn frame_kind_name(FrameKind) -> String
@@ -142,6 +172,8 @@ pub fn interrogation_object(InformationAddress, Int) -> Result[ApplicationObject
 
 pub fn is_leap_year(Int) -> Bool
 
+pub fn managed_transport_state_examples() -> Array[ManagedTransportState]
+
 pub fn mask_bits(Int, Int) -> Int
 
 pub fn measurement_state(QualityDescriptor) -> MeasurementState
@@ -164,6 +196,8 @@ pub fn normalized_value_asdu(Int, Int, Int, Int) -> Bytes
 
 pub fn observe_frame_length(LengthHistogram, Frame) -> Unit
 
+pub fn operational_permission_examples() -> Array[OperationalPermission]
+
 pub fn ordinal_day(Int, Int, Int) -> Result[Int, String]
 
 pub fn pad_bytes(Bytes, Int, Byte) -> Result[Bytes, String]
@@ -184,7 +218,15 @@ pub fn protocol_event_examples() -> Array[ProtocolEvent]
 
 pub fn protocol_name() -> String
 
+pub fn quality_disposition_text(QualityDisposition) -> String
+
+pub fn quality_finding_examples() -> Array[QualityFinding]
+
+pub fn quality_finding_text(QualityFinding) -> String
+
 pub fn quality_for_state(MeasurementState) -> QualityDescriptor
+
+pub fn quality_policy_examples() -> Array[QualityDisposition]
 
 pub fn read_object(InformationAddress) -> Result[ApplicationObject, String]
 
@@ -194,13 +236,37 @@ pub fn regulating_step_command_object(InformationAddress, Int, Int) -> Result[Ap
 
 pub fn reset_command_object(InformationAddress, Int) -> Result[ApplicationObject, String]
 
+pub fn role_permissions(OperatorRole) -> Array[OperationalPermission]
+
+pub fn routing_action_examples() -> Array[RoutingAction]
+
+pub fn run_application_workloads(Int) -> Result[Array[WorkloadResult], String]
+
 pub fn run_benchmark_workload(Int, Int) -> Result[BenchmarkWorkload, String]
+
+pub fn run_conformance_suite(Array[ConformanceVector]) -> VectorReport
+
+pub fn run_conformance_vector(ConformanceVector) -> VectorResult
+
+pub fn run_database_workload(Int) -> Result[WorkloadResult, String]
+
+pub fn run_file_workload(Int) -> Result[WorkloadResult, String]
+
+pub fn run_scenario_workload(Int) -> Result[WorkloadResult, String]
+
+pub fn run_scheduler_workload(Int) -> Result[WorkloadResult, String]
+
+pub fn run_telemetry_workload(Int) -> Result[WorkloadResult, String]
+
+pub fn runtime_event_kind_examples() -> Array[RuntimeEventKind]
 
 pub fn safe_apdu_payload(Bytes) -> Result[Bytes, Diagnostic]
 
 pub fn scaled_object(InformationAddress, Int, quality? : QualityDescriptor, time_tag? : TimeTag) -> Result[ApplicationObject, String]
 
 pub fn scaled_set_point_object(InformationAddress, Int, Int) -> Result[ApplicationObject, String]
+
+pub fn scenario_action_examples() -> Array[ScenarioAction]
 
 pub fn security_examples() -> Array[AdmissionDecision]
 
@@ -216,7 +282,17 @@ pub fn sequence_normalize(Int) -> Int
 
 pub fn sequence_previous(Int) -> Int
 
+pub fn service_event_kind_text(ServiceEventKind) -> String
+
+pub fn service_health_text(ServiceHealth) -> String
+
 pub fn service_kind_examples() -> Array[ServiceKind]
+
+pub fn service_kind_text(SupervisorServiceKind) -> String
+
+pub fn service_lifecycle_text(ServiceLifecycle) -> String
+
+pub fn service_registry_examples() -> Array[SupervisorServiceKind]
 
 pub fn service_status_examples() -> Array[ServiceStatus]
 
@@ -244,13 +320,23 @@ pub fn single_point_object(InformationAddress, Bool, quality? : StatusQuality, t
 
 pub fn split_apdus(Bytes) -> Result[(Array[Frame], Bytes), Diagnostic]
 
+pub fn split_file_segments(StoredFile, Int) -> Result[Array[FileSegment], String]
+
 pub fn split_milliseconds_since_midnight(Int) -> Result[(Int, Int, Int, Int), String]
+
+pub fn standard_conformance_vectors() -> Array[ConformanceVector]
+
+pub fn station_state_reason_examples() -> Array[StationStateReason]
+
+pub fn station_status_examples() -> Array[StationStatus]
 
 pub fn step_position_object(InformationAddress, Int, transient? : Bool, quality? : StatusQuality, time_tag? : TimeTag) -> Result[ApplicationObject, String]
 
 pub fn supervisory_frame(Int) -> Frame
 
 pub fn supported_type_catalog() -> Array[TypeDescriptor]
+
+pub fn telemetry_state_examples() -> Array[TelemetryState]
 
 pub fn test_command_object(InformationAddress, Int) -> Result[ApplicationObject, String]
 
@@ -261,6 +347,8 @@ pub fn time_tag_kind_for_type(ApplicationType) -> TimeTagKind
 pub fn timer_state_examples() -> Array[TimerState]
 
 pub fn trace_kind_examples() -> Array[TraceKind]
+
+pub fn transport_event_kind_examples() -> Array[TransportEventKind]
 
 pub fn transport_examples() -> Array[ApduParseResult]
 
@@ -286,6 +374,8 @@ pub fn u_command(UInt16) -> UCommand
 
 pub fn unnumbered_frame(UInt16) -> Frame
 
+pub fn validate_application_object(ApplicationObject, ValidationProfile) -> ValidationReport
+
 pub fn validate_common_address(Int) -> Result[CommonAddress, Diagnostic]
 
 pub fn validate_envelope(AsduEnvelope) -> ConformanceReport
@@ -294,7 +384,19 @@ pub fn validate_frame(Frame) -> Result[Unit, String]
 
 pub fn validate_information_address(Int) -> Result[InformationAddress, Diagnostic]
 
+pub fn validate_point_store(PointStore, ValidationProfile) -> ValidationReport
+
+pub fn validate_station_config(StationConfig, ValidationProfile) -> ValidationReport
+
 pub fn validate_transport_frame(Frame) -> Result[Unit, Diagnostic]
+
+pub fn validate_transport_frame_admission(Bytes, ResourceLimits) -> ValidationReport
+
+pub fn validation_issue_kind_examples() -> Array[ValidationIssueKind]
+
+pub fn vector_category_examples() -> Array[VectorCategory]
+
+pub fn vector_expectation_examples() -> Array[VectorExpectation]
 
 pub fn wire_tool_examples() -> Array[Bytes]
 
@@ -307,6 +409,144 @@ pub enum AdmissionDecision {
   AcceptedAdmission
   RejectedAdmission(Diagnostic)
 } derive(@debug.Debug)
+
+pub struct AlarmEvent {
+  station : CommonAddress
+  address : InformationAddress
+  name : String
+  severity : AlarmSeverity
+  active : Bool
+  value : Float
+  timestamp : Int
+  message : String
+} derive(Eq, @debug.Debug)
+pub fn AlarmEvent::active(Self) -> Bool
+pub fn AlarmEvent::address(Self) -> InformationAddress
+pub fn AlarmEvent::message(Self) -> String
+pub fn AlarmEvent::name(Self) -> String
+pub fn AlarmEvent::severity(Self) -> AlarmSeverity
+pub fn AlarmEvent::station(Self) -> CommonAddress
+pub fn AlarmEvent::timestamp(Self) -> Int
+pub fn AlarmEvent::value(Self) -> Float
+
+pub struct AlarmJournal {
+  active : Map[String, AlarmRecord]
+  events : Array[AlarmJournalEvent]
+  event_limit : Int
+  mut next_sequence : Int
+  metrics : AlarmJournalMetrics
+} derive(@debug.Debug)
+pub fn AlarmJournal::acknowledge(Self, String, String, Int) -> Result[AlarmRecord, String]
+pub fn AlarmJournal::active_count(Self) -> Int
+pub fn AlarmJournal::all(Self) -> Array[AlarmRecord]
+pub fn AlarmJournal::escalate(Self, String, String, Int) -> Result[AlarmRecord, String]
+pub fn AlarmJournal::events(Self) -> Array[AlarmJournalEvent]
+pub fn AlarmJournal::get(Self, String) -> AlarmRecord?
+pub fn AlarmJournal::ingest(Self, AlarmEvent) -> Result[AlarmRecord, String]
+pub fn AlarmJournal::metrics(Self) -> AlarmJournalMetrics
+pub fn AlarmJournal::new(event_limit? : Int) -> Result[Self, String]
+pub fn AlarmJournal::shelve(Self, String, String, Int, Int) -> Result[AlarmRecord, String]
+pub fn AlarmJournal::unshelve_expired(Self, Int) -> Int
+
+pub enum AlarmJournalAction {
+  AlarmOpened
+  AlarmUpdated
+  AlarmAcknowledgedAction
+  AlarmShelvedAction
+  AlarmUnshelvedAction
+  AlarmEscalatedAction
+  AlarmClearedAction
+} derive(Eq, @debug.Debug)
+
+pub struct AlarmJournalEvent {
+  sequence : Int
+  timestamp : Int
+  key : String
+  action : AlarmJournalAction
+  operator : String
+  detail : String
+} derive(Eq, @debug.Debug)
+pub fn AlarmJournalEvent::action(Self) -> AlarmJournalAction
+pub fn AlarmJournalEvent::detail(Self) -> String
+pub fn AlarmJournalEvent::key(Self) -> String
+pub fn AlarmJournalEvent::operator(Self) -> String
+pub fn AlarmJournalEvent::sequence(Self) -> Int
+pub fn AlarmJournalEvent::timestamp(Self) -> Int
+
+pub struct AlarmJournalMetrics {
+  mut opened : Int
+  mut acknowledged : Int
+  mut shelved : Int
+  mut escalated : Int
+  mut cleared : Int
+} derive(Eq, @debug.Debug)
+pub fn AlarmJournalMetrics::acknowledged(Self) -> Int
+pub fn AlarmJournalMetrics::cleared(Self) -> Int
+pub fn AlarmJournalMetrics::escalated(Self) -> Int
+pub fn AlarmJournalMetrics::new() -> Self
+pub fn AlarmJournalMetrics::opened(Self) -> Int
+pub fn AlarmJournalMetrics::shelved(Self) -> Int
+
+pub enum AlarmLifecycle {
+  AlarmActive
+  AlarmAcknowledged
+  AlarmShelved
+  AlarmCleared
+  AlarmEscalated
+} derive(Eq, @debug.Debug)
+
+pub struct AlarmRecord {
+  key : String
+  station : CommonAddress
+  address : InformationAddress
+  name : String
+  severity : AlarmSeverity
+  mut lifecycle : AlarmLifecycle
+  first_seen : Int
+  mut last_seen : Int
+  mut occurrences : Int
+  mut acknowledged_by : String?
+  mut acknowledged_at : Int?
+  mut shelf_until : Int?
+  mut last_value : Float
+  message : String
+} derive(@debug.Debug)
+pub fn AlarmRecord::acknowledged_at(Self) -> Int?
+pub fn AlarmRecord::acknowledged_by(Self) -> String?
+pub fn AlarmRecord::address(Self) -> InformationAddress
+pub fn AlarmRecord::first_seen(Self) -> Int
+pub fn AlarmRecord::key(Self) -> String
+pub fn AlarmRecord::last_seen(Self) -> Int
+pub fn AlarmRecord::last_value(Self) -> Float
+pub fn AlarmRecord::lifecycle(Self) -> AlarmLifecycle
+pub fn AlarmRecord::message(Self) -> String
+pub fn AlarmRecord::name(Self) -> String
+pub fn AlarmRecord::occurrences(Self) -> Int
+pub fn AlarmRecord::severity(Self) -> AlarmSeverity
+pub fn AlarmRecord::shelf_until(Self) -> Int?
+pub fn AlarmRecord::station(Self) -> CommonAddress
+
+pub struct AlarmRule {
+  low : Float?
+  high : Float?
+  severity : AlarmSeverity
+  hysteresis : Float
+  name : String
+} derive(Eq, @debug.Debug)
+pub fn AlarmRule::high(Self) -> Float?
+pub fn AlarmRule::hysteresis(Self) -> Float
+pub fn AlarmRule::low(Self) -> Float?
+pub fn AlarmRule::name(Self) -> String
+pub fn AlarmRule::new(String, AlarmSeverity, low? : Float, high? : Float, hysteresis? : Float) -> Result[Self, String]
+pub fn AlarmRule::severity(Self) -> AlarmSeverity
+
+pub enum AlarmSeverity {
+  InformationalAlarm
+  WarningAlarm
+  MajorAlarm
+  CriticalAlarm
+} derive(Eq, @debug.Debug)
+pub fn AlarmSeverity::weight(Self) -> Int
 
 pub enum ApduParseResult {
   NeedMore(Int)
@@ -324,6 +564,15 @@ pub fn ApduStreamDecoder::clear(Self) -> Unit
 pub fn ApduStreamDecoder::new(max_apdu? : Int) -> Result[Self, String]
 pub fn ApduStreamDecoder::next(Self) -> ApduParseResult
 pub fn ApduStreamDecoder::push(Self, Bytes) -> Result[Int, Diagnostic]
+
+pub enum ApplicationBenchmarkWorkload {
+  CodecWorkload
+  DatabaseWorkload
+  TelemetryWorkload
+  SchedulerWorkload
+  FileWorkload
+  ScenarioWorkload
+} derive(Eq, @debug.Debug)
 
 pub struct ApplicationObject {
   address : InformationAddress
@@ -423,6 +672,93 @@ pub enum ApplicationValue {
   RawValue(Bytes)
 } derive(Eq, @debug.Debug)
 
+pub struct ArchiveBucket {
+  station : CommonAddress
+  address : InformationAddress
+  start : Int
+  end : Int
+  mut count : Int
+  mut minimum : Float
+  mut maximum : Float
+  mut sum : Float
+  mut invalid : Int
+} derive(Eq, @debug.Debug)
+pub fn ArchiveBucket::address(Self) -> InformationAddress
+pub fn ArchiveBucket::average(Self) -> Float
+pub fn ArchiveBucket::count(Self) -> Int
+pub fn ArchiveBucket::end(Self) -> Int
+pub fn ArchiveBucket::invalid(Self) -> Int
+pub fn ArchiveBucket::maximum(Self) -> Float
+pub fn ArchiveBucket::minimum(Self) -> Float
+pub fn ArchiveBucket::start(Self) -> Int
+pub fn ArchiveBucket::station(Self) -> CommonAddress
+pub fn ArchiveBucket::sum(Self) -> Float
+
+pub struct ArchivePolicy {
+  maximum_samples : Int
+  maximum_age : Int
+  bucket_width : Int
+  reject_invalid : Bool
+} derive(Eq, @debug.Debug)
+pub fn ArchivePolicy::bucket_width(Self) -> Int
+pub fn ArchivePolicy::maximum_age(Self) -> Int
+pub fn ArchivePolicy::maximum_samples(Self) -> Int
+pub fn ArchivePolicy::new(maximum_samples? : Int, maximum_age? : Int, bucket_width? : Int, reject_invalid? : Bool) -> Result[Self, String]
+pub fn ArchivePolicy::reject_invalid(Self) -> Bool
+
+pub struct ArchiveQuery {
+  station : CommonAddress?
+  first_address : InformationAddress?
+  last_address : InformationAddress?
+  start : Int?
+  end : Int?
+  source : String?
+  include_invalid : Bool
+} derive(Eq, @debug.Debug)
+pub fn ArchiveQuery::address_range(Self, InformationAddress, InformationAddress) -> Self
+pub fn ArchiveQuery::all() -> Self
+pub fn ArchiveQuery::from_source(Self, String) -> Self
+pub fn ArchiveQuery::station(Self, CommonAddress) -> Self
+pub fn ArchiveQuery::time_range(Self, Int, Int) -> Self
+pub fn ArchiveQuery::with_invalid(Self, Bool) -> Self
+
+pub struct ArchiveStore {
+  samples : Array[ArchivedSample]
+  policy : ArchivePolicy
+  mut next_sequence : Int
+  mut evicted : Int
+} derive(@debug.Debug)
+pub fn ArchiveStore::append(Self, TelemetrySample) -> Result[Unit, String]
+pub fn ArchiveStore::append_batch(Self, Array[TelemetrySample]) -> Int
+pub fn ArchiveStore::buckets(Self, ArchiveQuery) -> Array[ArchiveBucket]
+pub fn ArchiveStore::evicted(Self) -> Int
+pub fn ArchiveStore::latest(Self, CommonAddress, InformationAddress) -> ArchivedSample?
+pub fn ArchiveStore::len(Self) -> Int
+pub fn ArchiveStore::new(policy? : ArchivePolicy) -> Self
+pub fn ArchiveStore::policy(Self) -> ArchivePolicy
+pub fn ArchiveStore::prune(Self, Int) -> Int
+pub fn ArchiveStore::query(Self, ArchiveQuery) -> Array[ArchivedSample]
+pub fn ArchiveStore::range_count(Self, ArchiveQuery) -> Int
+
+pub struct ArchivedSample {
+  station : CommonAddress
+  address : InformationAddress
+  type_id : ApplicationType
+  value : Float
+  quality : QualityDescriptor
+  timestamp : Int
+  sequence : Int
+  source : String
+} derive(@debug.Debug)
+pub fn ArchivedSample::address(Self) -> InformationAddress
+pub fn ArchivedSample::quality(Self) -> QualityDescriptor
+pub fn ArchivedSample::sequence(Self) -> Int
+pub fn ArchivedSample::source(Self) -> String
+pub fn ArchivedSample::station(Self) -> CommonAddress
+pub fn ArchivedSample::timestamp(Self) -> Int
+pub fn ArchivedSample::type_id(Self) -> ApplicationType
+pub fn ArchivedSample::value(Self) -> Float
+
 pub struct AsduEnvelope {
   type_id : ApplicationType
   sequence : Bool
@@ -450,6 +786,16 @@ pub fn AsduHeader::common_address(Self) -> Int
 pub fn AsduHeader::count(Self) -> Int
 pub fn AsduHeader::is_sequence(Self) -> Bool
 pub fn AsduHeader::type_id(Self) -> TypeId
+
+pub enum AuditAction {
+  AuthorizationChecked
+  PolicyChanged
+  MaintenanceChanged
+  CommandAuthorized
+  FileAuthorized
+  StationConfigured
+  FailoverAuthorized
+} derive(Eq, @debug.Debug)
 
 pub struct BenchmarkCase {
   name : String
@@ -614,6 +960,46 @@ pub fn ClockSyncTransaction::new(ServiceRequest) -> Result[Self, String]
 pub fn ClockSyncTransaction::received(Self) -> Cp56Time?
 pub fn ClockSyncTransaction::status(Self) -> ServiceStatus
 
+pub struct CommandAudit {
+  ticket : Int
+  timestamp : Int
+  from : CommandLifecycle
+  to : CommandLifecycle
+  attempt : Int
+  message : String
+} derive(Eq, @debug.Debug)
+pub fn CommandAudit::attempt(Self) -> Int
+pub fn CommandAudit::from(Self) -> CommandLifecycle
+pub fn CommandAudit::message(Self) -> String
+pub fn CommandAudit::new(Int, Int, CommandLifecycle, CommandLifecycle, Int, String) -> Self
+pub fn CommandAudit::ticket(Self) -> Int
+pub fn CommandAudit::timestamp(Self) -> Int
+pub fn CommandAudit::to(Self) -> CommandLifecycle
+
+pub struct CommandDispatch {
+  ticket : Int
+  station : CommonAddress
+  object : ApplicationObject
+  attempt : Int
+  expires_at : Int
+} derive(@debug.Debug)
+pub fn CommandDispatch::attempt(Self) -> Int
+pub fn CommandDispatch::expires_at(Self) -> Int
+pub fn CommandDispatch::object(Self) -> ApplicationObject
+pub fn CommandDispatch::station(Self) -> CommonAddress
+pub fn CommandDispatch::ticket(Self) -> Int
+
+pub enum CommandLifecycle {
+  QueuedCommand
+  DispatchedCommand
+  AwaitingConfirmation
+  CompletedCommand
+  FailedCommand
+  RejectedCommand
+  ExpiredCommand
+  CancelledCommand
+} derive(Eq, @debug.Debug)
+
 pub struct CommandOutcome {
   accepted : Bool
   status : ServiceStatus
@@ -637,6 +1023,14 @@ pub fn CommandPolicy::deny_all() -> Self
 pub fn CommandPolicy::permits(Self, ApplicationObject) -> Bool
 pub fn CommandPolicy::set_max_qualifier(Self, Int) -> Result[Unit, String]
 
+pub enum CommandPriority {
+  EmergencyPriority
+  HighPriority
+  NormalPriority
+  LowPriority
+} derive(Eq, @debug.Debug)
+pub fn CommandPriority::weight(Self) -> Int
+
 pub struct CommandQueue {
   pending : Array[ApplicationObject]
   completed : Array[CommandOutcome]
@@ -649,12 +1043,168 @@ pub fn CommandQueue::outcomes(Self) -> Array[CommandOutcome]
 pub fn CommandQueue::pending_count(Self) -> Int
 pub fn CommandQueue::process_one(Self, CommandPolicy) -> CommandOutcome?
 
+pub struct CommandRequest {
+  ticket : Int
+  station : CommonAddress
+  object : ApplicationObject
+  priority : CommandPriority
+  submitted_at : Int
+  deadline : Int
+  idempotency_key : String
+  source : String
+  policy : RetryPolicy
+  mut attempts : Int
+  mut lifecycle : CommandLifecycle
+  mut next_attempt_at : Int
+  mut last_error : String
+} derive(@debug.Debug)
+pub fn CommandRequest::attempts(Self) -> Int
+pub fn CommandRequest::deadline(Self) -> Int
+pub fn CommandRequest::idempotency_key(Self) -> String
+pub fn CommandRequest::last_error(Self) -> String
+pub fn CommandRequest::lifecycle(Self) -> CommandLifecycle
+pub fn CommandRequest::new(Int, CommonAddress, ApplicationObject, CommandPriority, Int, Int, String, String, RetryPolicy) -> Result[Self, Diagnostic]
+pub fn CommandRequest::next_attempt_at(Self) -> Int
+pub fn CommandRequest::object(Self) -> ApplicationObject
+pub fn CommandRequest::policy(Self) -> RetryPolicy
+pub fn CommandRequest::priority(Self) -> CommandPriority
+pub fn CommandRequest::source(Self) -> String
+pub fn CommandRequest::station(Self) -> CommonAddress
+pub fn CommandRequest::submitted_at(Self) -> Int
+pub fn CommandRequest::ticket(Self) -> Int
+
+pub struct CommandScheduler {
+  pending : Array[CommandRequest]
+  audits : Array[CommandAudit]
+  audit_limit : Int
+  idempotency : Map[String, Int]
+  mut next_ticket : Int
+  metrics : SchedulerMetrics
+} derive(@debug.Debug)
+pub fn CommandScheduler::audits(Self) -> Array[CommandAudit]
+pub fn CommandScheduler::cancel(Self, Int, Int, reason? : String) -> Result[CommandRequest, Diagnostic]
+pub fn CommandScheduler::confirm(Self, Int, Int, Bool, message? : String) -> Result[CommandRequest, Diagnostic]
+pub fn CommandScheduler::dispatch(Self, CommandPolicy, Int) -> Result[CommandDispatch?, Diagnostic]
+pub fn CommandScheduler::expire(Self, Int) -> Array[CommandRequest]
+pub fn CommandScheduler::get(Self, Int) -> CommandRequest?
+pub fn CommandScheduler::metrics(Self) -> SchedulerMetrics
+pub fn CommandScheduler::new(audit_limit? : Int) -> Result[Self, String]
+pub fn CommandScheduler::pending_count(Self) -> Int
+pub fn CommandScheduler::submit(Self, CommonAddress, ApplicationObject, CommandPriority, Int, Int, String, source? : String, policy? : RetryPolicy) -> Result[CommandRequest, Diagnostic]
+pub fn CommandScheduler::terminal(Self) -> Array[CommandRequest]
+
 pub struct CommonAddress {
   value : Int
 } derive(Eq, @debug.Debug)
 pub fn CommonAddress::is_global(Self) -> Bool
 pub fn CommonAddress::new(Int) -> Result[Self, String]
 pub fn CommonAddress::number(Self) -> Int
+
+pub struct ConfigChange {
+  key : String
+  kind : ConfigChangeKind
+  from : ConfigValue?
+  to : ConfigValue?
+  revision : Int
+  timestamp : Int
+  operator : String
+  message : String
+} derive(Eq, @debug.Debug)
+pub fn ConfigChange::from(Self) -> ConfigValue?
+pub fn ConfigChange::key(Self) -> String
+pub fn ConfigChange::kind(Self) -> ConfigChangeKind
+pub fn ConfigChange::message(Self) -> String
+pub fn ConfigChange::operator(Self) -> String
+pub fn ConfigChange::revision(Self) -> Int
+pub fn ConfigChange::timestamp(Self) -> Int
+pub fn ConfigChange::to(Self) -> ConfigValue?
+
+pub enum ConfigChangeKind {
+  ConfigAdded
+  ConfigUpdated
+  ConfigReset
+  ConfigRejected
+} derive(Eq, @debug.Debug)
+
+pub struct ConfigDefinition {
+  key : String
+  description : String
+  default_value : ConfigValue
+  required : Bool
+  minimum : Int?
+  maximum : Int?
+  secret : Bool
+  restart_required : Bool
+} derive(Eq, @debug.Debug)
+pub fn ConfigDefinition::default_value(Self) -> ConfigValue
+pub fn ConfigDefinition::description(Self) -> String
+pub fn ConfigDefinition::key(Self) -> String
+pub fn ConfigDefinition::maximum(Self) -> Int?
+pub fn ConfigDefinition::minimum(Self) -> Int?
+pub fn ConfigDefinition::new(String, String, ConfigValue, required? : Bool, minimum? : Int, maximum? : Int, secret? : Bool, restart_required? : Bool) -> Result[Self, String]
+pub fn ConfigDefinition::required(Self) -> Bool
+pub fn ConfigDefinition::restart_required(Self) -> Bool
+pub fn ConfigDefinition::secret(Self) -> Bool
+
+pub struct ConfigEntry {
+  definition : ConfigDefinition
+  value : ConfigValue
+  revision : Int
+  updated_at : Int
+  updated_by : String
+} derive(Eq, @debug.Debug)
+pub fn ConfigEntry::definition(Self) -> ConfigDefinition
+pub fn ConfigEntry::revision(Self) -> Int
+pub fn ConfigEntry::updated_at(Self) -> Int
+pub fn ConfigEntry::updated_by(Self) -> String
+pub fn ConfigEntry::value(Self) -> ConfigValue
+
+pub struct ConfigTransaction {
+  base_revision : Int
+  operator : String
+  timestamp : Int
+  updates : Array[(String, ConfigValue)]
+  resets : Array[String]
+  mut closed : Bool
+} derive(@debug.Debug)
+pub fn ConfigTransaction::base_revision(Self) -> Int
+pub fn ConfigTransaction::count(Self) -> Int
+pub fn ConfigTransaction::new(Int, String, Int) -> Self
+pub fn ConfigTransaction::operator(Self) -> String
+pub fn ConfigTransaction::reset(Self, String) -> Result[Unit, String]
+pub fn ConfigTransaction::rollback(Self) -> Unit
+pub fn ConfigTransaction::set(Self, String, ConfigValue) -> Result[Unit, String]
+pub fn ConfigTransaction::timestamp(Self) -> Int
+
+pub enum ConfigValue {
+  ConfigInt(Int)
+  ConfigBool(Bool)
+  ConfigText(String)
+  ConfigDuration(Int)
+  ConfigAddress(CommonAddress)
+  ConfigAddressList(Array[CommonAddress])
+} derive(Eq, @debug.Debug)
+pub fn ConfigValue::type_name(Self) -> String
+
+pub struct ConfigurationRegistry {
+  definitions : Map[String, ConfigDefinition]
+  values : Map[String, ConfigEntry]
+  history : Array[ConfigChange]
+  history_limit : Int
+  mut revision : Int
+} derive(@debug.Debug)
+pub fn ConfigurationRegistry::commit(Self, ConfigTransaction) -> Result[Array[ConfigChange], String]
+pub fn ConfigurationRegistry::definition(Self, String) -> ConfigDefinition?
+pub fn ConfigurationRegistry::export_lines(Self) -> Array[String]
+pub fn ConfigurationRegistry::get(Self, String) -> ConfigEntry?
+pub fn ConfigurationRegistry::history(Self) -> Array[ConfigChange]
+pub fn ConfigurationRegistry::keys(Self) -> Array[String]
+pub fn ConfigurationRegistry::len(Self) -> Int
+pub fn ConfigurationRegistry::new(history_limit? : Int) -> Result[Self, String]
+pub fn ConfigurationRegistry::register_definition(Self, ConfigDefinition, Int, String) -> Result[Unit, String]
+pub fn ConfigurationRegistry::reset(Self, String, Int, String) -> Result[ConfigEntry, String]
+pub fn ConfigurationRegistry::revision(Self) -> Int
+pub fn ConfigurationRegistry::set(Self, String, ConfigValue, Int, String) -> Result[ConfigEntry, String]
 
 pub struct ConformanceReport {
   mut valid : Bool
@@ -672,6 +1222,26 @@ pub fn ConformanceReport::new(ApplicationType) -> Self
 pub fn ConformanceReport::object_count(Self) -> Int
 pub fn ConformanceReport::type_id(Self) -> ApplicationType
 pub fn ConformanceReport::valid(Self) -> Bool
+
+pub struct ConformanceVector {
+  name : String
+  category : VectorCategory
+  input : Bytes
+  expectation : VectorExpectation
+  expected_kind : FrameKind?
+  expected_send : Int?
+  expected_receive : Int?
+  expected_payload : Bytes?
+} derive(@debug.Debug)
+pub fn ConformanceVector::category(Self) -> VectorCategory
+pub fn ConformanceVector::expectation(Self) -> VectorExpectation
+pub fn ConformanceVector::expected_kind(Self) -> FrameKind?
+pub fn ConformanceVector::expected_payload(Self) -> Bytes?
+pub fn ConformanceVector::expected_receive(Self) -> Int?
+pub fn ConformanceVector::expected_send(Self) -> Int?
+pub fn ConformanceVector::input(Self) -> Bytes
+pub fn ConformanceVector::name(Self) -> String
+pub fn ConformanceVector::new(String, VectorCategory, Bytes, VectorExpectation, expected_kind? : FrameKind, expected_send? : Int, expected_receive? : Int, expected_payload? : Bytes) -> Result[Self, String]
 
 pub struct ConnectionParameters {
   k : Int
@@ -736,6 +1306,73 @@ pub fn Cp56Time::to_array(Self) -> Array[Byte]
 pub fn Cp56Time::weekday(Self) -> Int
 pub fn Cp56Time::year(Self) -> Int
 
+pub struct DatabaseEvent {
+  sequence : Int
+  timestamp : Int
+  kind : DatabaseEventKind
+  common_address : CommonAddress?
+  point_address : InformationAddress?
+  message : String
+} derive(Eq, @debug.Debug)
+pub fn DatabaseEvent::common_address(Self) -> CommonAddress?
+pub fn DatabaseEvent::kind(Self) -> DatabaseEventKind
+pub fn DatabaseEvent::message(Self) -> String
+pub fn DatabaseEvent::new(Int, Int, DatabaseEventKind, common_address? : CommonAddress, point_address? : InformationAddress, message? : String) -> Self
+pub fn DatabaseEvent::point_address(Self) -> InformationAddress?
+pub fn DatabaseEvent::sequence(Self) -> Int
+pub fn DatabaseEvent::timestamp(Self) -> Int
+
+pub enum DatabaseEventKind {
+  StationAdded
+  StationRemoved
+  StationStateChanged
+  PointChanged
+  DatabaseCompacted
+  TransactionCommitted
+  TransactionRejected
+} derive(Eq, @debug.Debug)
+
+pub struct DatabaseSnapshot {
+  revision : Int
+  timestamp : Int
+  stations : Array[StationSummary]
+  events : Array[DatabaseEvent]
+} derive(@debug.Debug)
+pub fn DatabaseSnapshot::events(Self) -> Array[DatabaseEvent]
+pub fn DatabaseSnapshot::revision(Self) -> Int
+pub fn DatabaseSnapshot::stations(Self) -> Array[StationSummary]
+pub fn DatabaseSnapshot::timestamp(Self) -> Int
+
+pub struct DatabaseTransaction {
+  base_revision : Int
+  timestamp : Int
+  additions : Array[StationConfig]
+  removals : Array[CommonAddress]
+  states : Array[(CommonAddress, StationStatus, StationStateReason, String)]
+  points : Array[(CommonAddress, ApplicationObject, String)]
+  mut closed : Bool
+} derive(@debug.Debug)
+pub fn DatabaseTransaction::add_station(Self, StationConfig) -> Result[Unit, String]
+pub fn DatabaseTransaction::base_revision(Self) -> Int
+pub fn DatabaseTransaction::new(Int, Int) -> Self
+pub fn DatabaseTransaction::operation_count(Self) -> Int
+pub fn DatabaseTransaction::remove_station(Self, CommonAddress) -> Result[Unit, String]
+pub fn DatabaseTransaction::rollback(Self) -> Unit
+pub fn DatabaseTransaction::set_state(Self, CommonAddress, StationStatus, StationStateReason, message? : String) -> Result[Unit, String]
+pub fn DatabaseTransaction::timestamp(Self) -> Int
+pub fn DatabaseTransaction::write_point(Self, CommonAddress, ApplicationObject, source? : String) -> Result[Unit, Diagnostic]
+
+pub struct DeadbandRule {
+  absolute : Float
+  relative_percent : Float
+  minimum_interval : Int
+} derive(Eq, @debug.Debug)
+pub fn DeadbandRule::absolute(Self) -> Float
+pub fn DeadbandRule::changed(Self, TelemetrySample, TelemetrySample) -> Bool
+pub fn DeadbandRule::minimum_interval(Self) -> Int
+pub fn DeadbandRule::new(absolute? : Float, relative_percent? : Float, minimum_interval? : Int) -> Result[Self, String]
+pub fn DeadbandRule::relative_percent(Self) -> Float
+
 pub struct Diagnostic {
   kind : DiagnosticKind
   message : String
@@ -746,6 +1383,35 @@ pub fn Diagnostic::message(Self) -> String
 pub fn Diagnostic::new(DiagnosticKind, String, offset? : Int) -> Self
 pub fn Diagnostic::offset(Self) -> Int?
 pub fn Diagnostic::to_line(Self) -> String
+
+pub struct DiagnosticCatalog {
+  records : Map[String, DiagnosticRecord]
+  history : Array[DiagnosticRecord]
+  history_limit : Int
+  metrics : DiagnosticCatalogMetrics
+} derive(@debug.Debug)
+pub fn DiagnosticCatalog::acknowledge(Self, String, String) -> Result[DiagnosticRecord, String]
+pub fn DiagnosticCatalog::active(Self) -> Array[DiagnosticRecord]
+pub fn DiagnosticCatalog::get(Self, String) -> DiagnosticRecord?
+pub fn DiagnosticCatalog::history(Self) -> Array[DiagnosticRecord]
+pub fn DiagnosticCatalog::len(Self) -> Int
+pub fn DiagnosticCatalog::metrics(Self) -> DiagnosticCatalogMetrics
+pub fn DiagnosticCatalog::new(history_limit? : Int) -> Result[Self, String]
+pub fn DiagnosticCatalog::purge_resolved(Self) -> Int
+pub fn DiagnosticCatalog::record_diagnostic(Self, Diagnostic, DiagnosticSeverity, CommonAddress?, Int) -> DiagnosticRecord
+pub fn DiagnosticCatalog::resolve(Self, String, Int) -> Result[DiagnosticRecord, String]
+
+pub struct DiagnosticCatalogMetrics {
+  mut raised : Int
+  mut resolved : Int
+  mut acknowledged : Int
+  mut deduplicated : Int
+} derive(Eq, @debug.Debug)
+pub fn DiagnosticCatalogMetrics::acknowledged(Self) -> Int
+pub fn DiagnosticCatalogMetrics::deduplicated(Self) -> Int
+pub fn DiagnosticCatalogMetrics::new() -> Self
+pub fn DiagnosticCatalogMetrics::raised(Self) -> Int
+pub fn DiagnosticCatalogMetrics::resolved(Self) -> Int
 
 pub enum DiagnosticKind {
   MalformedFrame
@@ -759,6 +1425,39 @@ pub enum DiagnosticKind {
   StateViolation
   TransportFailure
 } derive(Eq, @debug.Debug)
+
+pub struct DiagnosticRecord {
+  key : String
+  kind : DiagnosticKind
+  severity : DiagnosticSeverity
+  message : String
+  station : CommonAddress?
+  first_seen : Int
+  mut last_seen : Int
+  mut occurrences : Int
+  mut active : Bool
+  mut acknowledged : Bool
+  mut acknowledged_by : String?
+} derive(Eq, @debug.Debug)
+pub fn DiagnosticRecord::acknowledged(Self) -> Bool
+pub fn DiagnosticRecord::acknowledged_by(Self) -> String?
+pub fn DiagnosticRecord::active(Self) -> Bool
+pub fn DiagnosticRecord::first_seen(Self) -> Int
+pub fn DiagnosticRecord::key(Self) -> String
+pub fn DiagnosticRecord::kind(Self) -> DiagnosticKind
+pub fn DiagnosticRecord::last_seen(Self) -> Int
+pub fn DiagnosticRecord::message(Self) -> String
+pub fn DiagnosticRecord::occurrences(Self) -> Int
+pub fn DiagnosticRecord::severity(Self) -> DiagnosticSeverity
+pub fn DiagnosticRecord::station(Self) -> CommonAddress?
+
+pub enum DiagnosticSeverity {
+  NoticeDiagnostic
+  WarningDiagnostic
+  ErrorDiagnostic
+  CriticalDiagnostic
+} derive(Eq, @debug.Debug)
+pub fn DiagnosticSeverity::weight(Self) -> Int
 
 pub struct DoublePointValue {
   state : Int
@@ -777,6 +1476,175 @@ pub fn EventLog::all(Self) -> Array[ProtocolEvent]
 pub fn EventLog::len(Self) -> Int
 pub fn EventLog::new() -> Self
 pub fn EventLog::push(Self, ProtocolEvent) -> Unit
+
+pub struct FailoverEvent {
+  station : CommonAddress
+  from_peer : Int?
+  to_peer : Int?
+  reason : FailoverReason
+  timestamp : Int
+  fencing_token : Int
+  message : String
+} derive(Eq, @debug.Debug)
+pub fn FailoverEvent::fencing_token(Self) -> Int
+pub fn FailoverEvent::from_peer(Self) -> Int?
+pub fn FailoverEvent::message(Self) -> String
+pub fn FailoverEvent::reason(Self) -> FailoverReason
+pub fn FailoverEvent::station(Self) -> CommonAddress
+pub fn FailoverEvent::timestamp(Self) -> Int
+pub fn FailoverEvent::to_peer(Self) -> Int?
+
+pub enum FailoverReason {
+  StartupElection
+  HeartbeatTimeout
+  ProtocolFault
+  ManualTakeover
+  PeerRecovered
+  FencingRequired
+} derive(Eq, @debug.Debug)
+
+pub struct FileIdentity {
+  station : CommonAddress
+  name : String
+  file_id : Int
+} derive(Eq, @debug.Debug)
+pub fn FileIdentity::file_id(Self) -> Int
+pub fn FileIdentity::name(Self) -> String
+pub fn FileIdentity::new(CommonAddress, String, Int) -> Result[Self, String]
+pub fn FileIdentity::station(Self) -> CommonAddress
+
+pub struct FileInventoryEntry {
+  identity : FileIdentity
+  size : Int
+  revision : Int
+  checksum : UInt
+  updated_at : Int
+} derive(Eq, @debug.Debug)
+pub fn FileInventoryEntry::checksum(Self) -> UInt
+pub fn FileInventoryEntry::identity(Self) -> FileIdentity
+pub fn FileInventoryEntry::revision(Self) -> Int
+pub fn FileInventoryEntry::size(Self) -> Int
+pub fn FileInventoryEntry::updated_at(Self) -> Int
+
+pub struct FileSegment {
+  file_id : Int
+  section : Int
+  offset : Int
+  data : Bytes
+  last : Bool
+  checksum : UInt
+} derive(Eq, @debug.Debug)
+pub fn FileSegment::checksum(Self) -> UInt
+pub fn FileSegment::data(Self) -> Bytes
+pub fn FileSegment::file_id(Self) -> Int
+pub fn FileSegment::last(Self) -> Bool
+pub fn FileSegment::new(Int, Int, Int, Bytes, Bool) -> Result[Self, String]
+pub fn FileSegment::offset(Self) -> Int
+pub fn FileSegment::section(Self) -> Int
+pub fn FileSegment::valid_checksum(Self) -> Bool
+
+pub struct FileStore {
+  files : Map[String, StoredFile]
+  capacity : Int
+  maximum_size : Int
+} derive(@debug.Debug)
+pub fn FileStore::capacity(Self) -> Int
+pub fn FileStore::get(Self, String) -> StoredFile?
+pub fn FileStore::inventory(Self) -> Array[FileInventoryEntry]
+pub fn FileStore::len(Self) -> Int
+pub fn FileStore::maximum_size(Self) -> Int
+pub fn FileStore::new(capacity? : Int, maximum_size? : Int) -> Result[Self, String]
+pub fn FileStore::put(Self, FileIdentity, Bytes, Int) -> Result[StoredFile, String]
+pub fn FileStore::remove(Self, String) -> Result[StoredFile, String]
+
+pub enum FileTransferDirection {
+  UploadFile
+  DownloadFile
+} derive(Eq, @debug.Debug)
+
+pub struct FileTransferManager {
+  store : FileStore
+  sessions : Map[Int, FileTransferSession]
+  history : Array[FileTransferSession]
+  history_limit : Int
+  mut next_ticket : Int
+  metrics : FileTransferMetrics
+} derive(@debug.Debug)
+pub fn FileTransferManager::ack(Self, Int, Int) -> Result[Unit, String]
+pub fn FileTransferManager::activate(Self, Int, Int) -> Result[Unit, String]
+pub fn FileTransferManager::append(Self, Int, FileSegment, Int) -> Result[FileTransferState, String]
+pub fn FileTransferManager::begin_download(Self, FileIdentity, segment_size? : Int, timestamp? : Int) -> Result[Array[FileSegment], String]
+pub fn FileTransferManager::begin_upload(Self, FileIdentity, Int, expected_checksum? : UInt, segment_size? : Int, timestamp? : Int) -> Result[FileTransferSession, String]
+pub fn FileTransferManager::cancel(Self, Int, Int) -> Result[Unit, String]
+pub fn FileTransferManager::finish(Self, Int, Int) -> Result[StoredFile, String]
+pub fn FileTransferManager::get(Self, Int) -> FileTransferSession?
+pub fn FileTransferManager::history(Self) -> Array[FileTransferSession]
+pub fn FileTransferManager::metrics(Self) -> FileTransferMetrics
+pub fn FileTransferManager::new(FileStore, history_limit? : Int) -> Result[Self, String]
+pub fn FileTransferManager::session_count(Self) -> Int
+pub fn FileTransferManager::store(Self) -> FileStore
+
+pub struct FileTransferMetrics {
+  mut sessions : Int
+  mut completed : Int
+  mut failed : Int
+  mut cancelled : Int
+  mut segments : Int
+  mut bytes : Int
+} derive(Eq, @debug.Debug)
+pub fn FileTransferMetrics::bytes(Self) -> Int
+pub fn FileTransferMetrics::cancelled(Self) -> Int
+pub fn FileTransferMetrics::completed(Self) -> Int
+pub fn FileTransferMetrics::failed(Self) -> Int
+pub fn FileTransferMetrics::new() -> Self
+pub fn FileTransferMetrics::segments(Self) -> Int
+pub fn FileTransferMetrics::sessions(Self) -> Int
+
+pub struct FileTransferSession {
+  ticket : Int
+  identity : FileIdentity
+  direction : FileTransferDirection
+  expected_size : Int
+  segment_size : Int
+  expected_checksum : UInt?
+  buffer : Array[Byte]
+  mut next_offset : Int
+  mut next_section : Int
+  mut state : FileTransferState
+  mut attempts : Int
+  mut last_activity : Int
+  mut error : String
+} derive(@debug.Debug)
+pub fn FileTransferSession::ack(Self, Int) -> Result[Unit, String]
+pub fn FileTransferSession::activate(Self, Int) -> Result[Unit, String]
+pub fn FileTransferSession::append(Self, FileSegment, Int) -> Result[Unit, String]
+pub fn FileTransferSession::attempts(Self) -> Int
+pub fn FileTransferSession::cancel(Self, Int) -> Result[Unit, String]
+pub fn FileTransferSession::data(Self) -> Bytes
+pub fn FileTransferSession::direction(Self) -> FileTransferDirection
+pub fn FileTransferSession::error(Self) -> String
+pub fn FileTransferSession::expected_checksum(Self) -> UInt?
+pub fn FileTransferSession::expected_size(Self) -> Int
+pub fn FileTransferSession::fail(Self, Int, String) -> Unit
+pub fn FileTransferSession::identity(Self) -> FileIdentity
+pub fn FileTransferSession::last_activity(Self) -> Int
+pub fn FileTransferSession::new(Int, FileIdentity, FileTransferDirection, Int, Int, UInt?, Int) -> Result[Self, String]
+pub fn FileTransferSession::next_offset(Self) -> Int
+pub fn FileTransferSession::next_section(Self) -> Int
+pub fn FileTransferSession::received_size(Self) -> Int
+pub fn FileTransferSession::segment_size(Self) -> Int
+pub fn FileTransferSession::state(Self) -> FileTransferState
+pub fn FileTransferSession::ticket(Self) -> Int
+
+pub enum FileTransferState {
+  FileIdle
+  FileSelecting
+  FileTransferring
+  FileWaitingForAck
+  FileCompleted
+  FileFailed
+  FileCancelled
+} derive(Eq, @debug.Debug)
 
 pub struct Frame {
   kind : FrameKind
@@ -1007,6 +1875,38 @@ pub enum HealthState {
   Unready
 } derive(Eq, @debug.Debug)
 
+pub struct Iec104Runtime {
+  database : StationDatabase
+  telemetry : TelemetryPipeline
+  schedulers : Map[Int, CommandScheduler]
+  redundancy : Map[Int, RedundancyManager]
+  policy : OperationalPolicy
+  redundancy_policy : RedundancyPolicy
+  files : FileTransferManager
+  clock : VirtualClock
+  events : Array[RuntimeEvent]
+  event_limit : Int
+  mut next_event : Int
+  metrics : RuntimeMetrics
+} derive(@debug.Debug)
+pub fn Iec104Runtime::add_peer(Self, RedundantPeer) -> Result[Unit, String]
+pub fn Iec104Runtime::confirm_command(Self, CommonAddress, Int, Bool, message? : String) -> Result[CommandRequest, Diagnostic]
+pub fn Iec104Runtime::database(Self) -> StationDatabase
+pub fn Iec104Runtime::dispatch_command(Self, CommonAddress, CommandPolicy) -> Result[CommandDispatch?, Diagnostic]
+pub fn Iec104Runtime::events(Self) -> Array[RuntimeEvent]
+pub fn Iec104Runtime::files(Self) -> FileTransferManager
+pub fn Iec104Runtime::health(Self) -> RuntimeHealth
+pub fn Iec104Runtime::heartbeat(Self, CommonAddress, Int) -> Result[Unit, String]
+pub fn Iec104Runtime::ingest(Self, CommonAddress, ApplicationObject, source? : String) -> Result[PipelineResult, Diagnostic]
+pub fn Iec104Runtime::metrics(Self) -> RuntimeMetrics
+pub fn Iec104Runtime::new(config? : RuntimeConfig) -> Result[Self, String]
+pub fn Iec104Runtime::now(Self) -> Int
+pub fn Iec104Runtime::policy(Self) -> OperationalPolicy
+pub fn Iec104Runtime::register_station(Self, StationConfig) -> Result[StationSummary, String]
+pub fn Iec104Runtime::submit_command(Self, String, CommonAddress, ApplicationObject, CommandPriority, Int, String) -> Result[CommandRequest, Diagnostic]
+pub fn Iec104Runtime::telemetry(Self) -> TelemetryPipeline
+pub fn Iec104Runtime::tick(Self, Int) -> Result[Unit, String]
+
 pub struct InformationAddress {
   value : Int
 } derive(Eq, @debug.Debug)
@@ -1074,6 +1974,14 @@ pub fn LengthHistogram::new() -> Self
 pub fn LengthHistogram::observe(Self, Int) -> Unit
 pub fn LengthHistogram::samples(Self) -> Int
 
+pub enum LinkHealth {
+  HealthyLink
+  SuspectLink
+  FailedLink
+  RecoveringLink
+} derive(Eq, @debug.Debug)
+pub fn LinkHealth::examples() -> Array[Self]
+
 pub enum LinkState {
   Disconnected
   Connecting
@@ -1083,6 +1991,38 @@ pub enum LinkState {
 } derive(Eq, @debug.Debug)
 pub fn LinkState::is_connected(Self) -> Bool
 pub fn LinkState::is_terminal(Self) -> Bool
+
+pub struct MaintenanceWindow {
+  id : Int
+  station : CommonAddress?
+  start : Int
+  end : Int
+  reason : String
+  blocks_commands : Bool
+  blocks_file_writes : Bool
+  mut enabled : Bool
+} derive(Eq, @debug.Debug)
+pub fn MaintenanceWindow::blocks_commands(Self) -> Bool
+pub fn MaintenanceWindow::blocks_file_writes(Self) -> Bool
+pub fn MaintenanceWindow::contains(Self, CommonAddress, Int) -> Bool
+pub fn MaintenanceWindow::disable(Self) -> Unit
+pub fn MaintenanceWindow::enabled(Self) -> Bool
+pub fn MaintenanceWindow::end(Self) -> Int
+pub fn MaintenanceWindow::id(Self) -> Int
+pub fn MaintenanceWindow::new(Int, Int, Int, String, station? : CommonAddress, blocks_commands? : Bool, blocks_file_writes? : Bool) -> Result[Self, String]
+pub fn MaintenanceWindow::reason(Self) -> String
+pub fn MaintenanceWindow::start(Self) -> Int
+pub fn MaintenanceWindow::station(Self) -> CommonAddress?
+
+pub enum ManagedTransportState {
+  TransportCreated
+  TransportConnecting
+  TransportStarted
+  TransportStopping
+  TransportStopped
+  TransportFailed
+  TransportClosed
+} derive(Eq, @debug.Debug)
 
 pub enum MeasurementState {
   Good
@@ -1118,6 +2058,61 @@ pub fn NormalizedValue::raw_unsigned(Self) -> Int
 pub fn NormalizedValue::to_array(Self) -> Array[Byte]
 pub fn NormalizedValue::value(Self) -> Int
 
+pub enum OperationalPermission {
+  ViewTelemetry
+  ViewDiagnostics
+  ReadFiles
+  WriteFiles
+  SubmitCommands
+  ConfirmCommands
+  ManageStations
+  ManageRoutes
+  ManagePolicies
+  PerformFailover
+} derive(Eq, @debug.Debug)
+
+pub struct OperationalPolicy {
+  rules : Array[PolicyRule]
+  windows : Array[MaintenanceWindow]
+  identities : Map[String, OperatorIdentity]
+  journal : PolicyAuditJournal
+  mut revision : Int
+} derive(@debug.Debug)
+pub fn OperationalPolicy::add_identity(Self, OperatorIdentity) -> Result[Unit, String]
+pub fn OperationalPolicy::add_rule(Self, PolicyRule) -> Result[Unit, String]
+pub fn OperationalPolicy::add_window(Self, MaintenanceWindow) -> Result[Unit, String]
+pub fn OperationalPolicy::authorize(Self, String, OperationalPermission, CommonAddress, ApplicationType?, Int) -> PolicyDecision
+pub fn OperationalPolicy::identity(Self, String) -> OperatorIdentity?
+pub fn OperationalPolicy::journal(Self) -> PolicyAuditJournal
+pub fn OperationalPolicy::new(audit_limit? : Int) -> Result[Self, String]
+pub fn OperationalPolicy::remove_identity(Self, String) -> Result[Unit, String]
+pub fn OperationalPolicy::revision(Self) -> Int
+pub fn OperationalPolicy::windows(Self) -> Array[MaintenanceWindow]
+
+pub struct OperatorIdentity {
+  id : String
+  display_name : String
+  role : OperatorRole
+  stations : Array[CommonAddress]
+  active : Bool
+} derive(Eq, @debug.Debug)
+pub fn OperatorIdentity::active(Self) -> Bool
+pub fn OperatorIdentity::covers(Self, CommonAddress) -> Bool
+pub fn OperatorIdentity::display_name(Self) -> String
+pub fn OperatorIdentity::id(Self) -> String
+pub fn OperatorIdentity::new(String, String, OperatorRole, stations? : Array[CommonAddress], active? : Bool) -> Result[Self, String]
+pub fn OperatorIdentity::role(Self) -> OperatorRole
+pub fn OperatorIdentity::stations(Self) -> Array[CommonAddress]
+
+pub enum OperatorRole {
+  ViewerRole
+  EngineerRole
+  DispatcherRole
+  AdministratorRole
+  ServiceRole
+} derive(Eq, @debug.Debug)
+pub fn OperatorRole::examples() -> Array[Self]
+
 pub struct Outstation {
   common_address : Int
   single_points : Map[Int, Bool]
@@ -1130,6 +2125,23 @@ pub fn Outstation::set_single(Self, Int, Bool) -> Unit
 pub fn Outstation::single(Self, Int) -> Bool?
 pub fn Outstation::snapshot_normalized(Self) -> Array[PointSnapshot]
 pub fn Outstation::snapshot_single(Self) -> Array[PointSnapshot]
+
+pub struct PipelineResult {
+  sample : TelemetrySample
+  accepted : Bool
+  changed : Bool
+  rate_valid : Bool
+  alarms : Array[AlarmEvent]
+  subscribers : Array[Int]
+  message : String
+} derive(@debug.Debug)
+pub fn PipelineResult::accepted(Self) -> Bool
+pub fn PipelineResult::alarms(Self) -> Array[AlarmEvent]
+pub fn PipelineResult::changed(Self) -> Bool
+pub fn PipelineResult::message(Self) -> String
+pub fn PipelineResult::rate_valid(Self) -> Bool
+pub fn PipelineResult::sample(Self) -> TelemetrySample
+pub fn PipelineResult::subscribers(Self) -> Array[Int]
 
 pub struct PointChange {
   kind : PointChangeKind
@@ -1217,6 +2229,69 @@ pub fn PointStore::remove(Self, InformationAddress, Int) -> Result[PointChange, 
 pub fn PointStore::statistics(Self) -> StoreStatistics
 pub fn PointStore::upsert(Self, ApplicationObject, Int, source? : String) -> Result[PointChange, Diagnostic]
 
+pub struct PolicyAudit {
+  sequence : Int
+  timestamp : Int
+  action : AuditAction
+  operator : String
+  station : CommonAddress?
+  object : InformationAddress?
+  allowed : Bool
+  detail : String
+} derive(Eq, @debug.Debug)
+pub fn PolicyAudit::action(Self) -> AuditAction
+pub fn PolicyAudit::allowed(Self) -> Bool
+pub fn PolicyAudit::detail(Self) -> String
+pub fn PolicyAudit::object(Self) -> InformationAddress?
+pub fn PolicyAudit::operator(Self) -> String
+pub fn PolicyAudit::sequence(Self) -> Int
+pub fn PolicyAudit::station(Self) -> CommonAddress?
+pub fn PolicyAudit::timestamp(Self) -> Int
+
+pub struct PolicyAuditJournal {
+  entries : Array[PolicyAudit]
+  limit : Int
+  mut next_sequence : Int
+} derive(@debug.Debug)
+pub fn PolicyAuditJournal::all(Self) -> Array[PolicyAudit]
+pub fn PolicyAuditJournal::append(Self, Int, AuditAction, String, CommonAddress?, InformationAddress?, Bool, String) -> PolicyAudit
+pub fn PolicyAuditJournal::len(Self) -> Int
+pub fn PolicyAuditJournal::new(limit? : Int) -> Result[Self, String]
+
+pub struct PolicyDecision {
+  allowed : Bool
+  permission : OperationalPermission
+  operator : String
+  station : CommonAddress
+  rule_id : Int?
+  reason : String
+} derive(Eq, @debug.Debug)
+pub fn PolicyDecision::allowed(Self) -> Bool
+pub fn PolicyDecision::operator(Self) -> String
+pub fn PolicyDecision::permission(Self) -> OperationalPermission
+pub fn PolicyDecision::reason(Self) -> String
+pub fn PolicyDecision::rule_id(Self) -> Int?
+pub fn PolicyDecision::station(Self) -> CommonAddress
+
+pub struct PolicyRule {
+  id : Int
+  permission : OperationalPermission
+  station : CommonAddress?
+  type_ids : Array[ApplicationType]
+  roles : Array[OperatorRole]
+  mut enabled : Bool
+  reason : String
+} derive(Eq, @debug.Debug)
+pub fn PolicyRule::disable(Self) -> Unit
+pub fn PolicyRule::enabled(Self) -> Bool
+pub fn PolicyRule::id(Self) -> Int
+pub fn PolicyRule::new(Int, OperationalPermission, String, station? : CommonAddress, type_ids? : Array[ApplicationType], roles? : Array[OperatorRole]) -> Result[Self, String]
+pub fn PolicyRule::permission(Self) -> OperationalPermission
+pub fn PolicyRule::reason(Self) -> String
+pub fn PolicyRule::roles(Self) -> Array[OperatorRole]
+pub fn PolicyRule::station(Self) -> CommonAddress?
+pub fn PolicyRule::type_ids(Self) -> Array[ApplicationType]
+
 pub struct ProfileRegistry {
   profiles : Map[String, StationProfile]
 } derive(@debug.Debug)
@@ -1237,6 +2312,22 @@ pub enum ProtocolEvent {
   Acknowledged(Int)
   Fault(String)
 } derive(Eq, @debug.Debug)
+
+pub struct ProtocolRouter {
+  rules : Array[RoutingRule]
+  queues : Map[Int, Array[RoutedObject]]
+  queue_capacity : Int
+  metrics : RouterMetrics
+  mut sequence : Int
+} derive(@debug.Debug)
+pub fn ProtocolRouter::add_rule(Self, RoutingRule) -> Result[Unit, String]
+pub fn ProtocolRouter::drain(Self, Int, Int) -> Array[RoutedObject]
+pub fn ProtocolRouter::evaluate(Self, Int, Int, ApplicationObject) -> RouteDecision
+pub fn ProtocolRouter::metrics(Self) -> RouterMetrics
+pub fn ProtocolRouter::new(queue_capacity? : Int) -> Result[Self, String]
+pub fn ProtocolRouter::queue_count(Self) -> Int
+pub fn ProtocolRouter::route(Self, Int, Int, ApplicationObject, Int) -> Result[RouteDecision, Diagnostic]
+pub fn ProtocolRouter::rules(Self) -> Array[RoutingRule]
 
 pub struct ProtocolTimers {
   mut t0 : TimerState
@@ -1274,6 +2365,179 @@ pub fn QualityDescriptor::with_not_topical(Self, Bool) -> Self
 pub fn QualityDescriptor::with_overflow(Self, Bool) -> Self
 pub fn QualityDescriptor::with_substituted(Self, Bool) -> Self
 
+pub enum QualityDisposition {
+  QualityAccepted
+  QualityDegraded
+  QualityRejected
+} derive(Eq, @debug.Debug)
+
+pub struct QualityEvaluation {
+  station : CommonAddress?
+  address : InformationAddress?
+  disposition : QualityDisposition
+  score : Int
+  age : Int
+  evaluated_at : Int
+  rule_id : Int
+  findings : Array[QualityFinding]
+  message : String
+} derive(Eq, @debug.Debug)
+pub fn QualityEvaluation::accepted(Self) -> Bool
+pub fn QualityEvaluation::address(Self) -> InformationAddress?
+pub fn QualityEvaluation::age(Self) -> Int
+pub fn QualityEvaluation::disposition(Self) -> QualityDisposition
+pub fn QualityEvaluation::evaluated_at(Self) -> Int
+pub fn QualityEvaluation::finding_count(Self) -> Int
+pub fn QualityEvaluation::findings(Self) -> Array[QualityFinding]
+pub fn QualityEvaluation::has_finding(Self, QualityFinding) -> Bool
+pub fn QualityEvaluation::is_hard_failure(Self) -> Bool
+pub fn QualityEvaluation::message(Self) -> String
+pub fn QualityEvaluation::rule_id(Self) -> Int
+pub fn QualityEvaluation::score(Self) -> Int
+pub fn QualityEvaluation::station(Self) -> CommonAddress?
+pub fn QualityEvaluation::summary_line(Self) -> String
+pub fn QualityEvaluation::worst_finding(Self) -> QualityFinding
+
+pub enum QualityFinding {
+  QualityInvalidValue
+  QualityStaleValue
+  QualityFutureTimestamp
+  QualityMissingSource
+  QualityUnknownStation
+  QualityControlBlocked
+  QualityNoFinding
+} derive(Eq, @debug.Debug)
+
+pub struct QualityGateRule {
+  id : Int
+  name : String
+  max_age : Int
+  future_skew : Int
+  require_source : Bool
+  reject_invalid : Bool
+  reject_stale : Bool
+  reject_future : Bool
+  reject_control : Bool
+  invalid_penalty : Int
+  stale_penalty : Int
+  future_penalty : Int
+  missing_source_penalty : Int
+  enabled : Bool
+} derive(Eq, @debug.Debug)
+pub fn QualityGateRule::default_rule() -> Self
+pub fn QualityGateRule::enabled(Self) -> Bool
+pub fn QualityGateRule::future_penalty(Self) -> Int
+pub fn QualityGateRule::future_skew(Self) -> Int
+pub fn QualityGateRule::id(Self) -> Int
+pub fn QualityGateRule::invalid_penalty(Self) -> Int
+pub fn QualityGateRule::max_age(Self) -> Int
+pub fn QualityGateRule::missing_source_penalty(Self) -> Int
+pub fn QualityGateRule::name(Self) -> String
+pub fn QualityGateRule::new(Int, String, max_age? : Int, future_skew? : Int, require_source? : Bool, reject_invalid? : Bool, reject_stale? : Bool, reject_future? : Bool, reject_control? : Bool, invalid_penalty? : Int, stale_penalty? : Int, future_penalty? : Int, missing_source_penalty? : Int, enabled? : Bool) -> Result[Self, String]
+pub fn QualityGateRule::reject_control(Self) -> Bool
+pub fn QualityGateRule::reject_future(Self) -> Bool
+pub fn QualityGateRule::reject_invalid(Self) -> Bool
+pub fn QualityGateRule::reject_stale(Self) -> Bool
+pub fn QualityGateRule::require_source(Self) -> Bool
+pub fn QualityGateRule::stale_penalty(Self) -> Int
+pub fn QualityGateRule::with_enabled(Self, Bool) -> Self
+
+pub struct QualityPolicyEngine {
+  rules : Map[Int, QualityGateRule]
+  station_rules : Map[Int, Int]
+  history : Array[QualityEvaluation]
+  history_limit : Int
+  metrics : QualityPolicyMetrics
+} derive(@debug.Debug)
+pub fn QualityPolicyEngine::accepts_point(Self, CommonAddress, PointRecord, Int) -> Bool
+pub fn QualityPolicyEngine::accepts_sample(Self, TelemetrySample, Int) -> Bool
+pub fn QualityPolicyEngine::assign(Self, CommonAddress, Int) -> Result[Unit, String]
+pub fn QualityPolicyEngine::assigned_rule(Self, CommonAddress) -> Int
+pub fn QualityPolicyEngine::assigned_stations(Self) -> Array[CommonAddress]
+pub fn QualityPolicyEngine::audit_lines(Self) -> Array[String]
+pub fn QualityPolicyEngine::clear_history(Self) -> Unit
+pub fn QualityPolicyEngine::enabled_rule_ids(Self) -> Array[Int]
+pub fn QualityPolicyEngine::evaluate_object(Self, CommonAddress, ApplicationObject, String, Int, Int) -> QualityEvaluation
+pub fn QualityPolicyEngine::evaluate_point(Self, CommonAddress, PointRecord, Int) -> QualityEvaluation
+pub fn QualityPolicyEngine::evaluate_records(Self, CommonAddress, Array[PointRecord], Int) -> QualityPolicyReport
+pub fn QualityPolicyEngine::evaluate_sample(Self, TelemetrySample, Int) -> QualityEvaluation
+pub fn QualityPolicyEngine::evaluate_store(Self, PointStore, Int) -> QualityPolicyReport
+pub fn QualityPolicyEngine::filter_accepted(Self, Array[QualityEvaluation]) -> Array[QualityEvaluation]
+pub fn QualityPolicyEngine::filter_rejected(Self, Array[QualityEvaluation]) -> Array[QualityEvaluation]
+pub fn QualityPolicyEngine::finding_counts(Self, Array[QualityEvaluation]) -> Map[String, Int]
+pub fn QualityPolicyEngine::history(Self) -> Array[QualityEvaluation]
+pub fn QualityPolicyEngine::history_len(Self) -> Int
+pub fn QualityPolicyEngine::history_since(Self, Int) -> Array[QualityEvaluation]
+pub fn QualityPolicyEngine::metrics(Self) -> QualityPolicyMetrics
+pub fn QualityPolicyEngine::new(history_limit? : Int) -> Result[Self, String]
+pub fn QualityPolicyEngine::register_rule(Self, QualityGateRule) -> Result[Unit, String]
+pub fn QualityPolicyEngine::rejected_history(Self) -> Array[QualityEvaluation]
+pub fn QualityPolicyEngine::remove_assignment(Self, CommonAddress) -> Bool
+pub fn QualityPolicyEngine::remove_rule(Self, Int) -> Result[Unit, String]
+pub fn QualityPolicyEngine::replace_rule(Self, QualityGateRule) -> Result[Unit, String]
+pub fn QualityPolicyEngine::rule(Self, Int) -> QualityGateRule?
+pub fn QualityPolicyEngine::rule_ids(Self) -> Array[Int]
+pub fn QualityPolicyEngine::rule_lines(Self) -> Array[String]
+pub fn QualityPolicyEngine::snapshot(Self) -> QualityPolicySnapshot
+pub fn QualityPolicyEngine::station_rule(Self, CommonAddress) -> QualityGateRule
+pub fn QualityPolicyEngine::stations_for_rule(Self, Int) -> Array[CommonAddress]
+pub fn QualityPolicyEngine::unassign(Self, CommonAddress) -> Unit
+pub fn QualityPolicyEngine::validate_configuration(Self) -> Array[String]
+
+pub struct QualityPolicyMetrics {
+  mut evaluated : Int
+  mut accepted : Int
+  mut degraded : Int
+  mut rejected : Int
+  mut invalid : Int
+  mut stale : Int
+  mut future : Int
+  mut missing_source : Int
+  mut control_blocked : Int
+} derive(Eq, @debug.Debug)
+pub fn QualityPolicyMetrics::acceptance_percent(Self) -> Int
+pub fn QualityPolicyMetrics::accepted(Self) -> Int
+pub fn QualityPolicyMetrics::control_blocked(Self) -> Int
+pub fn QualityPolicyMetrics::degraded(Self) -> Int
+pub fn QualityPolicyMetrics::evaluated(Self) -> Int
+pub fn QualityPolicyMetrics::future(Self) -> Int
+pub fn QualityPolicyMetrics::has_rejections(Self) -> Bool
+pub fn QualityPolicyMetrics::invalid(Self) -> Int
+pub fn QualityPolicyMetrics::missing_source(Self) -> Int
+pub fn QualityPolicyMetrics::new() -> Self
+pub fn QualityPolicyMetrics::quality_percent(Self) -> Int
+pub fn QualityPolicyMetrics::rejected(Self) -> Int
+pub fn QualityPolicyMetrics::stale(Self) -> Int
+pub fn QualityPolicyMetrics::total_findings(Self) -> Int
+
+pub struct QualityPolicyReport {
+  total : Int
+  accepted : Int
+  degraded : Int
+  rejected : Int
+  evaluations : Array[QualityEvaluation]
+} derive(@debug.Debug)
+pub fn QualityPolicyReport::accepted(Self) -> Int
+pub fn QualityPolicyReport::degraded(Self) -> Int
+pub fn QualityPolicyReport::evaluations(Self) -> Array[QualityEvaluation]
+pub fn QualityPolicyReport::has_rejections(Self) -> Bool
+pub fn QualityPolicyReport::quality_percent(Self) -> Int
+pub fn QualityPolicyReport::rejected(Self) -> Int
+pub fn QualityPolicyReport::total(Self) -> Int
+
+pub struct QualityPolicySnapshot {
+  rule_count : Int
+  assignment_count : Int
+  history_count : Int
+  metrics : QualityPolicyMetrics
+  configuration_issues : Array[String]
+} derive(@debug.Debug)
+pub fn QualityPolicySnapshot::assignment_count(Self) -> Int
+pub fn QualityPolicySnapshot::configuration_issues(Self) -> Array[String]
+pub fn QualityPolicySnapshot::history_count(Self) -> Int
+pub fn QualityPolicySnapshot::metrics(Self) -> QualityPolicyMetrics
+pub fn QualityPolicySnapshot::rule_count(Self) -> Int
+
 pub struct RateLimiter {
   mut window_start : Int
   window_size : Int
@@ -1285,6 +2549,15 @@ pub fn RateLimiter::new(Int, Int) -> Result[Self, String]
 pub fn RateLimiter::remaining(Self) -> Int
 pub fn RateLimiter::used(Self) -> Int
 
+pub struct RateRule {
+  maximum_per_second : Float
+  minimum_interval : Int
+} derive(Eq, @debug.Debug)
+pub fn RateRule::maximum_per_second(Self) -> Float
+pub fn RateRule::minimum_interval(Self) -> Int
+pub fn RateRule::new(Float, minimum_interval? : Int) -> Result[Self, String]
+pub fn RateRule::within(Self, TelemetrySample, TelemetrySample) -> Bool
+
 pub struct ReadTransaction {
   request : ServiceRequest
   mut status : ServiceStatus
@@ -1294,6 +2567,95 @@ pub fn ReadTransaction::complete(Self, ApplicationObject) -> Result[ServiceRespo
 pub fn ReadTransaction::new(ServiceRequest) -> Result[Self, String]
 pub fn ReadTransaction::reject(Self, String) -> ServiceResponse
 pub fn ReadTransaction::status(Self) -> ServiceStatus
+
+pub struct RedundancyManager {
+  station : CommonAddress
+  peers : Map[Int, RedundantPeer]
+  events : Array[FailoverEvent]
+  event_limit : Int
+  policy : RedundancyPolicy
+  mut owner : Int?
+  mut last_takeover : Int
+  mut fencing_token : Int
+  metrics : RedundancyMetrics
+} derive(@debug.Debug)
+pub fn RedundancyManager::add_peer(Self, RedundantPeer) -> Result[Unit, String]
+pub fn RedundancyManager::elect(Self, Int) -> Result[FailoverEvent?, String]
+pub fn RedundancyManager::events(Self) -> Array[FailoverEvent]
+pub fn RedundancyManager::fencing_token(Self) -> Int
+pub fn RedundancyManager::heartbeat(Self, Int, Int) -> Result[LinkHealth, String]
+pub fn RedundancyManager::manual_takeover(Self, Int, Int) -> Result[FailoverEvent, String]
+pub fn RedundancyManager::metrics(Self) -> RedundancyMetrics
+pub fn RedundancyManager::new(CommonAddress, policy? : RedundancyPolicy, event_limit? : Int) -> Result[Self, String]
+pub fn RedundancyManager::owner(Self) -> Int?
+pub fn RedundancyManager::peer(Self, Int) -> RedundantPeer?
+pub fn RedundancyManager::peer_count(Self) -> Int
+pub fn RedundancyManager::policy(Self) -> RedundancyPolicy
+pub fn RedundancyManager::remove_peer(Self, Int) -> Result[Unit, String]
+pub fn RedundancyManager::station(Self) -> CommonAddress
+pub fn RedundancyManager::tick(Self, Int) -> Array[FailoverEvent]
+
+pub struct RedundancyMetrics {
+  mut heartbeats : Int
+  mut missed : Int
+  mut elections : Int
+  mut takeovers : Int
+  mut recoveries : Int
+  mut fenced : Int
+} derive(Eq, @debug.Debug)
+pub fn RedundancyMetrics::elections(Self) -> Int
+pub fn RedundancyMetrics::fenced(Self) -> Int
+pub fn RedundancyMetrics::heartbeats(Self) -> Int
+pub fn RedundancyMetrics::missed(Self) -> Int
+pub fn RedundancyMetrics::new() -> Self
+pub fn RedundancyMetrics::recoveries(Self) -> Int
+pub fn RedundancyMetrics::takeovers(Self) -> Int
+
+pub struct RedundancyPolicy {
+  heartbeat_interval : Int
+  failure_threshold : Int
+  recovery_threshold : Int
+  takeover_cooldown : Int
+  require_fencing : Bool
+} derive(Eq, @debug.Debug)
+pub fn RedundancyPolicy::failure_threshold(Self) -> Int
+pub fn RedundancyPolicy::heartbeat_interval(Self) -> Int
+pub fn RedundancyPolicy::new(heartbeat_interval? : Int, failure_threshold? : Int, recovery_threshold? : Int, takeover_cooldown? : Int, require_fencing? : Bool) -> Result[Self, String]
+pub fn RedundancyPolicy::recovery_threshold(Self) -> Int
+pub fn RedundancyPolicy::require_fencing(Self) -> Bool
+pub fn RedundancyPolicy::takeover_cooldown(Self) -> Int
+
+pub struct RedundantPeer {
+  id : Int
+  station : CommonAddress
+  priority : Int
+  mut role : RedundantRole
+  mut health : LinkHealth
+  mut missed_heartbeats : Int
+  mut recovered_heartbeats : Int
+  mut last_heartbeat : Int
+  mut fencing_token : Int
+  endpoint : String
+} derive(Eq, @debug.Debug)
+pub fn RedundantPeer::endpoint(Self) -> String
+pub fn RedundantPeer::fencing_token(Self) -> Int
+pub fn RedundantPeer::health(Self) -> LinkHealth
+pub fn RedundantPeer::id(Self) -> Int
+pub fn RedundantPeer::last_heartbeat(Self) -> Int
+pub fn RedundantPeer::missed_heartbeats(Self) -> Int
+pub fn RedundantPeer::new(Int, CommonAddress, Int, String) -> Result[Self, String]
+pub fn RedundantPeer::priority(Self) -> Int
+pub fn RedundantPeer::recovered_heartbeats(Self) -> Int
+pub fn RedundantPeer::role(Self) -> RedundantRole
+pub fn RedundantPeer::station(Self) -> CommonAddress
+
+pub enum RedundantRole {
+  PrimaryLink
+  StandbyLink
+  CandidateLink
+  FencedLink
+} derive(Eq, @debug.Debug)
+pub fn RedundantRole::examples() -> Array[Self]
 
 pub struct ReplayGuard {
   seen : Map[UInt, Int]
@@ -1323,6 +2685,185 @@ pub fn ResourceLimits::max_objects(Self) -> Int
 pub fn ResourceLimits::max_trace_events(Self) -> Int
 pub fn ResourceLimits::new(Int, Int, Int, Int, Int, Int) -> Result[Self, String]
 
+pub struct RetryPolicy {
+  max_attempts : Int
+  timeout : Int
+  backoff : Int
+  retry_rejected : Bool
+} derive(Eq, @debug.Debug)
+pub fn RetryPolicy::backoff(Self) -> Int
+pub fn RetryPolicy::max_attempts(Self) -> Int
+pub fn RetryPolicy::new(max_attempts? : Int, timeout? : Int, backoff? : Int, retry_rejected? : Bool) -> Result[Self, String]
+pub fn RetryPolicy::retry_rejected(Self) -> Bool
+pub fn RetryPolicy::timeout(Self) -> Int
+
+pub struct RouteDecision {
+  accepted : Bool
+  rule_id : Int?
+  action : RoutingAction
+  source : Int
+  destination : Int
+  object : ApplicationObject
+  reason : String
+} derive(@debug.Debug)
+pub fn RouteDecision::accepted(Self) -> Bool
+pub fn RouteDecision::action(Self) -> RoutingAction
+pub fn RouteDecision::destination(Self) -> Int
+pub fn RouteDecision::object(Self) -> ApplicationObject
+pub fn RouteDecision::reason(Self) -> String
+pub fn RouteDecision::rule_id(Self) -> Int?
+pub fn RouteDecision::source(Self) -> Int
+
+pub struct RoutedObject {
+  decision : RouteDecision
+  timestamp : Int
+  sequence : Int
+} derive(@debug.Debug)
+pub fn RoutedObject::decision(Self) -> RouteDecision
+pub fn RoutedObject::sequence(Self) -> Int
+pub fn RoutedObject::timestamp(Self) -> Int
+
+pub struct RouterMetrics {
+  mut evaluated : Int
+  mut forwarded : Int
+  mut stored : Int
+  mut rejected : Int
+  mut dropped : Int
+  mut queue_overflow : Int
+} derive(Eq, @debug.Debug)
+pub fn RouterMetrics::dropped(Self) -> Int
+pub fn RouterMetrics::evaluated(Self) -> Int
+pub fn RouterMetrics::forwarded(Self) -> Int
+pub fn RouterMetrics::new() -> Self
+pub fn RouterMetrics::queue_overflow(Self) -> Int
+pub fn RouterMetrics::rejected(Self) -> Int
+pub fn RouterMetrics::stored(Self) -> Int
+
+pub enum RoutingAction {
+  RouteStore
+  RouteForward
+  RouteStoreAndForward
+  RouteDrop
+  RouteReject
+} derive(Eq, @debug.Debug)
+
+pub struct RoutingRule {
+  id : Int
+  source : Int
+  destination : Int
+  common_address : CommonAddress?
+  type_ids : Array[ApplicationType]
+  action : RoutingAction
+  priority : Int
+  mut enabled : Bool
+} derive(Eq, @debug.Debug)
+pub fn RoutingRule::action(Self) -> RoutingAction
+pub fn RoutingRule::common_address(Self) -> CommonAddress?
+pub fn RoutingRule::destination(Self) -> Int
+pub fn RoutingRule::disable(Self) -> Unit
+pub fn RoutingRule::enabled(Self) -> Bool
+pub fn RoutingRule::id(Self) -> Int
+pub fn RoutingRule::new(Int, Int, Int, RoutingAction, common_address? : CommonAddress, type_ids? : Array[ApplicationType], priority? : Int) -> Result[Self, String]
+pub fn RoutingRule::priority(Self) -> Int
+pub fn RoutingRule::source(Self) -> Int
+pub fn RoutingRule::type_ids(Self) -> Array[ApplicationType]
+
+pub struct RuntimeConfig {
+  event_limit : Int
+  audit_limit : Int
+  scheduler_audit_limit : Int
+  file_history_limit : Int
+  file_capacity : Int
+  file_maximum_size : Int
+  telemetry_alarm_limit : Int
+  redundancy_policy : RedundancyPolicy
+} derive(@debug.Debug)
+pub fn RuntimeConfig::audit_limit(Self) -> Int
+pub fn RuntimeConfig::default() -> Self
+pub fn RuntimeConfig::event_limit(Self) -> Int
+pub fn RuntimeConfig::file_capacity(Self) -> Int
+pub fn RuntimeConfig::file_history_limit(Self) -> Int
+pub fn RuntimeConfig::file_maximum_size(Self) -> Int
+pub fn RuntimeConfig::new(event_limit? : Int, audit_limit? : Int, scheduler_audit_limit? : Int, file_history_limit? : Int, file_capacity? : Int, file_maximum_size? : Int, telemetry_alarm_limit? : Int, redundancy_policy? : RedundancyPolicy) -> Result[Self, String]
+pub fn RuntimeConfig::redundancy_policy(Self) -> RedundancyPolicy
+pub fn RuntimeConfig::scheduler_audit_limit(Self) -> Int
+pub fn RuntimeConfig::telemetry_alarm_limit(Self) -> Int
+
+pub struct RuntimeEvent {
+  sequence : Int
+  timestamp : Int
+  kind : RuntimeEventKind
+  station : CommonAddress?
+  object : InformationAddress?
+  correlation : Int
+  message : String
+} derive(Eq, @debug.Debug)
+pub fn RuntimeEvent::correlation(Self) -> Int
+pub fn RuntimeEvent::kind(Self) -> RuntimeEventKind
+pub fn RuntimeEvent::message(Self) -> String
+pub fn RuntimeEvent::object(Self) -> InformationAddress?
+pub fn RuntimeEvent::sequence(Self) -> Int
+pub fn RuntimeEvent::station(Self) -> CommonAddress?
+pub fn RuntimeEvent::timestamp(Self) -> Int
+
+pub enum RuntimeEventKind {
+  RuntimeStarted
+  StationRegisteredRuntime
+  TelemetryAcceptedRuntime
+  TelemetryRejectedRuntime
+  CommandSubmittedRuntime
+  CommandDispatchedRuntime
+  CommandCompletedRuntime
+  FileSessionRuntime
+  RedundancyRuntime
+  RuntimeDiagnostic
+} derive(Eq, @debug.Debug)
+
+pub struct RuntimeHealth {
+  timestamp : Int
+  revision : Int
+  stations : Int
+  points : Int
+  pending_commands : Int
+  active_alarms : Int
+  active_sessions : Int
+  redundancy_owners : Int
+  event_count : Int
+  policy_revision : Int
+  healthy : Bool
+  message : String
+} derive(Eq, @debug.Debug)
+pub fn RuntimeHealth::active_alarms(Self) -> Int
+pub fn RuntimeHealth::active_sessions(Self) -> Int
+pub fn RuntimeHealth::event_count(Self) -> Int
+pub fn RuntimeHealth::healthy(Self) -> Bool
+pub fn RuntimeHealth::message(Self) -> String
+pub fn RuntimeHealth::pending_commands(Self) -> Int
+pub fn RuntimeHealth::points(Self) -> Int
+pub fn RuntimeHealth::policy_revision(Self) -> Int
+pub fn RuntimeHealth::redundancy_owners(Self) -> Int
+pub fn RuntimeHealth::revision(Self) -> Int
+pub fn RuntimeHealth::stations(Self) -> Int
+pub fn RuntimeHealth::timestamp(Self) -> Int
+
+pub struct RuntimeMetrics {
+  mut telemetry_received : Int
+  mut telemetry_accepted : Int
+  mut telemetry_rejected : Int
+  mut commands_submitted : Int
+  mut commands_dispatched : Int
+  mut commands_completed : Int
+  mut diagnostics : Int
+} derive(Eq, @debug.Debug)
+pub fn RuntimeMetrics::commands_completed(Self) -> Int
+pub fn RuntimeMetrics::commands_dispatched(Self) -> Int
+pub fn RuntimeMetrics::commands_submitted(Self) -> Int
+pub fn RuntimeMetrics::diagnostics(Self) -> Int
+pub fn RuntimeMetrics::new() -> Self
+pub fn RuntimeMetrics::telemetry_accepted(Self) -> Int
+pub fn RuntimeMetrics::telemetry_received(Self) -> Int
+pub fn RuntimeMetrics::telemetry_rejected(Self) -> Int
+
 pub struct ScaledValue {
   value : Int
   quality : QualityDescriptor
@@ -1331,6 +2872,97 @@ pub fn ScaledValue::new(Int, quality? : QualityDescriptor) -> Result[Self, Strin
 pub fn ScaledValue::quality(Self) -> QualityDescriptor
 pub fn ScaledValue::to_array(Self) -> Array[Byte]
 pub fn ScaledValue::value(Self) -> Int
+
+pub struct Scenario {
+  name : String
+  duration : Int
+  steps : Array[ScenarioStep]
+  fail_fast : Bool
+} derive(@debug.Debug)
+pub fn Scenario::add(Self, ScenarioAction, Int, String) -> Result[Unit, String]
+pub fn Scenario::duration(Self) -> Int
+pub fn Scenario::fail_fast(Self) -> Bool
+pub fn Scenario::name(Self) -> String
+pub fn Scenario::new(String, Int, fail_fast? : Bool) -> Result[Self, String]
+pub fn Scenario::steps(Self) -> Array[ScenarioStep]
+
+pub enum ScenarioAction {
+  WaitScenario(Int)
+  HeartbeatScenario(Int)
+  ReceiveApduScenario(Bytes)
+  SendApduScenario(Bytes)
+  SetPointScenario(InformationAddress, Int)
+  RaiseDiagnosticScenario(String)
+  ClearDiagnosticScenario
+  CheckpointScenario(String)
+} derive(@debug.Debug)
+
+pub struct ScenarioContext {
+  mut now : Int
+  mut received : Int
+  mut sent : Int
+  mut heartbeats : Int
+  points : Map[Int, Int]
+  diagnostics : Array[String]
+} derive(@debug.Debug)
+pub fn ScenarioContext::diagnostics(Self) -> Array[String]
+pub fn ScenarioContext::heartbeats(Self) -> Int
+pub fn ScenarioContext::new() -> Self
+pub fn ScenarioContext::now(Self) -> Int
+pub fn ScenarioContext::point(Self, InformationAddress) -> Int?
+pub fn ScenarioContext::received(Self) -> Int
+pub fn ScenarioContext::sent(Self) -> Int
+
+pub struct ScenarioObservation {
+  step : Int
+  timestamp : Int
+  label : String
+  success : Bool
+  detail : String
+} derive(Eq, @debug.Debug)
+pub fn ScenarioObservation::detail(Self) -> String
+pub fn ScenarioObservation::label(Self) -> String
+pub fn ScenarioObservation::step(Self) -> Int
+pub fn ScenarioObservation::success(Self) -> Bool
+pub fn ScenarioObservation::timestamp(Self) -> Int
+
+pub struct ScenarioResult {
+  name : String
+  completed : Bool
+  elapsed : Int
+  observations : Array[ScenarioObservation]
+  checkpoints : Array[String]
+  failures : Array[String]
+} derive(@debug.Debug)
+pub fn ScenarioResult::checkpoints(Self) -> Array[String]
+pub fn ScenarioResult::completed(Self) -> Bool
+pub fn ScenarioResult::elapsed(Self) -> Int
+pub fn ScenarioResult::failures(Self) -> Array[String]
+pub fn ScenarioResult::name(Self) -> String
+pub fn ScenarioResult::observations(Self) -> Array[ScenarioObservation]
+
+pub struct ScenarioRunner {
+  context : ScenarioContext
+  results : Array[ScenarioResult]
+  mut run_count : Int
+} derive(@debug.Debug)
+pub fn ScenarioRunner::context(Self) -> ScenarioContext
+pub fn ScenarioRunner::new() -> Self
+pub fn ScenarioRunner::results(Self) -> Array[ScenarioResult]
+pub fn ScenarioRunner::run(Self, Scenario) -> ScenarioResult
+pub fn ScenarioRunner::run_count(Self) -> Int
+
+pub struct ScenarioStep {
+  index : Int
+  at : Int
+  action : ScenarioAction
+  label : String
+} derive(@debug.Debug)
+pub fn ScenarioStep::action(Self) -> ScenarioAction
+pub fn ScenarioStep::at(Self) -> Int
+pub fn ScenarioStep::index(Self) -> Int
+pub fn ScenarioStep::label(Self) -> String
+pub fn ScenarioStep::new(Int, Int, ScenarioAction, String) -> Result[Self, String]
 
 pub struct ScheduledAction {
   at : Int
@@ -1341,6 +2973,28 @@ pub fn ScheduledAction::action(Self) -> SimulationAction
 pub fn ScheduledAction::at(Self) -> Int
 pub fn ScheduledAction::new(Int, Int, SimulationAction) -> Self
 pub fn ScheduledAction::ordinal(Self) -> Int
+
+pub struct SchedulerMetrics {
+  mut accepted : Int
+  mut duplicates : Int
+  mut rejected : Int
+  mut dispatched : Int
+  mut completed : Int
+  mut failed : Int
+  mut expired : Int
+  mut cancelled : Int
+  mut retried : Int
+} derive(Eq, @debug.Debug)
+pub fn SchedulerMetrics::accepted(Self) -> Int
+pub fn SchedulerMetrics::cancelled(Self) -> Int
+pub fn SchedulerMetrics::completed(Self) -> Int
+pub fn SchedulerMetrics::dispatched(Self) -> Int
+pub fn SchedulerMetrics::duplicates(Self) -> Int
+pub fn SchedulerMetrics::expired(Self) -> Int
+pub fn SchedulerMetrics::failed(Self) -> Int
+pub fn SchedulerMetrics::new() -> Self
+pub fn SchedulerMetrics::rejected(Self) -> Int
+pub fn SchedulerMetrics::retried(Self) -> Int
 
 pub struct SequenceWindow {
   mut first_unacknowledged : Int
@@ -1358,6 +3012,101 @@ pub fn SequenceWindow::pending(Self) -> Int
 pub fn SequenceWindow::receive(Self, Int) -> Result[Unit, String]
 pub fn SequenceWindow::reserve_send(Self) -> Result[Int, String]
 
+pub struct ServiceDefinition {
+  name : String
+  kind : SupervisorServiceKind
+  dependencies : Array[ServiceDependency]
+  startup_timeout : Int
+  shutdown_timeout : Int
+  heartbeat_interval : Int
+  restart_limit : Int
+  restart_backoff : Int
+  enabled : Bool
+  critical : Bool
+  tags : Array[String]
+} derive(Eq, @debug.Debug)
+pub fn ServiceDefinition::critical(Self) -> Bool
+pub fn ServiceDefinition::dependencies(Self) -> Array[ServiceDependency]
+pub fn ServiceDefinition::enabled(Self) -> Bool
+pub fn ServiceDefinition::heartbeat_interval(Self) -> Int
+pub fn ServiceDefinition::kind(Self) -> SupervisorServiceKind
+pub fn ServiceDefinition::name(Self) -> String
+pub fn ServiceDefinition::new(String, SupervisorServiceKind, dependencies? : Array[ServiceDependency], startup_timeout? : Int, shutdown_timeout? : Int, heartbeat_interval? : Int, restart_limit? : Int, restart_backoff? : Int, enabled? : Bool, critical? : Bool, tags? : Array[String]) -> Result[Self, String]
+pub fn ServiceDefinition::restart_backoff(Self) -> Int
+pub fn ServiceDefinition::restart_limit(Self) -> Int
+pub fn ServiceDefinition::shutdown_timeout(Self) -> Int
+pub fn ServiceDefinition::startup_timeout(Self) -> Int
+pub fn ServiceDefinition::tags(Self) -> Array[String]
+
+pub struct ServiceDependency {
+  name : String
+  required : Bool
+  allow_degraded : Bool
+} derive(Eq, @debug.Debug)
+pub fn ServiceDependency::allow_degraded(Self) -> Bool
+pub fn ServiceDependency::name(Self) -> String
+pub fn ServiceDependency::new(String, required? : Bool, allow_degraded? : Bool) -> Result[Self, String]
+pub fn ServiceDependency::required(Self) -> Bool
+
+pub struct ServiceEvent {
+  sequence : Int
+  timestamp : Int
+  service : String
+  kind : ServiceEventKind
+  detail : String
+  lifecycle : ServiceLifecycle
+  health : ServiceHealth
+} derive(Eq, @debug.Debug)
+pub fn ServiceEvent::detail(Self) -> String
+pub fn ServiceEvent::health(Self) -> ServiceHealth
+pub fn ServiceEvent::kind(Self) -> ServiceEventKind
+pub fn ServiceEvent::lifecycle(Self) -> ServiceLifecycle
+pub fn ServiceEvent::sequence(Self) -> Int
+pub fn ServiceEvent::service(Self) -> String
+pub fn ServiceEvent::timestamp(Self) -> Int
+
+pub enum ServiceEventKind {
+  ServiceRegisteredEvent
+  ServiceStartedEvent
+  ServiceStoppedEvent
+  ServiceDrainingEvent
+  ServiceFailedEvent
+  ServiceBlockedEvent
+  ServiceHeartbeatEvent
+  ServiceHealthEvent
+  ServiceRestartEvent
+  ServiceLeaseEvent
+  ServiceReconciledEvent
+} derive(Eq, @debug.Debug)
+
+pub enum ServiceHealth {
+  HealthUnknown
+  HealthHealthy
+  HealthDegraded
+  HealthUnhealthy
+  HealthStale
+} derive(Eq, @debug.Debug)
+
+pub struct ServiceHealthSummary {
+  mut registered : Int
+  mut running : Int
+  mut degraded : Int
+  mut unhealthy : Int
+  mut stopped : Int
+  mut failed : Int
+  mut blocked : Int
+  mut critical_failures : Int
+} derive(Eq, @debug.Debug)
+pub fn ServiceHealthSummary::blocked(Self) -> Int
+pub fn ServiceHealthSummary::critical_failures(Self) -> Int
+pub fn ServiceHealthSummary::degraded(Self) -> Int
+pub fn ServiceHealthSummary::failed(Self) -> Int
+pub fn ServiceHealthSummary::new() -> Self
+pub fn ServiceHealthSummary::registered(Self) -> Int
+pub fn ServiceHealthSummary::running(Self) -> Int
+pub fn ServiceHealthSummary::stopped(Self) -> Int
+pub fn ServiceHealthSummary::unhealthy(Self) -> Int
+
 pub enum ServiceKind {
   InterrogationService
   CounterInterrogationService
@@ -1367,6 +3116,95 @@ pub enum ServiceKind {
   ResetService
   DelayAcquisitionService
 } derive(Eq, @debug.Debug)
+
+pub struct ServiceLease {
+  owner : String
+  acquired_at : Int
+  expires_at : Int
+  generation : Int
+} derive(Eq, @debug.Debug)
+pub fn ServiceLease::acquired_at(Self) -> Int
+pub fn ServiceLease::active(Self, Int) -> Bool
+pub fn ServiceLease::expires_at(Self) -> Int
+pub fn ServiceLease::generation(Self) -> Int
+pub fn ServiceLease::new(String, Int, Int, Int) -> Result[Self, String]
+pub fn ServiceLease::owner(Self) -> String
+
+pub enum ServiceLifecycle {
+  ServiceRegistered
+  ServiceStarting
+  ServiceRunning
+  ServiceDraining
+  ServiceStopped
+  ServiceFailed
+  ServiceBlocked
+} derive(Eq, @debug.Debug)
+
+pub struct ServiceRecord {
+  definition : ServiceDefinition
+  mut lifecycle : ServiceLifecycle
+  mut health : ServiceHealth
+  mut restart_count : Int
+  mut last_transition : Int
+  mut last_heartbeat : Int
+  mut last_error : String
+  mut generation : Int
+  mut lease : ServiceLease?
+} derive(@debug.Debug)
+pub fn ServiceRecord::definition(Self) -> ServiceDefinition
+pub fn ServiceRecord::generation(Self) -> Int
+pub fn ServiceRecord::health(Self) -> ServiceHealth
+pub fn ServiceRecord::is_available(Self) -> Bool
+pub fn ServiceRecord::is_terminal(Self) -> Bool
+pub fn ServiceRecord::kind(Self) -> SupervisorServiceKind
+pub fn ServiceRecord::last_error(Self) -> String
+pub fn ServiceRecord::last_heartbeat(Self) -> Int
+pub fn ServiceRecord::last_transition(Self) -> Int
+pub fn ServiceRecord::lease(Self) -> ServiceLease?
+pub fn ServiceRecord::lifecycle(Self) -> ServiceLifecycle
+pub fn ServiceRecord::name(Self) -> String
+pub fn ServiceRecord::new(ServiceDefinition, Int) -> Self
+pub fn ServiceRecord::restart_count(Self) -> Int
+
+pub struct ServiceRegistry {
+  records : Map[String, ServiceRecord]
+  events : Array[ServiceEvent]
+  event_limit : Int
+  mut next_sequence : Int
+  mut topology_revision : Int
+} derive(@debug.Debug)
+pub fn ServiceRegistry::acquire_lease(Self, String, String, Int, Int) -> Result[ServiceLease, String]
+pub fn ServiceRegistry::blocked(Self) -> Array[String]
+pub fn ServiceRegistry::critical_services(Self) -> Array[String]
+pub fn ServiceRegistry::definition(Self, String) -> ServiceDefinition?
+pub fn ServiceRegistry::dependants(Self, String) -> Array[String]
+pub fn ServiceRegistry::dependencies_ready(Self, String) -> Result[Bool, String]
+pub fn ServiceRegistry::event_lines(Self) -> Array[String]
+pub fn ServiceRegistry::events(Self) -> Array[ServiceEvent]
+pub fn ServiceRegistry::events_since(Self, Int) -> Array[ServiceEvent]
+pub fn ServiceRegistry::expire_leases(Self, Int) -> Array[String]
+pub fn ServiceRegistry::fail(Self, String, Int, String) -> Result[ServiceRecord, String]
+pub fn ServiceRegistry::failed(Self) -> Array[String]
+pub fn ServiceRegistry::get(Self, String) -> ServiceRecord?
+pub fn ServiceRegistry::health_summary(Self) -> ServiceHealthSummary
+pub fn ServiceRegistry::heartbeat(Self, String, Int) -> Result[ServiceRecord, String]
+pub fn ServiceRegistry::len(Self) -> Int
+pub fn ServiceRegistry::mark_stale(Self, Int) -> Array[String]
+pub fn ServiceRegistry::names(Self) -> Array[String]
+pub fn ServiceRegistry::new(event_limit? : Int) -> Result[Self, String]
+pub fn ServiceRegistry::reconcile(Self, Int) -> Array[String]
+pub fn ServiceRegistry::records(Self) -> Array[ServiceRecord]
+pub fn ServiceRegistry::register(Self, ServiceDefinition, Int) -> Result[ServiceRecord, String]
+pub fn ServiceRegistry::release_lease(Self, String, String, Int) -> Result[Unit, String]
+pub fn ServiceRegistry::renew_lease(Self, String, String, Int, Int) -> Result[ServiceLease, String]
+pub fn ServiceRegistry::restart(Self, String, Int, reason? : String) -> Result[ServiceRecord, String]
+pub fn ServiceRegistry::running(Self) -> Array[String]
+pub fn ServiceRegistry::set_health(Self, String, ServiceHealth, Int, detail? : String) -> Result[ServiceRecord, String]
+pub fn ServiceRegistry::start(Self, String, Int) -> Result[ServiceRecord, String]
+pub fn ServiceRegistry::startup_order(Self) -> Result[Array[String], String]
+pub fn ServiceRegistry::stop(Self, String, Int, force? : Bool) -> Result[ServiceRecord, String]
+pub fn ServiceRegistry::topology_revision(Self) -> Int
+pub fn ServiceRegistry::unregister(Self, String, Int) -> Result[Unit, String]
 
 pub struct ServiceRequest {
   service : ServiceKind
@@ -1496,6 +3334,97 @@ pub fn SinglePointValue::quality(Self) -> StatusQuality
 pub fn SinglePointValue::state(Self) -> Bool
 pub fn SinglePointValue::to_byte(Self) -> Int
 
+pub struct StationConfig {
+  common_address : CommonAddress
+  name : String
+  location : String
+  owner : String
+  point_capacity : Int
+  history_limit : Int
+  heartbeat_interval : Int
+  tags : Array[String]
+  enabled : Bool
+} derive(Eq, @debug.Debug)
+pub fn StationConfig::common_address(Self) -> CommonAddress
+pub fn StationConfig::enabled(Self) -> Bool
+pub fn StationConfig::heartbeat_interval(Self) -> Int
+pub fn StationConfig::history_limit(Self) -> Int
+pub fn StationConfig::location(Self) -> String
+pub fn StationConfig::name(Self) -> String
+pub fn StationConfig::new(CommonAddress, String, location? : String, owner? : String, point_capacity? : Int, history_limit? : Int, heartbeat_interval? : Int, tags? : Array[String], enabled? : Bool) -> Result[Self, String]
+pub fn StationConfig::owner(Self) -> String
+pub fn StationConfig::point_capacity(Self) -> Int
+pub fn StationConfig::tags(Self) -> Array[String]
+pub fn StationConfig::with_enabled(Self, Bool) -> Self
+pub fn StationConfig::with_tags(Self, Array[String]) -> Self
+
+pub struct StationCounters {
+  mut received_updates : Int
+  mut accepted_updates : Int
+  mut rejected_updates : Int
+  mut commands : Int
+  mut command_failures : Int
+  mut heartbeat_misses : Int
+  mut quality_events : Int
+  mut bytes_received : Int
+  mut bytes_sent : Int
+} derive(Eq, @debug.Debug)
+pub fn StationCounters::accepted_updates(Self) -> Int
+pub fn StationCounters::bytes_received(Self) -> Int
+pub fn StationCounters::bytes_sent(Self) -> Int
+pub fn StationCounters::command_failures(Self) -> Int
+pub fn StationCounters::commands(Self) -> Int
+pub fn StationCounters::heartbeat_misses(Self) -> Int
+pub fn StationCounters::new() -> Self
+pub fn StationCounters::quality_events(Self) -> Int
+pub fn StationCounters::received_updates(Self) -> Int
+pub fn StationCounters::record_bytes_received(Self, Int) -> Unit
+pub fn StationCounters::record_bytes_sent(Self, Int) -> Unit
+pub fn StationCounters::record_command(Self) -> Unit
+pub fn StationCounters::record_command_failure(Self) -> Unit
+pub fn StationCounters::record_quality_event(Self) -> Unit
+pub fn StationCounters::rejected_updates(Self) -> Int
+
+pub struct StationDatabase {
+  stations : Map[Int, StationRecord]
+  events : Array[DatabaseEvent]
+  event_limit : Int
+  mut revision : Int
+  mut next_sequence : Int
+} derive(@debug.Debug)
+pub fn StationDatabase::commit(Self, DatabaseTransaction) -> Result[Array[DatabaseEvent], Diagnostic]
+pub fn StationDatabase::compact_events(Self, Int, Int) -> Result[Unit, String]
+pub fn StationDatabase::contains(Self, CommonAddress) -> Bool
+pub fn StationDatabase::event_count(Self) -> Int
+pub fn StationDatabase::events(Self) -> Array[DatabaseEvent]
+pub fn StationDatabase::events_since(Self, Int) -> Array[DatabaseEvent]
+pub fn StationDatabase::get(Self, CommonAddress) -> StationRecord?
+pub fn StationDatabase::heartbeat(Self, CommonAddress, Int) -> Result[StationStateChange?, String]
+pub fn StationDatabase::miss_heartbeat(Self, CommonAddress, Int) -> Result[StationStateChange?, String]
+pub fn StationDatabase::new(event_limit? : Int) -> Result[Self, String]
+pub fn StationDatabase::point_snapshot(Self, CommonAddress, PointFilter) -> Result[StationPointSnapshot, String]
+pub fn StationDatabase::query(Self, StationQuery, Int) -> Array[StationSummary]
+pub fn StationDatabase::read(Self, CommonAddress, PointFilter) -> Result[Array[PointRecord], String]
+pub fn StationDatabase::register(Self, StationConfig, Int) -> Result[StationSummary, String]
+pub fn StationDatabase::revision(Self) -> Int
+pub fn StationDatabase::set_state(Self, CommonAddress, StationStatus, StationStateReason, Int, message? : String) -> Result[StationStateChange, String]
+pub fn StationDatabase::snapshot(Self, Int) -> DatabaseSnapshot
+pub fn StationDatabase::station_count(Self) -> Int
+pub fn StationDatabase::summary(Self, CommonAddress, Int) -> Result[StationSummary, String]
+pub fn StationDatabase::unregister(Self, CommonAddress, Int) -> Result[Unit, String]
+pub fn StationDatabase::write(Self, CommonAddress, ApplicationObject, Int, source? : String) -> Result[PointChange, Diagnostic]
+
+pub struct StationPointSnapshot {
+  common_address : CommonAddress
+  database_revision : Int
+  station_revision : Int
+  points : Array[PointRecord]
+} derive(@debug.Debug)
+pub fn StationPointSnapshot::common_address(Self) -> CommonAddress
+pub fn StationPointSnapshot::database_revision(Self) -> Int
+pub fn StationPointSnapshot::points(Self) -> Array[PointRecord]
+pub fn StationPointSnapshot::station_revision(Self) -> Int
+
 pub struct StationProfile {
   name : String
   common_address : CommonAddress
@@ -1512,6 +3441,39 @@ pub fn StationProfile::parameters(Self) -> ConnectionParameters
 pub fn StationProfile::supported_types(Self) -> Array[ApplicationType]
 pub fn StationProfile::supports(Self, ApplicationType) -> Bool
 pub fn StationProfile::tls_required(Self) -> Bool
+
+pub struct StationQuery {
+  status : StationStatus?
+  tag : String?
+  name_prefix : String?
+  include_disabled : Bool
+  min_points : Int?
+  max_heartbeat_age : Int?
+} derive(Eq, @debug.Debug)
+pub fn StationQuery::all() -> Self
+pub fn StationQuery::with_disabled(Self, Bool) -> Self
+pub fn StationQuery::with_max_heartbeat_age(Self, Int) -> Self
+pub fn StationQuery::with_min_points(Self, Int) -> Self
+pub fn StationQuery::with_name_prefix(Self, String) -> Self
+pub fn StationQuery::with_status(Self, StationStatus) -> Self
+pub fn StationQuery::with_tag(Self, String) -> Self
+
+pub struct StationRecord {
+  config : StationConfig
+  store : PointStore
+  mut status : StationStatus
+  mut last_seen : Int
+  mut revision : Int
+  counters : StationCounters
+  transitions : Array[StationStateChange]
+} derive(@debug.Debug)
+pub fn StationRecord::config(Self) -> StationConfig
+pub fn StationRecord::counters(Self) -> StationCounters
+pub fn StationRecord::last_seen(Self) -> Int
+pub fn StationRecord::revision(Self) -> Int
+pub fn StationRecord::status(Self) -> StationStatus
+pub fn StationRecord::store(Self) -> PointStore
+pub fn StationRecord::transitions(Self) -> Array[StationStateChange]
 
 pub struct StationSimulation {
   store : PointStore
@@ -1533,6 +3495,65 @@ pub fn StationSimulation::start(Self) -> Frame
 pub fn StationSimulation::stop(Self) -> Frame
 pub fn StationSimulation::store(Self) -> PointStore
 pub fn StationSimulation::trace(Self) -> Array[TraceEvent]
+
+pub struct StationStateChange {
+  common_address : CommonAddress
+  from : StationStatus
+  to : StationStatus
+  reason : StationStateReason
+  timestamp : Int
+  revision : Int
+  message : String
+} derive(Eq, @debug.Debug)
+pub fn StationStateChange::common_address(Self) -> CommonAddress
+pub fn StationStateChange::from(Self) -> StationStatus
+pub fn StationStateChange::message(Self) -> String
+pub fn StationStateChange::new(CommonAddress, StationStatus, StationStatus, StationStateReason, Int, Int, message? : String) -> Self
+pub fn StationStateChange::reason(Self) -> StationStateReason
+pub fn StationStateChange::revision(Self) -> Int
+pub fn StationStateChange::timestamp(Self) -> Int
+pub fn StationStateChange::to(Self) -> StationStatus
+
+pub enum StationStateReason {
+  ProvisionedByOperator
+  LinkEstablished
+  LinkLost
+  HeartbeatMissed
+  ProtocolError
+  QualityDegraded
+  ManualQuarantine
+  ManualRelease
+  MaintenanceWindow
+} derive(Eq, @debug.Debug)
+
+pub enum StationStatus {
+  Provisioned
+  Online
+  Degraded
+  Offline
+  Quarantined
+} derive(Eq, @debug.Debug)
+
+pub struct StationSummary {
+  common_address : CommonAddress
+  name : String
+  status : StationStatus
+  point_count : Int
+  last_seen : Int
+  revision : Int
+  valid_points : Int
+  invalid_points : Int
+  heartbeat_age : Int
+} derive(Eq, @debug.Debug)
+pub fn StationSummary::common_address(Self) -> CommonAddress
+pub fn StationSummary::heartbeat_age(Self) -> Int
+pub fn StationSummary::invalid_points(Self) -> Int
+pub fn StationSummary::last_seen(Self) -> Int
+pub fn StationSummary::name(Self) -> String
+pub fn StationSummary::point_count(Self) -> Int
+pub fn StationSummary::revision(Self) -> Int
+pub fn StationSummary::status(Self) -> StationStatus
+pub fn StationSummary::valid_points(Self) -> Int
 
 pub struct StatusQuality {
   blocked : Bool
@@ -1585,6 +3606,143 @@ pub fn StoreTransaction::pending_count(Self) -> Int
 pub fn StoreTransaction::rollback(Self) -> Unit
 pub fn StoreTransaction::stage(Self, ApplicationObject, Int, source? : String) -> Result[Unit, Diagnostic]
 pub fn StoreTransaction::stage_remove(Self, InformationAddress, Int) -> Result[Unit, Diagnostic]
+
+pub struct StoredFile {
+  identity : FileIdentity
+  data : Bytes
+  created_at : Int
+  updated_at : Int
+  revision : Int
+  checksum : UInt
+} derive(Eq, @debug.Debug)
+pub fn StoredFile::checksum(Self) -> UInt
+pub fn StoredFile::created_at(Self) -> Int
+pub fn StoredFile::data(Self) -> Bytes
+pub fn StoredFile::identity(Self) -> FileIdentity
+pub fn StoredFile::new(FileIdentity, Bytes, Int) -> Self
+pub fn StoredFile::revision(Self) -> Int
+pub fn StoredFile::size(Self) -> Int
+pub fn StoredFile::updated_at(Self) -> Int
+
+pub enum SupervisorServiceKind {
+  TransportService
+  StationDatabaseService
+  TelemetryService
+  CommandService
+  ArchiveService
+  FileService
+  AlarmService
+  DiagnosticService
+  SimulationService
+  ApiService
+} derive(Eq, @debug.Debug)
+
+pub struct TelemetryAggregate {
+  mut count : Int
+  mut first_timestamp : Int
+  mut last_timestamp : Int
+  mut minimum : Float
+  mut maximum : Float
+  mut sum : Float
+  mut invalid_count : Int
+} derive(Eq, @debug.Debug)
+pub fn TelemetryAggregate::average(Self) -> Float
+pub fn TelemetryAggregate::count(Self) -> Int
+pub fn TelemetryAggregate::empty() -> Self
+pub fn TelemetryAggregate::first_timestamp(Self) -> Int
+pub fn TelemetryAggregate::invalid_count(Self) -> Int
+pub fn TelemetryAggregate::last_timestamp(Self) -> Int
+pub fn TelemetryAggregate::maximum(Self) -> Float
+pub fn TelemetryAggregate::minimum(Self) -> Float
+pub fn TelemetryAggregate::sum(Self) -> Float
+
+pub struct TelemetryMetrics {
+  mut received : Int
+  mut emitted : Int
+  mut suppressed : Int
+  mut invalid : Int
+  mut rate_rejected : Int
+  mut alarms_raised : Int
+  mut alarms_cleared : Int
+} derive(Eq, @debug.Debug)
+pub fn TelemetryMetrics::alarms_cleared(Self) -> Int
+pub fn TelemetryMetrics::alarms_raised(Self) -> Int
+pub fn TelemetryMetrics::emitted(Self) -> Int
+pub fn TelemetryMetrics::invalid(Self) -> Int
+pub fn TelemetryMetrics::new() -> Self
+pub fn TelemetryMetrics::rate_rejected(Self) -> Int
+pub fn TelemetryMetrics::received(Self) -> Int
+pub fn TelemetryMetrics::suppressed(Self) -> Int
+
+pub struct TelemetryPipeline {
+  samples : Map[Int, TelemetrySample]
+  aggregates : Map[Int, TelemetryAggregate]
+  deadbands : Map[Int, DeadbandRule]
+  rates : Map[Int, RateRule]
+  alarms : Map[Int, Array[AlarmRule]]
+  active_alarms : Map[String, Bool]
+  subscriptions : Array[TelemetrySubscription]
+  alarm_history : Array[AlarmEvent]
+  alarm_limit : Int
+  mut sequence : Int
+  metrics : TelemetryMetrics
+} derive(@debug.Debug)
+pub fn TelemetryPipeline::aggregate(Self, InformationAddress) -> TelemetryAggregate
+pub fn TelemetryPipeline::alarm_history(Self) -> Array[AlarmEvent]
+pub fn TelemetryPipeline::ingest(Self, CommonAddress, ApplicationObject, Int, source? : String) -> Result[PipelineResult, Diagnostic]
+pub fn TelemetryPipeline::latest(Self, InformationAddress) -> TelemetrySample?
+pub fn TelemetryPipeline::metrics(Self) -> TelemetryMetrics
+pub fn TelemetryPipeline::new(alarm_limit? : Int) -> Result[Self, String]
+pub fn TelemetryPipeline::sample_count(Self) -> Int
+pub fn TelemetryPipeline::set_alarm_rules(Self, InformationAddress, Array[AlarmRule]) -> Unit
+pub fn TelemetryPipeline::set_deadband(Self, InformationAddress, DeadbandRule) -> Unit
+pub fn TelemetryPipeline::set_rate_rule(Self, InformationAddress, RateRule) -> Unit
+pub fn TelemetryPipeline::subscribe(Self, TelemetrySubscription) -> Result[Unit, String]
+pub fn TelemetryPipeline::unsubscribe(Self, Int) -> Bool
+
+pub struct TelemetrySample {
+  station : CommonAddress
+  address : InformationAddress
+  type_id : ApplicationType
+  value : Float
+  quality : QualityDescriptor
+  state : TelemetryState
+  timestamp : Int
+  source : String
+  sequence : Int
+} derive(@debug.Debug)
+pub fn TelemetrySample::address(Self) -> InformationAddress
+pub fn TelemetrySample::quality(Self) -> QualityDescriptor
+pub fn TelemetrySample::sequence(Self) -> Int
+pub fn TelemetrySample::source(Self) -> String
+pub fn TelemetrySample::state(Self) -> TelemetryState
+pub fn TelemetrySample::station(Self) -> CommonAddress
+pub fn TelemetrySample::timestamp(Self) -> Int
+pub fn TelemetrySample::type_id(Self) -> ApplicationType
+pub fn TelemetrySample::value(Self) -> Float
+
+pub enum TelemetryState {
+  GoodTelemetry
+  DegradedTelemetry
+  InvalidTelemetry
+} derive(Eq, @debug.Debug)
+pub fn TelemetryState::usable(Self) -> Bool
+
+pub struct TelemetrySubscription {
+  id : Int
+  station : CommonAddress?
+  first_address : InformationAddress?
+  last_address : InformationAddress?
+  minimum_state : TelemetryState
+  include_unchanged : Bool
+} derive(Eq, @debug.Debug)
+pub fn TelemetrySubscription::first_address(Self) -> InformationAddress?
+pub fn TelemetrySubscription::id(Self) -> Int
+pub fn TelemetrySubscription::include_unchanged(Self) -> Bool
+pub fn TelemetrySubscription::last_address(Self) -> InformationAddress?
+pub fn TelemetrySubscription::minimum_state(Self) -> TelemetryState
+pub fn TelemetrySubscription::new(Int, station? : CommonAddress, first_address? : InformationAddress, last_address? : InformationAddress, minimum_state? : TelemetryState, include_unchanged? : Bool) -> Result[Self, String]
+pub fn TelemetrySubscription::station(Self) -> CommonAddress?
 
 pub enum TimeTag {
   Short(Cp24Time)
@@ -1639,6 +3797,98 @@ pub fn TraceLog::new(limit? : Int) -> Result[Self, String]
 pub fn TraceLog::push(Self, TraceEvent) -> Unit
 pub fn TraceLog::since(Self, Int) -> Array[TraceEvent]
 
+pub struct TransportEndpoint {
+  id : Int
+  station : CommonAddress
+  parameters : ConnectionParameters
+  window : SequenceWindow
+  decoder : ApduStreamDecoder
+  mut state : ManagedTransportState
+  mut last_activity : Int
+  mut last_send : Int
+  mut last_receive : Int
+  mut sent_frames : Int
+  mut received_frames : Int
+  mut malformed_frames : Int
+} derive(@debug.Debug)
+pub fn TransportEndpoint::close(Self, Int) -> Unit
+pub fn TransportEndpoint::id(Self) -> Int
+pub fn TransportEndpoint::last_activity(Self) -> Int
+pub fn TransportEndpoint::last_receive(Self) -> Int
+pub fn TransportEndpoint::last_send(Self) -> Int
+pub fn TransportEndpoint::malformed_frames(Self) -> Int
+pub fn TransportEndpoint::new(Int, CommonAddress, ConnectionParameters, Int, max_apdu? : Int) -> Result[Self, String]
+pub fn TransportEndpoint::open(Self, Int) -> Result[Frame, String]
+pub fn TransportEndpoint::parameters(Self) -> ConnectionParameters
+pub fn TransportEndpoint::poll(Self, Int) -> Result[Unit, Diagnostic]
+pub fn TransportEndpoint::receive(Self, Bytes, Int) -> Result[Array[Frame], Diagnostic]
+pub fn TransportEndpoint::received_frames(Self) -> Int
+pub fn TransportEndpoint::send(Self, Bytes, Int) -> Result[Bytes, Diagnostic]
+pub fn TransportEndpoint::sent_frames(Self) -> Int
+pub fn TransportEndpoint::start(Self, Int) -> Result[Frame, String]
+pub fn TransportEndpoint::state(Self) -> ManagedTransportState
+pub fn TransportEndpoint::station(Self) -> CommonAddress
+pub fn TransportEndpoint::stop(Self, Int) -> Result[Frame, String]
+
+pub struct TransportEvent {
+  sequence : Int
+  timestamp : Int
+  kind : TransportEventKind
+  endpoint : Int
+  frame_size : Int
+  detail : String
+} derive(Eq, @debug.Debug)
+pub fn TransportEvent::detail(Self) -> String
+pub fn TransportEvent::endpoint(Self) -> Int
+pub fn TransportEvent::frame_size(Self) -> Int
+pub fn TransportEvent::kind(Self) -> TransportEventKind
+pub fn TransportEvent::sequence(Self) -> Int
+pub fn TransportEvent::timestamp(Self) -> Int
+
+pub enum TransportEventKind {
+  TransportOpened
+  TransportStartedEvent
+  TransportFrameSent
+  TransportFrameReceived
+  TransportAcknowledged
+  TransportTimerExpired
+  TransportFault
+  TransportClosedEvent
+} derive(Eq, @debug.Debug)
+
+pub struct TransportManager {
+  endpoints : Map[Int, TransportEndpoint]
+  events : Array[TransportEvent]
+  event_limit : Int
+  mut next_event : Int
+  metrics : TransportManagerMetrics
+} derive(@debug.Debug)
+pub fn TransportManager::add(Self, TransportEndpoint) -> Result[Unit, String]
+pub fn TransportManager::close(Self, Int, Int) -> Result[Unit, String]
+pub fn TransportManager::endpoint(Self, Int) -> TransportEndpoint?
+pub fn TransportManager::endpoint_count(Self) -> Int
+pub fn TransportManager::events(Self) -> Array[TransportEvent]
+pub fn TransportManager::metrics(Self) -> TransportManagerMetrics
+pub fn TransportManager::new(event_limit? : Int) -> Result[Self, String]
+pub fn TransportManager::open(Self, Int, Int) -> Result[Bytes, String]
+pub fn TransportManager::poll(Self, Int) -> Array[Diagnostic]
+pub fn TransportManager::receive(Self, Int, Bytes, Int) -> Result[Array[Frame], Diagnostic]
+pub fn TransportManager::send(Self, Int, Bytes, Int) -> Result[Bytes, Diagnostic]
+
+pub struct TransportManagerMetrics {
+  mut opened : Int
+  mut sent : Int
+  mut received : Int
+  mut failures : Int
+  mut closed : Int
+} derive(Eq, @debug.Debug)
+pub fn TransportManagerMetrics::closed(Self) -> Int
+pub fn TransportManagerMetrics::failures(Self) -> Int
+pub fn TransportManagerMetrics::new() -> Self
+pub fn TransportManagerMetrics::opened(Self) -> Int
+pub fn TransportManagerMetrics::received(Self) -> Int
+pub fn TransportManagerMetrics::sent(Self) -> Int
+
 pub enum TransportMode {
   Tcp
   SerialGateway
@@ -1683,6 +3933,118 @@ pub enum UCommand {
 } derive(Eq, @debug.Debug)
 pub fn UCommand::control(Self) -> UInt16
 
+pub struct ValidationIssue {
+  kind : ValidationIssueKind
+  path : String
+  message : String
+  address : InformationAddress?
+  fatal : Bool
+} derive(Eq, @debug.Debug)
+pub fn ValidationIssue::address(Self) -> InformationAddress?
+pub fn ValidationIssue::fatal(Self) -> Bool
+pub fn ValidationIssue::kind(Self) -> ValidationIssueKind
+pub fn ValidationIssue::message(Self) -> String
+pub fn ValidationIssue::path(Self) -> String
+
+pub enum ValidationIssueKind {
+  ValidationMissing
+  ValidationOutOfRange
+  ValidationType
+  ValidationCapacity
+  ValidationQuality
+  ValidationPolicy
+} derive(Eq, @debug.Debug)
+
+pub struct ValidationProfile {
+  max_points : Int
+  max_history : Int
+  require_time_tag_for_events : Bool
+  reject_unknown_types : Bool
+  require_non_global_station : Bool
+} derive(Eq, @debug.Debug)
+pub fn ValidationProfile::default() -> Self
+pub fn ValidationProfile::max_history(Self) -> Int
+pub fn ValidationProfile::max_points(Self) -> Int
+pub fn ValidationProfile::new(max_points? : Int, max_history? : Int, require_time_tag_for_events? : Bool, reject_unknown_types? : Bool, require_non_global_station? : Bool) -> Result[Self, String]
+pub fn ValidationProfile::reject_unknown_types(Self) -> Bool
+pub fn ValidationProfile::require_non_global_station(Self) -> Bool
+pub fn ValidationProfile::require_time_tag_for_events(Self) -> Bool
+
+pub struct ValidationReport {
+  subject : String
+  valid : Bool
+  issues : Array[ValidationIssue]
+  checked : Int
+} derive(@debug.Debug)
+pub fn ValidationReport::checked(Self) -> Int
+pub fn ValidationReport::issues(Self) -> Array[ValidationIssue]
+pub fn ValidationReport::subject(Self) -> String
+pub fn ValidationReport::valid(Self) -> Bool
+
+pub struct VectorCatalog {
+  vectors : Array[ConformanceVector]
+  names : Map[String, Bool]
+} derive(@debug.Debug)
+pub fn VectorCatalog::add(Self, ConformanceVector) -> Result[Unit, String]
+pub fn VectorCatalog::add_all(Self, Array[ConformanceVector]) -> Result[Unit, String]
+pub fn VectorCatalog::len(Self) -> Int
+pub fn VectorCatalog::new() -> Self
+pub fn VectorCatalog::vectors(Self) -> Array[ConformanceVector]
+
+pub enum VectorCategory {
+  ApciVector
+  AsduVector
+  SequenceVector
+  BoundaryVector
+  NegativeVector
+} derive(Eq, @debug.Debug)
+
+pub enum VectorExpectation {
+  ExpectDecode
+  ExpectReject
+} derive(Eq, @debug.Debug)
+
+pub struct VectorMismatch {
+  vector : String
+  field : String
+  expected : String
+  actual : String
+} derive(Eq, @debug.Debug)
+pub fn VectorMismatch::actual(Self) -> String
+pub fn VectorMismatch::expected(Self) -> String
+pub fn VectorMismatch::field(Self) -> String
+pub fn VectorMismatch::vector(Self) -> String
+
+pub struct VectorReport {
+  total : Int
+  passed : Int
+  failed : Int
+  rejected : Int
+  bytes : Int
+  results : Array[VectorResult]
+} derive(@debug.Debug)
+pub fn VectorReport::bytes(Self) -> Int
+pub fn VectorReport::failed(Self) -> Int
+pub fn VectorReport::passed(Self) -> Int
+pub fn VectorReport::rejected(Self) -> Int
+pub fn VectorReport::results(Self) -> Array[VectorResult]
+pub fn VectorReport::total(Self) -> Int
+
+pub struct VectorResult {
+  name : String
+  passed : Bool
+  decoded : Bool
+  encoded_size : Int
+  mismatches : Array[VectorMismatch]
+  message : String
+} derive(@debug.Debug)
+pub fn VectorResult::decoded(Self) -> Bool
+pub fn VectorResult::encoded_size(Self) -> Int
+pub fn VectorResult::message(Self) -> String
+pub fn VectorResult::mismatches(Self) -> Array[VectorMismatch]
+pub fn VectorResult::name(Self) -> String
+pub fn VectorResult::passed(Self) -> Bool
+
 pub struct VirtualClock {
   mut now : Int
 } derive(Eq, @debug.Debug)
@@ -1690,6 +4052,23 @@ pub fn VirtualClock::advance(Self, Int) -> Result[Int, String]
 pub fn VirtualClock::new(start? : Int) -> Result[Self, String]
 pub fn VirtualClock::now(Self) -> Int
 pub fn VirtualClock::set(Self, Int) -> Result[Unit, String]
+
+pub struct WorkloadResult {
+  workload : ApplicationBenchmarkWorkload
+  iterations : Int
+  accepted : Int
+  rejected : Int
+  bytes : Int
+  checksum : UInt
+  detail : String
+} derive(Eq, @debug.Debug)
+pub fn WorkloadResult::accepted(Self) -> Int
+pub fn WorkloadResult::bytes(Self) -> Int
+pub fn WorkloadResult::checksum(Self) -> UInt
+pub fn WorkloadResult::detail(Self) -> String
+pub fn WorkloadResult::iterations(Self) -> Int
+pub fn WorkloadResult::rejected(Self) -> Int
+pub fn WorkloadResult::workload(Self) -> ApplicationBenchmarkWorkload
 
 // Type aliases
 

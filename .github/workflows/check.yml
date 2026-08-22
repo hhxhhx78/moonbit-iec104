@@ -70,4 +70,4 @@ jobs:
             ! -path './_build/*' -print0 |
             xargs -0 awk 'END { print NR + 0 }')
           echo "production MoonBit lines: $lines"
-          test "$lines" -ge 8000
+          test "$lines" -ge 20000

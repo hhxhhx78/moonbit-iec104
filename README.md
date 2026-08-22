@@ -12,7 +12,9 @@
 - IEC 104 Type ID、VSQ、传送原因、公共地址和信息体地址
 - 单点、双点、步位、归一化/标度/短浮点/累计量和命令对象
 - CP24Time2a、CP56Time2a、质量描述符与带时标 ASDU
-- 点表历史、召唤事务、命令策略、重放保护、指标和健康报告
+- 点表数据库、事务、质量门控、历史归档、遥测死区和告警生命周期
+- 命令调度、文件分片传输、冗余切换、服务依赖编排和诊断目录
+- 配置注册、协议路由、传输会话、conformance vectors 和确定性工作负载
 
 ## 快速开始
 
@@ -29,13 +31,14 @@ moon run cmd/main
 ```bash
 moon run cmd/main -- --help
 moon run cmd/main -- --benchmark
+moon run cmd/main -- --application-benchmark
 ```
 
-默认命令编码一个示例 I 帧；`--benchmark` 运行固定的 10,000 帧工作负载并输出可复核的摘要。实测数据见 [BENCHMARKS.md](BENCHMARKS.md)。
+默认命令编码一个示例 I 帧；`--benchmark` 运行固定的 10,000 帧工作负载，`--application-benchmark` 运行站点、遥测、命令、文件和仿真服务工作负载。实测数据见 [BENCHMARKS.md](BENCHMARKS.md)。
 
 ## 架构
 
-帧与链路位于 `frame_types.mbt`、`codec.mbt` 和 `state_machine.mbt`；应用层模型位于 `protocol_domain.mbt`、`quality.mbt`、`time_tags.mbt`、`application_objects.mbt` 和 `extended_asdu.mbt`；服务、点表、诊断、资源保护和仿真分别位于对应的 `*_services.mbt`、`point_store.mbt`、`diagnostics_metrics.mbt`、`security_limits.mbt` 和 `simulation.mbt`。
+帧与链路位于 `frame_types.mbt`、`codec.mbt`、`transport_layer.mbt` 和 `state_machine.mbt`；应用层模型位于 `protocol_domain.mbt`、`quality.mbt`、`time_tags.mbt`、`application_objects.mbt` 和 `extended_asdu.mbt`；生产服务由 `station_database.mbt`、`telemetry_pipeline.mbt`、`command_scheduler.mbt`、`file_transfer.mbt`、`historical_archive.mbt`、`redundancy_manager.mbt`、`service_registry.mbt` 和 `runtime_facade.mbt` 组合；配置、路由、诊断、质量策略、契约向量和仿真分别位于对应模块。
 
 ## 基准
 
@@ -43,7 +46,7 @@ moon run cmd/main -- --benchmark
 
 ## 测试
 
-边界测试覆盖地址、日期、质量位、签名值、ASDU 截断/尾随字节、序号回绕、流式输入、点表历史、事务回滚、CRC、资源限制和确定性工作负载。
+边界测试覆盖地址、日期、质量位、签名值、ASDU 截断/尾随字节、序号回绕、流式输入、点表容量与事务冲突、服务依赖与租约、质量门控、文件分片顺序、遥测死区、命令幂等、CRC、资源限制和确定性工作负载。
 
 ```bash
 moon check --deny-warn --target all
