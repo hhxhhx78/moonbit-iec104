@@ -15,30 +15,30 @@ The command executes `run_benchmark_workload(10000, 16)`:
 - deterministic CRC accumulator: `0`
 
 The checksum is an XOR accumulator over the encoded frames. A zero result is a
-valid deterministic result for this workload and is asserted by the acceptance
-test against the library fixture.
+valid deterministic result for this workload and is asserted by the
+deterministic test suite against the library fixture.
 
 ## Environment
 
-- Date: 2026-08-19
+- Date: 2026-08-24
 - Host: Windows, PowerShell
-- Moon: `0.1.20260807`
-- Moonc: `v0.10.7+bc794d341 (2026-08-11)`
+- Moon: `0.1.20260819`
+- Moonc: `v0.10.9+6e6c44045 (2026-08-19)`
 - Command: `moon run cmd/main -- --benchmark`
-- Measurement: five warm local `Measure-Command` runs, with CLI output discarded
+- Measurement: one warm-up run followed by five warm local `Measure-Command` runs, with CLI output discarded
 
 ## Observed wall time
 
 | run | wall time |
 | ---: | ---: |
-| 1 | 237.786 ms |
-| 2 | 232.711 ms |
-| 3 | 244.396 ms |
-| 4 | 222.495 ms |
-| 5 | 256.368 ms |
-| minimum | 222.495 ms |
-| median | 237.786 ms |
-| mean | 238.751 ms |
+| 1 | 195.744 ms |
+| 2 | 235.101 ms |
+| 3 | 250.838 ms |
+| 4 | 261.851 ms |
+| 5 | 333.655 ms |
+| minimum | 195.744 ms |
+| median | 250.838 ms |
+| mean | 255.438 ms |
 
 ## Application workload
 
@@ -57,9 +57,9 @@ completed 1,000 iterations locally:
 
 Five warm local measurements of
 `moon run cmd/main -- --application-benchmark` were:
-`235.294 ms`, `216.923 ms`, `249.497 ms`, `246.257 ms`, and
-`279.188 ms`; minimum `216.923 ms`, median `246.257 ms`, mean
-`245.432 ms`.
+`297.058 ms`, `288.387 ms`, `268.057 ms`, `361.885 ms`, and
+`589.697 ms`; minimum `268.057 ms`, median `297.058 ms`, mean
+`361.017 ms`.
 
 The timings include the `moon run` process and cached build/runtime startup.
 They should be compared only after keeping the toolchain, workload and host

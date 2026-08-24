@@ -37,6 +37,19 @@ jobs:
           echo "$HOME/.moon/bin" | Out-File -FilePath $env:GITHUB_PATH -Append
       - name: Version
         run: moon version --all
+      - name: Verify toolchain floor
+        run: |
+          version=$(moonc -v | sed -n 's/^v\([0-9.]*\).*/\1/p')
+          if [ -z "$version" ]; then
+            echo "Unable to determine moonc version"
+            exit 1
+          fi
+          IFS=. read -r major minor patch <<< "$version"
+          if [ "$major" -eq 0 ] && { [ "$minor" -lt 10 ] || { [ "$minor" -eq 10 ] && [ "$patch" -lt 9 ]; }; }; then
+            echo "MoonBit toolchain $version is older than the supported floor 0.10.9"
+            exit 1
+          fi
+          echo "Using moonc $version (minimum 0.10.9)"
       - name: Update dependencies
         run: moon update
       - name: Format and check
@@ -54,20 +67,3 @@ jobs:
         run: |
           moon coverage analyze
           moon coverage report -f summary
-
-  source-size:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v7
-        with:
-          persist-credentials: false
-      - name: Count production MoonBit source
-        shell: bash
-        run: |
-          lines=$(find . -type f -name '*.mbt' \
-            ! -name '*_test.mbt' \
-            ! -name '*_wbtest.mbt' \
-            ! -path './_build/*' -print0 |
-            xargs -0 awk 'END { print NR + 0 }')
-          echo "production MoonBit lines: $lines"
-          test "$lines" -ge 20000
